@@ -12,6 +12,16 @@ export default {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+			  titleFaqs: "#5540a7", 
+			  textFaqs: { 
+				primary: "#334155"
+			  },
+			acordion: {
+				1: "#7C4389", 
+				2: "#005194", 
+				3: "#449DC4", 
+				4: "#46AF3F", 
+			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
