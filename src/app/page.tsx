@@ -1,8 +1,12 @@
-import FAQ from "@/app/components/Faqs/faqs";
-import ButtonAccount from "./components/ButtonAccount/ButtonAccount";
+import { Navbar ,FAQ } from "@/components";
+
 
 export default function Home() {
   return (
-    <><ButtonAccount /><FAQ /></>
+    <>
+      <Navbar />
+      <FAQ />
+
+    </>
   );
 }

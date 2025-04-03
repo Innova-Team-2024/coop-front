@@ -5,8 +5,8 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/app/components/ui/accordion";
-import { Button } from "@/app/components/ui/button";
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
 import { IoIosArrowForward } from "react-icons/io";
 
