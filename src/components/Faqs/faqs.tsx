@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent, Button} from "@/components";
 import { Plus, Minus } from "lucide-react";
 import { IoIosArrowForward } from "react-icons/io";
 

@@ -83,15 +83,15 @@ export default function Navbar() {
         <div className="w-[16.66%] bg-[#e31e25]" />
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile dropdown menu (centrado) */}
       {menuOpen && (
         <div className="md:hidden mt-4 bg-white shadow-md rounded-lg px-4 py-3">
-          <ul className="flex flex-col gap-4 text-sm font-medium">
-            <li>Servicios</li>
-            <li>Instituciones</li>
-            <li>Nosotros</li>
-            <li>Soporte</li>
-            <li>Formas de pago</li>
+          <ul className="flex flex-col gap-4 text-sm font-medium items-center text-center">
+            <li className="hover:text-blue-600 cursor-pointer">Servicios</li>
+            <li className="hover:text-blue-600 cursor-pointer">Instituciones</li>
+            <li className="hover:text-blue-600 cursor-pointer">Nosotros</li>
+            <li className="hover:text-blue-600 cursor-pointer">Soporte</li>
+            <li className="hover:text-blue-600 cursor-pointer">Formas de pago</li>
           </ul>
         </div>
       )}

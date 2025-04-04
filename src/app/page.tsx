@@ -1,12 +1,10 @@
-import { Navbar ,FAQ } from "@/components";
+import { FAQ } from "@/components";
 
 
 export default function Home() {
   return (
     <>
-      <Navbar />
       <FAQ />
-
     </>
   );
 }
