@@ -1,10 +1,9 @@
-import { FAQ } from "@/components";
-
+import { Faqs } from "@/components";
 
 export default function Home() {
   return (
     <>
-      <FAQ />
+      <Faqs />
     </>
   );
 }

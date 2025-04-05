@@ -13,6 +13,7 @@ export default {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
 			  titleFaqs: "#5540a7", 
+			  bgColorPageHome: "#F4F4FB",
 			  textFaqs: { 
 				primary: "#334155"
 			  },
