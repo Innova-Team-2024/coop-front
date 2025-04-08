@@ -3,7 +3,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { HiMenu, HiChevronDown } from 'react-icons/hi'
+import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { Logo } from '@/public'
 import { ButtonAccount } from '@/components'
@@ -79,13 +79,18 @@ export default function Navbar() {
       <nav className="w-full max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-[120px] py-[24px] h-[72px] md:h-[103px] relative">
         <div className="flex items-center gap-4 md:gap-0 md:flex-none">
           <button onClick={() => setMenuOpen(!menuOpen)} className="block md:hidden">
-            <HiMenu className="text-3xl text-black" />
+            {menuOpen ? (
+              <HiX className="text-3xl text-black" />
+            ) : (
+              <HiMenu className="text-3xl text-black" />
+            )}
           </button>
           <div className="absolute md:static left-1/2 transform -translate-x-1/2 md:translate-x-0">
             <Image src={Logo} alt="Logo" width={50} height={50} className="mx-auto" />
           </div>
         </div>
 
+        {/* DESKTOP NAV */}
         <ul className="hidden md:flex gap-8 items-center text-sm font-medium relative z-10" ref={dropdownRef}>
           {navItems.map(({ label, key, children }) => (
             <li key={key} className="relative">
@@ -103,37 +108,42 @@ export default function Navbar() {
                 className={`absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md px-4 py-4 w-max transform origin-top transition-all duration-300 ${openMenu === key ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 pointer-events-none invisible'}`}
               >
                 <ul className="text-sm text-gray-700 flex flex-wrap gap-x-10 gap-y-2 max-w-5xl">
-                  {Array.isArray(children) && children.map((child, index) => (
-                    typeof child === 'string' ? (
-                      <li key={child}>{child}</li>
-                    ) : (
-                      <li key={child.key} className="min-w-[150px]">
-                        <div
-                          className="flex items-center gap-1 cursor-pointer"
-                          onClick={() => toggleSubDropdown(child.key)}
-                        >
-                          <span className="font-semibold">{child.label}</span>
-                          <HiChevronDown
-                            size={16}
-                            className={`text-gray-500 mt-[2px] transition-transform duration-300 ${openSubDropdowns[child.key] ? 'rotate-180' : ''}`}
-                          />
-                        </div>
-                        {openSubDropdowns[child.key] && (
-                          <ul className={`mt-2 ml-[${child.label === 'Socios' ? index === 0 ? '0px' : index === 1 ? '170px' : '340px' : '0px'}] flex gap-x-4`}>
-                            {child.children.map((sub: string) => (
-                              <li key={sub}>{sub}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    )
-                  ))}
+                  {Array.isArray(children) &&
+                    children.map((child) =>
+                      typeof child === 'string' ? (
+                        <li key={child}>{child}</li>
+                      ) : (
+                        <li key={child.key} className="min-w-[150px]">
+                          <div
+                            className="flex items-center gap-1 cursor-pointer"
+                            onClick={() => toggleSubDropdown(child.key)}
+                          >
+                            <span className="font-semibold">{child.label}</span>
+                            <HiChevronDown
+                              size={16}
+                              className={`text-gray-500 mt-[2px] transition-transform duration-300 ${openSubDropdowns[child.key] ? 'rotate-180' : ''}`}
+                            />
+                          </div>
+                          {openSubDropdowns[child.key] && (
+                            <ul className="mt-2 flex gap-x-4 ml-4">
+                              {child.children.map((sub: string) => (
+                                <li key={sub}>{sub}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      )
+                    )}
                 </ul>
               </div>
             </li>
           ))}
-          <li className={`cursor-pointer transition-colors duration-300 ${openMenu === 'formasdepago' ? 'text-black font-semibold' : ''}`}
-              onClick={() => setOpenMenu(openMenu === 'formasdepago' ? null : 'formasdepago')}>Formas de pago</li>
+          <li
+            className={`cursor-pointer transition-colors duration-300 ${openMenu === 'formasdepago' ? 'text-black font-semibold' : ''}`}
+            onClick={() => setOpenMenu(openMenu === 'formasdepago' ? null : 'formasdepago')}
+          >
+            Formas de pago
+          </li>
         </ul>
 
         <div className="flex items-center gap-2">
@@ -146,6 +156,7 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* LINEA MULTICOLOR */}
       <div className="flex h-[4px] w-full">
         <div className="w-[16.66%] bg-[#76257e]" />
         <div className="w-[16.66%] bg-[#1b45aa]" />
@@ -155,17 +166,18 @@ export default function Navbar() {
         <div className="w-[16.66%] bg-[#e31e25]" />
       </div>
 
+      {/* MOBILE MENU */}
       {menuOpen && (
         <div className="md:hidden mt-4 bg-white shadow-md rounded-lg px-4 py-3">
           <ul className="flex flex-col gap-4 text-base font-medium">
             {navItems.map(({ label, key, children }) => (
               <li key={key}>
                 <div
-                  className={`flex items-center justify-between cursor-pointer transition-colors duration-300 ${openMobileSubmenus[key] ? 'text-black font-semibold' : ''}`}
+                  className="flex items-center justify-start gap-1 cursor-pointer transition-colors duration-300"
                   onClick={() => toggleMobileSubmenu(key)}
                 >
-                  <span>{label}</span>
-                  {(key === 'instituciones' || key === 'nosotros') && (
+                  <span className={`${openMobileSubmenus[key] ? 'text-black font-semibold' : ''}`}>{label}</span>
+                  {(key === 'servicios' || key === 'instituciones' || key === 'nosotros') && (
                     <HiChevronDown
                       className={`transition-transform duration-300 ${openMobileSubmenus[key] ? 'rotate-180' : ''}`}
                     />
@@ -174,30 +186,31 @@ export default function Navbar() {
 
                 {openMobileSubmenus[key] && (
                   <ul className="ml-4 mt-2 space-y-2">
-                    {Array.isArray(children) && children.map((child) => (
-                      typeof child === 'string' ? (
-                        <li key={child}>{child}</li>
-                      ) : (
-                        <li key={child.key}>
-                          <div
-                            className={`flex items-center justify-between cursor-pointer transition-colors duration-300 ${openMobileSubmenus[child.key] ? 'text-black font-semibold' : ''}`}
-                            onClick={() => toggleMobileSubmenu(child.key)}
-                          >
-                            <span>{child.label}</span>
-                            <HiChevronDown
-                              className={`transition-transform duration-300 ${openMobileSubmenus[child.key] ? 'rotate-180' : ''}`}
-                            />
-                          </div>
-                          {openMobileSubmenus[child.key] && (
-                            <ul className="ml-4 mt-2 space-y-2">
-                              {child.children.map((sub: string) => (
-                                <li key={sub}>{sub}</li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      )
-                    ))}
+                    {Array.isArray(children) &&
+                      children.map((child) =>
+                        typeof child === 'string' ? (
+                          <li key={child}>{child}</li>
+                        ) : (
+                          <li key={child.key}>
+                            <div
+                              className="flex items-center justify-start gap-1 cursor-pointer transition-colors duration-300"
+                              onClick={() => toggleMobileSubmenu(child.key)}
+                            >
+                              <span className={`${openMobileSubmenus[child.key] ? 'text-black font-semibold' : ''}`}>{child.label}</span>
+                              <HiChevronDown
+                                className={`transition-transform duration-300 ${openMobileSubmenus[child.key] ? 'rotate-180' : ''}`}
+                              />
+                            </div>
+                            {openMobileSubmenus[child.key] && (
+                              <ul className="ml-4 mt-2 space-y-2">
+                                {child.children.map((sub: string) => (
+                                  <li key={sub}>{sub}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        )
+                      )}
                   </ul>
                 )}
               </li>
