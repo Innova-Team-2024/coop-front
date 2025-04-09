@@ -1,18 +1,20 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { IoIosArrowForward } from "react-icons/io";
+import CarouselX from "./CarouselX";
+import CarouselY from "./CarouselY";
 
 const AboutUsBanner = () => {
-  const images = {
-    left: ["/images/aboutUs1.png", "/images/aboutUs2.png"],
-    right: [
-      "/images/aboutUs3.png",
-      "/images/aboutUs4.png",
-      "/images/aboutUs5.png",
-    ],
-  };
+  const images = [
+    "/images/aboutUs1.png",
+    "/images/aboutUs2.png",
+    "/images/aboutUs3.png",
+    "/images/aboutUs4.png",
+    "/images/aboutUs5.png",
+  ];
+
+  const carouselImages = [...images, ...images];
 
   return (
     <div className="lg:w-full bg-white rounded-lg border border-[#E3F0E8] overflow-hidden shadow-[0px_10px_15px_0px_rgba(0,0,0,0.10)] lg:max-w-[1200px] lg:h-[526px] lg:mx-auto flex flex-col-reverse lg:flex-row m-4">
@@ -42,52 +44,14 @@ const AboutUsBanner = () => {
             </button>
           </Link>
         </div>
-
-        {/* Image Gallery */}
       </div>
       {/* Image Gallery */}
-      <div className="w-full flex flex-col lg:flex-row gap-4 lg:justify-end">
-        <div className="flex flex-row lg:flex-col gap-4 justify-center">
-          {images.left.map((img, index) => (
-            <div key={`left-${index}`} className="h-auto w-1/2 md:w-auto">
-              <Image
-                src={img}
-                alt={`Facility image left ${index + 1}`}
-                width={360}
-                height={228}
-                className="w-full rounded-lg"
-                style={{ width: 360, height: 228 }}
-              />
-            </div>
-          ))}
-        </div>
+      <div className="w-full flex flex-col lg:flex-row lg:justify-end">
+        {/* Carousel Gallery - Left/Right */}
+        <CarouselX items={carouselImages} />
 
-        {/* Image Gallery - Right column (3 images: 295x195px) */}
-        <div className="flex flex-col gap-4">
-          <div className="block md:hidden">
-            <Image
-              src={images.right[0]}
-              alt={`Featured facility image`}
-              width={600}
-              height={195}
-              className="rounded-2xl w-full"
-              style={{ maxWidth: "100%", height: 195 }}
-            />
-          </div>
-
-          {images.right.map((img, index) => (
-            <div key={`right-${index}`} className="hidden md:block h-48">
-              <Image
-                src={img}
-                alt={`Facility image right ${index + 1}`}
-                width={295}
-                height={195}
-                className="rounded-2xl"
-                style={{ width: "295px", height: 195 }}
-              />
-            </div>
-          ))}
-        </div>
+        {/* Carousel Gallery - Top/Bottom */}
+        <CarouselY items={carouselImages} />
       </div>
     </div>
   );
