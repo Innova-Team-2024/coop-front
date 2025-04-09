@@ -26,7 +26,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-4xl lg:max-w-7xl lg:mx-auto m-4 bg-white rounded-3xl shadow-contact px-4 py-8 lg:py-24 lg:px-14 flex flex-col lg:flex-row lg:gap-6">
+    <div className="max-w-4xl lg:max-w-7xl lg:mx-auto m-4 bg-white rounded-3xl lg:rounded-[32px] shadow-contact px-4 py-8 lg:py-24 lg:px-14 flex flex-col lg:flex-row lg:gap-6">
       <div className="w-1/2 hidden lg:block space-y-8">
         <div className="flex items-center mb-8">
           <Image
