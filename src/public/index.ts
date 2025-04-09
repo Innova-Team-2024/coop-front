@@ -2,7 +2,10 @@
 export { default as Logo } from "./Logo1.png";
 export { default as Logo2 } from "./Logo2.png";
 export { default as Logo3 } from "./Logo3.png";
-
+export { default as Telefono } from "./Telefono.svg";
+export { default as Television} from "./Television.svg";
+export { default as Globo } from "./Globo.svg";
+ 
 //Banner
 export { default as BannerCeleste } from "./image/BannerCeleste.png";
 export { default as BannerVioleta } from "./image/BannerVioleta.png";
