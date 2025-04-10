@@ -2,6 +2,9 @@
 export { default as Navbar  } from "./Layouts/Navbar/Navbar";
 export { default as Footer} from "./Layouts/Footer/Footer";
 
+//Plans
+export {default as PlansSection  } from "./Plans/PlansSection"
+
 //Buttons
 export { default as ButtonAccount  } from "./ButtonAccount/ButtonAccount";
 
@@ -13,6 +16,12 @@ export { default as Banner } from "./Banner/Banner";
 
 //Services
 export { default as Service } from "./Service/Service";
+
+//About Banne
+export { default as AboutUsBanner } from "./about/AboutUsBanner";
+
+//ConcatoFoms
+export { default as ContactForm } from "./Form/ContactForm";
 
 // UI Components
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
