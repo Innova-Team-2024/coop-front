@@ -17,6 +17,12 @@ export { default as Banner } from "./Banner/Banner";
 //Services
 export { default as Service } from "./Service/Service";
 
+//About Banne
+export { default as AboutUsBanner } from "./about/AboutUsBanner";
+
+//ConcatoFoms
+export { default as ContactForm } from "./Form/ContactForm";
+
 // UI Components
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 export { Button } from "./ui/button";

@@ -1,17 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import { AboutUs1, AboutUs2, AboutUs3, AboutUs4, AboutUs5,} from "@/public"; 
 import Link from "next/link";
 
 import { IoIosArrowForward } from "react-icons/io";
 
 const AboutUsBanner = () => {
   const images = {
-    left: ["/images/aboutUs1.png", "/images/aboutUs2.png"],
-    right: [
-      "/images/aboutUs3.png",
-      "/images/aboutUs4.png",
-      "/images/aboutUs5.png",
-    ],
+    left: [AboutUs1, AboutUs2],
+    right: [AboutUs3, AboutUs4, AboutUs5],
   };
 
   return (
@@ -67,7 +64,7 @@ const AboutUsBanner = () => {
           <div className="block md:hidden">
             <Image
               src={images.right[0]}
-              alt={`Featured facility image`}
+              alt="Featured facility image"
               width={600}
               height={195}
               className="rounded-2xl w-full"
