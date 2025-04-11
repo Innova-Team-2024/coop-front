@@ -1,19 +1,30 @@
-'use client'
+'use client';
 
-import Image from "next/image"
+import Image from "next/image";
+import { useState } from "react";
 import {
-  Tabs, TabsContent, TabsList, TabsTrigger,
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-  ScrollInfoButton
-} from "@/components"
-import { Globo, Telefono, Television } from "@/public"
+} from "@/components/ui/card";
+import "./Service.css";
+import "./Service.css";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Globo,
+  Telefono,
+  Television,
+  Niño,
+  Libro,
+  Calendario,
+  Flor,
+  Sombrero,
+} from "@/public";
+import ScrollInfoButton from "../Buttons/ScrollInfoButton";
 
-
-const services = [
+const tecnologiesServices = [
   {
     icon: Globo,
     title: "Internet",
@@ -31,10 +42,41 @@ const services = [
   },
 ]
 
-function ServicesCards() {
+const educationServices = [
+  {
+    icon: Niño,
+    title: "Jardín «Niños creciendo»",
+    desc: "Jardín de infantes, educación inicial con juego y aprendizaje.",
+  },
+  {
+    icon: Sombrero,
+    title: "Instituto «Dr. René Favaloro»",
+    desc: "Instituto educativo primario, con compromiso y valores.",
+  },
+];
+
+const socialServices = [
+  {
+    icon: Libro,
+    title: "Biblioteca «Segundo Severino Lago»",
+    desc: "Biblioteca comunitaria, un espacio de lectura y conocimiento.",
+  },
+  {
+    icon: Calendario,
+    title: "Salón de eventos «El Italiano»",
+    desc: "Salón de eventos sociales y empresariales.",
+  },
+  {
+    icon: Flor,
+    title: "Sepelios «Casa Oviedo»",
+    desc: "Servicio de sepelios con atención personalizada y contención.",
+  },
+];
+
+function ServicesCards({ items }: { items: typeof tecnologiesServices }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-20">
-      {services.map((service) => (
+      {items.map((service) => (
         <Card
           key={service.title}
           className="text-left rounded-[16px] border border-[#E3F0E8] bg-white shadow-lg"
@@ -66,57 +108,50 @@ function ServicesCards() {
 }
 
 export default function Service() {
+  const [activeTab, setActiveTab] = useState("tecnologicos");
+
+  const tabs = [
+    { id: "tecnologicos", label: "Tecnológicos" },
+    { id: "educacion", label: "Educación" },
+    { id: "sociales", label: "Sociales" },
+  ];
+
   return (
     <section className="w-full py-16 px-6 bg-[#f9f9ff] text-center">
       <h2 className="text-[64px] font-semibold">
         Nuestros <span className="text-[#46AF3F]">servicios</span>
       </h2>
 
-      <Tabs defaultValue="tecnologicos" className="w-full mt-10">
-        <TabsList
-          className="p-1 rounded-full border mx-auto mb-10 shadow-sm bg-white text-[18px]"
-          style={{ width: 345 }}
-        >
-          {["tecnologicos", "educacion", "sociales"].map((tab, idx) => (
-            <TabsTrigger
-              key={tab}
-              value={tab}
-              className={`
-                relative px-6 py-2 text-sm font-medium capitalize text-black
-                rounded-full z-10
-                data-[state=active]:bg-white
-                data-[state=active]:shadow-[0_0_0_1.5px_white]
-                transition-all
-              `}
-              style={
-                tab === "tecnologicos"
-                  ? {
-                      border: "1px solid transparent",
-                      backgroundClip: "padding-box",
-                      borderRadius: "9999px",
-                      ...(idx === 0 && {
-                        backgroundImage:
-                          "linear-gradient(white, white), linear-gradient(270deg, rgba(0, 170, 255, 0.44), rgba(85, 64, 167, 0.44), rgba(255, 76, 255, 0.44), rgba(255, 63, 99, 0.44), rgba(255, 102, 0, 0.44))",
-                        backgroundOrigin: "padding-box, border-box",
-                        backgroundClip: "padding-box, border-box",
-                      }),
-                    }
-                  : {}
-              }
-            >
-              {tab}
-            </TabsTrigger>
-          ))}
+      <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="mt-10">
+        <TabsList className="flex gap-2 p-0 rounded-full border mx-auto mb-10 shadow-sm bg-white text-[18px] w-fit">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <div
+                key={tab.id}
+                className={`rounded-full ${isActive ? "p-[2px] bg-gradient-to-r from-cyan-400 via-pink-400 to-orange-400" : ""}`}
+              >
+                <TabsTrigger
+                  value={tab.id}
+                  className={`rounded-full text-sm font-medium capitalize text-black transition-all
+                    ${isActive ? "bg-white w-full h-full" : "bg-white"}
+                    px-4 md:px-6 py-2
+                  `}                >
+                  {tab.label}
+                </TabsTrigger>
+              </div>
+            );
+          })}
         </TabsList>
 
         <TabsContent value="tecnologicos">
-          <ServicesCards />
+          <ServicesCards items={tecnologiesServices} />
         </TabsContent>
         <TabsContent value="educacion">
-          <ServicesCards />
+          <ServicesCards items={educationServices} />
         </TabsContent>
         <TabsContent value="sociales">
-          <ServicesCards />
+          <ServicesCards items={socialServices} />
         </TabsContent>
       </Tabs>
 
