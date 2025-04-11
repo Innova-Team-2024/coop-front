@@ -1,16 +1,15 @@
-
 'use client'
 
 import Image from "next/image"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
+  Tabs, TabsContent, TabsList, TabsTrigger,
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { ScrollInfoButton  } from "@/components"
+  ScrollInfoButton
+} from "@/components"
 import { Globo, Telefono, Television } from "@/public"
 
 
