@@ -1,11 +1,10 @@
-import Image from "next/image.js";
+import Image, { StaticImageData } from "next/image.js";
 import React from "react";
 
 type Props = {
-  items: string[];
+  items: StaticImageData[];
 };
-
-function CarouselX({ items }: Props) {
+function CarouselRow({ items }: Props) {
   return (
     <>
       {/* Image Gallery - top */}
@@ -63,4 +62,4 @@ function CarouselX({ items }: Props) {
   );
 }
 
-export default CarouselX;
+export default CarouselRow;

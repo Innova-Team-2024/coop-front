@@ -1,11 +1,11 @@
-import Image from "next/image.js";
+import Image, { StaticImageData } from "next/image.js";
 import React from "react";
 
 type Props = {
-  items: string[];
+  items: StaticImageData[];
 };
 
-function CarouselY({ items }: Props) {
+function CarouselCol({ items }: Props) {
   return (
     <>
       {/* Image Gallery - right */}
@@ -52,4 +52,4 @@ function CarouselY({ items }: Props) {
   );
 }
 
-export default CarouselY;
+export default CarouselCol;

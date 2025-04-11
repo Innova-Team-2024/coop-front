@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Image from "next/image";
+import { Imagotipo, Isologo } from '@/public'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ const ContactForm = () => {
       <div className="w-1/2 hidden lg:block space-y-8">
         <div className="flex items-center mb-8">
           <Image
-            src="/logos/isologo.png"
+            src={Isologo}
             alt="Logo Cooperativa Telefónica"
             width={287}
             height={42}
@@ -51,7 +52,7 @@ const ContactForm = () => {
         <div className="flex items-center justify-center mb-4">
           <div className="flex-shrink-0">
             <Image
-              src="/logos/imagotipo.png"
+              src={Imagotipo}
               alt="Logo Cooperativa Telefónica"
               width={185}
               height={28}

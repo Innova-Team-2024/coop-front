@@ -1,19 +1,13 @@
+import Link from "next/link.js";
 import React from "react";
-import Link from "next/link";
-
 import { IoIosArrowForward } from "react-icons/io";
-import CarouselY from "./CarouselY";
-import CarouselX from "./CarouselX";
 
-const AboutUsBanner = () => {
-  const images = [
-    "/images/aboutUs1.png",
-    "/images/aboutUs2.png",
-    "/images/aboutUs3.png",
-    "/images/aboutUs4.png",
-    "/images/aboutUs5.png",
-  ];
+import { AboutUs1, AboutUs2, AboutUs3, AboutUs4, AboutUs5 } from "@/public";
+import CarouselCol from "./CarouselCol";
+import CarouselRow from "./CarouselRow";
 
+function AboutUs() {
+  const images = [AboutUs1, AboutUs2, AboutUs3, AboutUs4, AboutUs5];
   const carouselImages = [...images, ...images];
 
   return (
@@ -48,13 +42,12 @@ const AboutUsBanner = () => {
       {/* Image Gallery */}
       <div className="w-full flex flex-col lg:flex-row lg:justify-end">
         {/* Carousel Gallery - Left/Right */}
-        <CarouselX items={carouselImages} />
-
+        <CarouselCol items={carouselImages} />
         {/* Carousel Gallery - Top/Bottom */}
-        <CarouselY items={carouselImages} />
+        <CarouselRow items={carouselImages} />
       </div>
     </div>
   );
-};
+}
 
-export default AboutUsBanner;
+export default AboutUs;
