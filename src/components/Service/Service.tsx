@@ -8,10 +8,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+  Tabs, TabsContent, TabsList, TabsTrigger,
+  ScrollInfoButton
+} from "@/components";
 import "./Service.css";
 import "./Service.css";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Globo,
   Telefono,
@@ -22,7 +23,7 @@ import {
   Flor,
   Sombrero,
 } from "@/public";
-import ScrollInfoButton from "../Buttons/ScrollInfoButton";
+
 
 const tecnologiesServices = [
   {
