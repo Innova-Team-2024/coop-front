@@ -6,7 +6,11 @@ export { default as Footer} from "./Layouts/Footer/Footer";
 export {default as PlansSection  } from "./Plans/PlansSection"
 
 //Buttons
-export { default as ButtonAccount  } from "./ButtonAccount/ButtonAccount";
+export { default as ButtonAccount  } from "./Buttons/ButtonAccount";
+export { default as ScrollInfoButton  } from "./Buttons/ScrollInfoButton";
+
+//Carousel
+export { default as PartnerCarousel} from "./Carousel/PartnerCarousel"
 
 //Faqs
 export { default as Faqs } from "./Faqs/Faqs";

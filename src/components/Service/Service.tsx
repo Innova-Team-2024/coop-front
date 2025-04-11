@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
   CardDescription,
@@ -10,9 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import "./Service.css";
-
+import "./Service.css";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Globo,
   Telefono,
@@ -23,6 +22,7 @@ import {
   Flor,
   Sombrero,
 } from "@/public";
+import ScrollInfoButton from "../Buttons/ScrollInfoButton";
 
 const tecnologiesServices = [
   {
@@ -40,7 +40,7 @@ const tecnologiesServices = [
     title: "Telefonía",
     desc: "Servicio de línea fija con comunicación clara, confiable y sin interrupciones.",
   },
-];
+]
 
 const educationServices = [
   {
@@ -104,7 +104,7 @@ function ServicesCards({ items }: { items: typeof tecnologiesServices }) {
         </Card>
       ))}
     </div>
-  );
+  )
 }
 
 export default function Service() {
@@ -156,22 +156,8 @@ export default function Service() {
       </Tabs>
 
       <div className="flex justify-center">
-        <button
-          className="text-sm mt-10 flex items-center justify-center gap-2 font-normal outline-none"
-          style={{
-            color: "rgba(35, 37, 39, 1)",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          Consultar más información{" "}
-          <MdKeyboardDoubleArrowDown
-            size={24}
-            style={{ color: "rgba(255, 64, 98, 1)" }}
-          />
-        </button>
+        <ScrollInfoButton />
       </div>
     </section>
-  );
+  )
 }
