@@ -1,13 +1,21 @@
-import { Banner,PlansSection, AboutUsBanner, Faqs, Service,  ContactForm, PartnerCarousel} from "@/components";
+import {
+  Banner,
+  PlansSection,
+  Faqs,
+  Service,
+  ContactForm,
+  PartnerCarousel,
+  AboutUs,
+} from "@/components";
 
 export default function Home() {
   return (
     <>
-      <Banner/>
+      <Banner />
       <PlansSection />
       <PartnerCarousel />
-      <Service/>
-      <AboutUsBanner />
+      <Service />
+      <AboutUs />
       <Faqs />
       <ContactForm />
     </>
