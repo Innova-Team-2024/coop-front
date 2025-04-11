@@ -9,6 +9,13 @@ export { default as Globo } from "./Globo.svg";
 export { default as Imagotipo } from "./imagotipo.png";
 export { default as Isologo } from "./isologo.png";
 
+//Carousel
+export { default as Link } from "./link.svg";
+export { default as MercadoPago } from "./mercado-pago.svg";
+export { default as Provincia } from "./provincia.svg";
+export { default as PagoFacil } from "./pago-facil.svg";
+export { default as Credicoop } from "./credicoop.svg";
+
 //AboutUs
 export { default as AboutUs1 } from "./aboutUs1.png";
 export { default as AboutUs2 } from "./aboutUs2.png";

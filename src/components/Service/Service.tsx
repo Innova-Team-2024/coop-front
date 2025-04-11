@@ -1,16 +1,17 @@
-import Image from "next/image";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+'use client'
+
+import Image from "next/image"
 import {
+  Tabs, TabsContent, TabsList, TabsTrigger,
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+  ScrollInfoButton
+} from "@/components"
+import { Globo, Telefono, Television } from "@/public"
 
-import { MdKeyboardDoubleArrowDown } from "react-icons/md";
-
-import { Globo, Telefono, Television } from "@/public";
 
 const services = [
   {
@@ -28,7 +29,7 @@ const services = [
     title: "Telefonía",
     desc: "Servicio de línea fija con comunicación clara, confiable y sin interrupciones.",
   },
-];
+]
 
 function ServicesCards() {
   return (
@@ -61,7 +62,7 @@ function ServicesCards() {
         </Card>
       ))}
     </div>
-  );
+  )
 }
 
 export default function Service() {
@@ -81,12 +82,12 @@ export default function Service() {
               key={tab}
               value={tab}
               className={`
-        relative px-6 py-2 text-sm font-medium capitalize text-black
-        rounded-full z-10
-        data-[state=active]:bg-white
-        data-[state=active]:shadow-[0_0_0_1.5px_white]
-        transition-all
-      `}
+                relative px-6 py-2 text-sm font-medium capitalize text-black
+                rounded-full z-10
+                data-[state=active]:bg-white
+                data-[state=active]:shadow-[0_0_0_1.5px_white]
+                transition-all
+              `}
               style={
                 tab === "tecnologicos"
                   ? {
@@ -120,22 +121,8 @@ export default function Service() {
       </Tabs>
 
       <div className="flex justify-center">
-        <button
-          className="text-sm mt-10 flex items-center justify-center gap-2 font-normal outline-none"
-          style={{
-            color: "rgba(35, 37, 39, 1)",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          Consultar más información{" "}
-          <MdKeyboardDoubleArrowDown
-            size={24}
-            style={{ color: "rgba(255, 64, 98, 1)" }}
-          />
-        </button>
+        <ScrollInfoButton />
       </div>
     </section>
-  );
+  )
 }
