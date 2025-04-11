@@ -11,7 +11,7 @@ export { default as Sombrero } from "./Sombrero.png";
 export { default as Niño } from "./Niño.png";
 
 export { default as Telefono } from "./Telefono.svg";
-export { default as Television} from "./Television.svg";
+export { default as Television } from "./Television.svg";
 export { default as Globo } from "./Globo.svg";
 
 export { default as Imagotipo } from "./imagotipo.png";
@@ -25,11 +25,11 @@ export { default as PagoFacil } from "./pago-facil.svg";
 export { default as Credicoop } from "./credicoop.svg";
 
 //AboutUs
-export { default as AboutUs1 } from "./aboutUs1.png";
-export { default as AboutUs2 } from "./aboutUs2.png";
-export { default as AboutUs3 } from "./aboutUs3.png";
-export { default as AboutUs4 } from "./aboutUs4.png";
-export { default as AboutUs5 } from "./aboutUs5.png";
+export { default as AboutUs1 } from "./about/aboutUs1.png";
+export { default as AboutUs2 } from "./about/aboutUs2.png";
+export { default as AboutUs3 } from "./about/aboutUs3.png";
+export { default as AboutUs4 } from "./about/aboutUs4.png";
+export { default as AboutUs5 } from "./about/aboutUs5.png";
 
 //Banner
 export { default as BannerCeleste } from "./image/BannerCeleste.png";
