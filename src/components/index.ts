@@ -4,6 +4,8 @@ export { default as Footer} from "./Layouts/Footer/Footer";
 
 //Plans
 export {default as PlansSection  } from "./Plans/PlansSection"
+export {default as  DesktopPlans } from "./Plans/DesktopPlans"
+export {default as PlanCard } from "./Plans/PlanCard"
 
 //Buttons
 export { default as ButtonAccount  } from "./Buttons/ButtonAccount";
@@ -11,6 +13,8 @@ export { default as ScrollInfoButton  } from "./Buttons/ScrollInfoButton";
 
 //Carousel
 export { default as PartnerCarousel} from "./Carousel/PartnerCarousel"
+export { default as MobilePlans } from "./Carousel/MobilePlans"
+
 
 //Faqs
 export { default as Faqs } from "./Faqs/Faqs";
