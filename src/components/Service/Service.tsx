@@ -79,7 +79,7 @@ function ServicesCards({ items }: { items: typeof tecnologiesServices }) {
   return (
     <div
       className={`${
-        isFewItems ? "flex justify-center" : "grid grid-cols-1 md:grid-cols-3"
+        isFewItems ? "flex flex-col justify-center md:flex-row" : "grid grid-cols-1 md:grid-cols-3"
       } gap-6 px-4 md:px-20`}
     >
       {items.map((service) => (
