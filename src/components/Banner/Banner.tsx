@@ -32,7 +32,7 @@ export default function Banner() {
     };
 
     handleResize();
-    window.addEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -97,10 +97,10 @@ export default function Banner() {
               */}
 
               <div className="absolute top-[53%] left-1/2 md:left-28 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 text-white max-w-[90%] md:max-w-md space-y-4 text-center md:text-left">
-                <h2 className="text-[32px] md:text-[36px] font-bold uppercase">
+                <h2 className="text-[22px] md:text-[36px] font-bold uppercase">
                   {banner.title}
                 </h2>
-                <p className="text-[24px] md:text-[28px]">
+                <p className="text-[18px] md:text-[28px]">
                   {banner.description}
                 </p>
 
@@ -126,10 +126,10 @@ export default function Banner() {
           </SwiperSlide>
         ))}
 
-        <button className="custom-prev absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-10 bg-[rgba(255,255,255,0.13)] text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
+        <button className="custom-prev absolute left-2 sm:left-10 md:left-10 top-1/2 -translate-y-1/2 z-10 bg-[rgba(255,255,255,0.13)] text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
           <ChevronLeft className="h-8 w-8 md:h-6 md:w-6" />
         </button>
-        <button className="custom-next absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-10 bg-[rgba(255,255,255,0.13)] text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
+        <button className="custom-next absolute right-2 sm:right-10 md:right-10 top-1/2 -translate-y-1/2 z-10 bg-[rgba(255,255,255,0.13)] text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
           <ChevronRight className="h-8 w-8 md:h-6 md:w-6" />
         </button>
       </Swiper>
