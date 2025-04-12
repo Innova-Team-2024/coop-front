@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react';
 import { FaWifi, FaPhoneAlt, FaTv } from 'react-icons/fa';
 import { DesktopPlans, MobilePlans, ScrollInfoButton } from '@/components';
 import type { Plan } from '@/types/plan';
