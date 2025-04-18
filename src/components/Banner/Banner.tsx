@@ -47,7 +47,7 @@ export default function Banner() {
     },
     {
       image: isMobile ? BannerMobileVioleta : BannerVioleta,
-      title: "Comunicaco para nuestros asociados",
+      title: "Comunicado para nuestros asociados",
       description: "Leer articulo",
     },
     {
@@ -118,7 +118,7 @@ export default function Banner() {
                 {(index === 1 || index === 3) && (
                   <div className="text-sm text-center md:text-left mt-2">
                     <p className="uppercase">#DEFENDAMOSLONUESTRO</p>
-                    <p className="italic mt-2">Gestión Jorge Lago</p>
+                    <p className="mt-2">Gestión Jorge Lago</p>
                   </div>
                 )}
               </div>
