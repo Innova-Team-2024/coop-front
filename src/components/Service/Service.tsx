@@ -79,7 +79,7 @@ function ServicesCards({ items }: { items: typeof tecnologiesServices }) {
         isFewItems
           ? "flex flex-col justify-center md:flex-row"
           : "grid grid-cols-1 md:grid-cols-3"
-      } gap-6 px-4 md:px-20`}
+      } gap-6 px-4 md:px-20 mb-8`}
     >
       {items.map((service) => (
         <Card

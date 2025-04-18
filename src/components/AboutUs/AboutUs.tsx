@@ -11,7 +11,7 @@ function AboutUs() {
   const carouselImages = [...images, ...images];
 
   return (
-    <div className="lg:w-full bg-white rounded-3xl border border-[#E3F0E8] overflow-hidden shadow-[0px_10px_15px_0px_rgba(0,0,0,0.10)] lg:max-w-[1200px] lg:h-[526px] lg:mx-auto flex flex-col-reverse lg:flex-row m-4">
+    <div className="lg:w-full bg-white rounded-3xl border border-[#E3F0E8] overflow-hidden shadow-[0px_10px_15px_0px_rgba(0,0,0,0.10)] lg:max-w-[1200px] lg:h-[526px] lg:mx-auto flex flex-col-reverse lg:flex-row m-10">
       {/* Text Content */}
       <div className="flex flex-col md:flex-row gap-6">
         <div className="md:w-96 lg:pl-14 lg:py-8 px-6 py-6 flex flex-col justify-center">
