@@ -127,13 +127,13 @@ export default function Service() {
         onValueChange={setActiveTab}
         className="mt-10"
       >
-        <TabsList className="flex gap-2 p-0 rounded-full border mx-auto mb-10 shadow-sm bg-white w-fit">
+        <TabsList className="flex justify-between gap-2 p-0 rounded-full border mx-auto mb-10 shadow-sm bg-white w-fit sm:w-[495px] ">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <div
                 key={tab.id}
-                className={`rounded-full ${
+                className={`flex-1 rounded-full  ${
                   isActive
                     ? "p-[2px] bg-[linear-gradient(270deg,_rgba(0,170,255,0.44)_0.67%,_rgba(85,64,167,0.44)_21.34%,_rgba(255,76,255,0.44)_41.96%,_rgba(255,63,99,0.44)_62.45%,_rgba(255,102,0,0.44)_99.33%)] shadow-[0_0_8px_rgba(0,0,0,0.08)]"
                     : ""
@@ -141,14 +141,11 @@ export default function Service() {
               >
                 <TabsTrigger
                   value={tab.id}
-                  className={`rounded-full text-sm font-normal capitalize text-black text-[12px] sm:text-[14px] transition-all
-                  ${
+                  className={`w-full h-[px] rounded-full text-sm capitalize text-black text-[12px] sm:text-[14px] transition-all px-4 md:px-6 py-2 sm:px-2 ${
                     isActive
-                      ? "bg-white w-full h-full font-medium"
-                      : "bg-white text-[#5F5F5F]"
-                  }
-                  px-4 md:px-6 py-2 sm:px-2
-                `}
+                      ? "bg-white font-medium"
+                      : "bg-white text-[#5F5F5F] font-normal"
+                  }`}
                 >
                   {tab.label}
                 </TabsTrigger>
