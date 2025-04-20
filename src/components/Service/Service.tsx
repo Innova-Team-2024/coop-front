@@ -74,35 +74,37 @@ function ServicesCards({ items }: { items: typeof tecnologiesServices }) {
   const isFewItems = items.length < 3;
 
   return (
-    <div
-      className={`${
-        isFewItems
-          ? "flex flex-col justify-center md:flex-row"
-          : "grid grid-cols-1 md:grid-cols-3"
-      } gap-6 px-4 md:px-20 mb-8`}
-    >
-      {items.map((service) => (
-        <Card
-          key={service.title}
-          className="flex flex-col justify-between text-left rounded-[16px] border border-[#E3F0E8] bg-white shadow-lg max-w-sm w-full hover:scale-105 hover:shadow-xl transition-all p-6"
-        >
-          <div className="flex-1">
-            <Image
-              src={service.icon}
-              alt={service.title}
-              width={40}
-              height={40}
-              className="w-10 h-10 mb-4"
-            />
-            <h3 className="text-[24px] font-medium mb-2">{service.title}</h3>
-            <p className="text-[#475569] text-[16px]">{service.desc}</p>
-          </div>
+    <div className="w-full flex justify-center">
+      <div
+        className={`grid gap-6 px-4 md:px-20 mb-8 w-full max-w-[1200px] ${
+          isFewItems
+            ? "grid-cols-1 sm:grid-cols-2 justify-items-center"
+            : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
+        }`}
+      >
+        {items.map((service) => (
+          <Card
+            key={service.title}
+            className="flex flex-col justify-between text-left rounded-[16px] border border-[#E3F0E8] bg-white shadow-lg max-w-sm w-full hover:scale-105 hover:shadow-xl transition-all p-6"
+          >
+            <div className="flex-1">
+              <Image
+                src={service.icon}
+                alt={service.title}
+                width={40}
+                height={40}
+                className="w-10 h-10 mb-4"
+              />
+              <h3 className="text-[24px] font-medium mb-2">{service.title}</h3>
+              <p className="text-[#475569] text-[16px]">{service.desc}</p>
+            </div>
 
-          <button className="mt-4 flex px-4 py-3 w-full text-[#1C1F23] justify-center items-center gap-2 rounded-full border border-[#E4E4E4] bg-white shadow-md text-sm font-medium hover:bg-gray-100 transition">
-            Me interesa
-          </button>
-        </Card>
-      ))}
+            <button className="mt-4 flex px-4 py-3 w-full text-[#1C1F23] justify-center items-center gap-2 rounded-full border border-[#E4E4E4] bg-white shadow-md text-sm font-medium hover:bg-gray-100 transition">
+              Me interesa
+            </button>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
@@ -117,7 +119,7 @@ export default function Service() {
   ];
 
   return (
-    <section className="w-full py-16 px-6 bg-[#f9f9ff] text-center">
+  <section className="w-full min-h-screen py-16 px-6 bg-[#f9f9ff] text-center flex flex-col justify-center items-center">
       <h2 className="text-[40px] font-medium sm:text-[64px]">
         Nuestros <span className="text-[#46AF3F]">servicios</span>
       </h2>

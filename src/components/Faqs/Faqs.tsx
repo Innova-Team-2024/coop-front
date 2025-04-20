@@ -43,7 +43,7 @@ const faqs = [
 
 export default function Faqs() {
   return (
-    <div className="flex flex-col items-center justify-center p-6 outline-none mt-52 mb-20">
+    <div className="flex flex-col items-center justify-center p-6 outline-none mt-20 mb-0 sm:mt-52 sm:mb-20">
       <h2
         className="text-[32px] sm:text-[64px] leading-[56px] font-medium text-center tracking-[-2.56px]"
       >
@@ -94,7 +94,7 @@ export default function Faqs() {
 
       <Button
         variant="link"
-        className="mt-4 font-normal text-black hover:no-underline text-[18px] pt-10 pb-32"
+        className="mt-4 font-normal text-black hover:no-underline text-[18px] pt-0 sm:pt-10 sm:pb-32"
       >
         Ir a centro de ayuda <IoIosArrowForward />
       </Button>
