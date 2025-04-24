@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { SucursalImage } from "@/public";
-import React from "react";
 
 export default function Sucursal() {
   return (
     <>
-      <div className="bg-[#f9f9ff] mt-28 mb-14">
+      <div className="bg-[#f9f9ff] mt-0 sm:mt-28 sm:mb-14">
         <div className="text-center pt-32">
           <p className="font-semibold text-[16px] sm:text-[18px]">
             Más información
