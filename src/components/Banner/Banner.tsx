@@ -32,7 +32,7 @@ export default function Banner() {
     };
 
     handleResize();
-      window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -83,13 +83,13 @@ export default function Banner() {
       >
         {bannersToShow.map((banner, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full bg-black">
+            <div className="relative w-full h-full bg-black">  
               <Image
                 src={banner.image}
                 alt={`Slide ${index + 1}`}
                 fill
+                unoptimized
                 className="object-cover transition-opacity duration-700"
-                priority={index === 0}
               />
 
               {/* Esta logica va cambiar cuando un usuario admin este logqueado en el sitio web. El podra modificar el titulo, el parrafo y el Slogan/Lema/Leyenda
