@@ -25,6 +25,9 @@ export { default as Banner } from "./Banner/Banner";
 //Services
 export { default as Service } from "./Service/Service";
 
+//Sucursal
+export { default as Sucursal } from "./Sucursal/Sucursal";
+
 //About Banne
 export { default as AboutUs } from "./AboutUs/AboutUs";
 

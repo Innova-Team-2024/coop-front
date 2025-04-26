@@ -43,11 +43,13 @@ const faqs = [
 
 export default function Faqs() {
   return (
-    <div className="flex flex-col items-center justify-center p-6 outline-none mt-10 mb-10">
-      <h2 className="text-[32px] sm:text-[64px] font-semibold text-center">
+    <div className="flex flex-col items-center justify-center p-6 outline-none mt-20 mb-0 sm:mt-52 sm:mb-20">
+      <h2
+        className="text-[32px] sm:text-[64px] leading-[56px] font-medium text-center tracking-[-2.56px]"
+      >
         Preguntas <span className="text-titleFaqs">frecuentes</span>
       </h2>
-      <p className="text-black text-[16px] sm:text-[18px] text-center mt-2 ">
+      <p className="text-black leading-[24px] text-[16px] sm:text-[18px] text-center mt-8">
         ¡Tu tranquilidad es importante! Respondemos las preguntas más comunes
         para que estés siempre al tanto.
       </p>
@@ -68,7 +70,7 @@ export default function Faqs() {
                     >
                       {faq.id}
                     </span>
-                    <span className="text-[15px] pl-4 sm:pl-0 sm:text-[20px] text-textFaqs-primary font-semibold">
+                    <span className="text-[15px] leading-[24px] pl-4 sm:pl-0 sm:text-[20px] text-textFaqs-primary font-medium">
                       {faq.question}
                     </span>
                   </span>
@@ -92,7 +94,7 @@ export default function Faqs() {
 
       <Button
         variant="link"
-        className="mt-4 text-black hover:no-underline text-[16px] pt-10 pb-32"
+        className="mt-4 font-normal text-black hover:no-underline text-[18px] pt-0 sm:pt-10 sm:pb-32"
       >
         Ir a centro de ayuda <IoIosArrowForward />
       </Button>
