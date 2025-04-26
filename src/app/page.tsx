@@ -6,8 +6,8 @@ import {
   ContactForm,
   PartnerCarousel,
   AboutUs,
+  Sucursal
 } from "@/components";
-import Sucursal from "@/components/Sucursal/Sucursal";
 
 export default function Home() {
   return (
