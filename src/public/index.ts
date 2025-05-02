@@ -14,8 +14,8 @@ export { default as Telefono } from "./Telefono.svg";
 export { default as Television } from "./Television.svg";
 export { default as Globo } from "./Globo.svg";
 
-export { default as Imagotipo } from "./imagotipo.png";
-export { default as Isologo } from "./isologo.png";
+//Form
+export { default as isologoform } from "./logoform/isologoform.svg";
 
 //Carousel
 export { default as Link } from "./link.svg";
@@ -45,3 +45,4 @@ export { default as BannerMobileNaranja } from "./image/BannerMobileNaranja.png"
 
 //Sucursal
 export { default as SucursalImage } from "./image/mapaSucursal.png";
+
