@@ -3,8 +3,7 @@
 import { useState, FormEvent } from "react";
 import Image from "next/image";
 import { isologoform } from "@/public";
-/* import MainButton from "../Buttons/MainButton"; */
-/* import PrimaryButton from "../Buttons/PrimaryButton"; */
+import PrimaryButton from "../Buttons/PrimaryButton";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +28,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-4xl lg:max-w-7xl lg:mx-auto lg:mt-[72px] lg:mb-14 mx-4 bg-white rounded-3xl lg:rounded-[32px] shadow-contact px-4 py-8 lg:py-32 lg:px-16 flex flex-col lg:flex-row lg:gap-6">
+    <div className="max-w-4xl lg:max-w-7xl lg:mx-auto lg:mt-[72px] lg:mb-14 mx-4 bg-white rounded-3xl lg:rounded-[32px] shadow-contact px-4 py-8 my-4 lg:py-32 lg:px-16 flex flex-col lg:flex-row lg:gap-6">
       <div className="w-1/2 hidden lg:block space-y-8">
         <div className="flex items-center mb-8">
           <Image
@@ -92,7 +91,7 @@ const ContactForm = () => {
             value={formData.nombre}
             onChange={handleChange}
             placeholder="Ingresá tu nombre..."
-            className="w-full px-4 py-2 lg:py-3.5 h-11 border border-[#AAB2B6] rounded-full cursor-pointer hover:bg-blue-50/40 focus:outline-none focus:ring-2 placeholder:font-semibold placeholder:text-sm lg:placeholder:text-base lg:placeholder:font-medium placeholder:text-[#7F8A91] focus:bg-blue-100 focus:ring-[#7F8A91]"
+            className="w-full px-4 py-2 lg:py-3.5 h-11 border border-[#AAB2B6] rounded-full cursor-pointer hover:bg-blue-50/40 focus:outline-none focus:ring-2 placeholder:font-semibold placeholder:text-sm lg:placeholder:text-base lg:placeholder:font-medium placeholder:text-[#7F8A91]  focus:ring-[#7F8A91]"
           />
         </div>
 
@@ -110,7 +109,7 @@ const ContactForm = () => {
             value={formData.correo}
             onChange={handleChange}
             placeholder="Ingresá tu correo electrónico..."
-            className="w-full px-4 py-2 h-11 lg:py-3.5 border border-[#AAB2B6] rounded-full cursor-pointer hover:bg-blue-50/40 focus:outline-none focus:ring-2 placeholder:font-semibold placeholder:text-sm lg:placeholder:text-base lg:placeholder:font-medium placeholder:text-[#7F8A91] focus:bg-blue-100 focus:ring-[#7F8A91]"
+            className="w-full px-4 py-2 h-11 lg:py-3.5 border border-[#AAB2B6] rounded-full cursor-pointer hover:bg-blue-50/40 focus:outline-none focus:ring-2 placeholder:font-semibold placeholder:text-sm lg:placeholder:text-base lg:placeholder:font-medium placeholder:text-[#7F8A91]  focus:ring-[#7F8A91]"
           />
         </div>
 
@@ -127,24 +126,19 @@ const ContactForm = () => {
             value={formData.mensaje}
             onChange={handleChange}
             placeholder="Contanos tu consulta, sugerencia o lo que quieras comunicar..."
-            className="w-full px-4 py-3 lg:py-3.5 h-40 border border-[#AAB2B6] rounded-3xl cursor-pointer hover:bg-blue-50/40 focus:outline-none focus:ring-2 placeholder:font-semibold placeholder:text-sm lg:placeholder:text-base lg:placeholder:font-medium placeholder:text-[#7F8A91] focus:bg-blue-100 focus:ring-[#7F8A91] resize-none"
+            className="w-full px-4 py-3 lg:py-3.5 h-40 border border-[#AAB2B6] rounded-3xl cursor-pointer hover:bg-blue-50/40 focus:outline-none focus:ring-2 placeholder:font-semibold placeholder:text-sm lg:placeholder:text-base lg:placeholder:font-medium placeholder:text-[#7F8A91]  focus:ring-[#7F8A91] resize-none"
           />
         </div>
 
-        <div className="flex justify-center lg:justify-start">
-          <button
+        <div className="flex justify-center items-center lg:justify-start">
+          <PrimaryButton
             type="submit"
-            className="px-8 lg:px-6 text-lg mt-2 w-full lg:w-min py-3 text-center text-nowrap shadow-md bg-[#1C1F23] text-white rounded-2xl hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-medium"
+            size="lg"
+            rounded="2xl"
+            className="lg:mt-2 w-full lg:w-auto"
           >
             Enviar mensaje
-          </button>
-          {/* <MainButton
-            type="submit"
-            className="px-8 lg:px-6 text-lg mt-2 w-full lg:w-min py-3 text-center text-nowrap shadow-md font-medium"
-          >
-            Enviar mensaje
-          </MainButton>
-          <PrimaryButton size="md">Quiero saber más</PrimaryButton> */}
+          </PrimaryButton>
         </div>
       </form>
     </div>

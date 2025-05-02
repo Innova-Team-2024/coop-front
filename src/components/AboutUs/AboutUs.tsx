@@ -13,12 +13,12 @@ function AboutUs() {
   return (
     <div className="lg:w-full bg-white rounded-3xl border border-[#E3F0E8] overflow-hidden shadow-[0px_10px_15px_0px_rgba(0,0,0,0.10)] lg:max-w-[1200px] lg:h-[526px] lg:mx-auto flex flex-col-reverse lg:flex-row my-16 mx-4">
       {/* Text Content */}
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="md:w-96 lg:pl-14 lg:py-8 px-6 py-6 flex flex-col justify-center">
-          <h2 className="lg:text-5xl text-3xl font-semibold lg:font-bold text-[#1C1F23] text-nowrap">
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="lg:w-96 lg:pl-14 lg:py-8 px-6 py-6 flex flex-col justify-center">
+          <h2 className="md:text-5xl text-3xl font-semibold md:font-bold text-[#1C1F23] text-nowrap">
             Defendamos lo
           </h2>
-          <span className="lg:text-5xl text-3xl font-semibold lg:font-bold text-[#46AF3F] mb-4">
+          <span className="md:text-5xl text-3xl font-semibold md:font-bold text-[#46AF3F] mb-4">
             nuestro
           </span>
 
