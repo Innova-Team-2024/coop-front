@@ -8,9 +8,8 @@ function CarouselRow({ items }: Props) {
   return (
     <>
       {/* Image Gallery - top */}
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         <div className="overflow-hidden relative w-full">
-          <div className="absolute top-0 right-0 h-full w-4 bg-gradient-to-l from-gray-50/60 to-transparent z-10 pointer-events-none"></div>
           <div
             className="flex animate-scrollX-l"
             style={{ width: `${items.length * (295 + 16)}px` }}
@@ -34,8 +33,8 @@ function CarouselRow({ items }: Props) {
 
       {/* Image Gallery - bt */}
       <div className="flex flex-col ">
-        <div className="block md:hidden relative px-[1px]">
-          <div className="absolute top-0 left-0 h-full w-4 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+        <div className="block lg:hidden relative px-[1px]">
+          {/* <div className="absolute top-0 left-0 h-full w-4 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div> */}
           <div className="overflow-hidden w-full">
             <div
               className="flex animate-scrollX-r"

@@ -9,7 +9,7 @@ function CarouselCol({ items }: Props) {
   return (
     <>
       {/* Image Gallery - right */}
-      <div className="hidden md:flex flex-row lg:flex-col">
+      <div className="hidden lg:flex flex-row lg:flex-col">
         <div
           className="flex flex-col animate-scrollY-up"
           style={{ height: `${items.length * (228 + 16)}px` }}
@@ -29,7 +29,7 @@ function CarouselCol({ items }: Props) {
         </div>
       </div>
       {/* Image Gallery - left */}
-      <div className="hidden md:flex flex-row lg:flex-col mx-6">
+      <div className="hidden lg:flex flex-row lg:flex-col mx-6">
         <div
           className="flex flex-col animate-scrollY-down"
           style={{ height: `${items.length * (195 + 16)}px` }}
