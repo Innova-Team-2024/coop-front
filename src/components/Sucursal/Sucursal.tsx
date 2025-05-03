@@ -4,13 +4,13 @@ import { SucursalImage } from "@/public";
 export default function Sucursal() {
   return (
     <>
-      <div className="bg-[#f9f9ff] mt-0 sm:mt-28 sm:mb-14">
+      <div className="mt-0 sm:mt-28 sm:mb-14">
         <div className="text-center pt-32">
           <p className="font-semibold text-[16px] sm:text-[18px]">
             Más información
           </p>
           <h1 className="font-semibold text-[32px] sm:text-[64px] pb-3">
-            Nuestras <span className="text-[#0096D7]">sucursales</span>
+            Nuestras <span className="text-titleSucursal">sucursales</span>
           </h1>
         </div>
 

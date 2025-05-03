@@ -83,7 +83,7 @@ export default function Banner() {
       >
         {bannersToShow.map((banner, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full bg-black">  
+            <div className="relative w-full h-full">  
               <Image
                 src={banner.image}
                 alt={`Slide ${index + 1}`}
@@ -126,10 +126,10 @@ export default function Banner() {
           </SwiperSlide>
         ))}
 
-        <button className="custom-prev absolute left-2 sm:left-10 md:left-10 top-1/2 -translate-y-1/2 z-10 bg-[rgba(255,255,255,0.13)] text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
+        <button className="custom-prev absolute left-2 sm:left-10 md:left-10 top-1/2 -translate-y-1/2 z-10 bg-colorArrowChevron text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
           <ChevronLeft className="h-8 w-8 md:h-6 md:w-6" />
         </button>
-        <button className="custom-next absolute right-2 sm:right-10 md:right-10 top-1/2 -translate-y-1/2 z-10 bg-[rgba(255,255,255,0.13)] text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
+        <button className="custom-next absolute right-2 sm:right-10 md:right-10 top-1/2 -translate-y-1/2 z-10 bg-colorArrowChevron text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
           <ChevronRight className="h-8 w-8 md:h-6 md:w-6" />
         </button>
       </Swiper>
