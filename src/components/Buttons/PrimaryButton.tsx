@@ -1,8 +1,8 @@
-// components/ButtonPrimario.tsx
+// components/PrimaryButton.tsx
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 /**
- * ButtonPrimario - Botón con borde de degradado difuminado y estilo moderno
+ * PrimaryButton - Botón con borde de degradado difuminado y estilo moderno
  *
  * El borde con degradado difuminado aparece suavemente con una animación al hacer hover,
  * creando un efecto de brillo alrededor del botón
@@ -58,39 +58,40 @@ export default function PrimaryButton({
 
   // Configuración del nivel de redondeo
   // Usando valores explícitos para garantizar compatibilidad con el pseudo-elemento
-  const getRoundedClass = (type: string) => {
+  const getRoundedClass = () => {
     switch (rounded) {
       case "none":
-        return `${type}-none`;
+        return `before:rounded-none`;
 
       case "md":
-        return `${type}-md`;
+        return `before:rounded-md`;
       case "lg":
-        return `${type}-lg`;
+        return `before:rounded-lg`;
       case "xl":
-        return `${type}-xl`;
+        return `before:rounded-xl`;
       case "2xl":
-        return `${type}-2xl`;
+        return `before:rounded-2xl`;
       case "full":
-        return `${type}-full`;
+        return `before:rounded-full`;
       default:
-        return `${type}-lg`;
+        return `before:rounded-lg`;
     }
   };
 
-  const roundedContainer = getRoundedClass("rounded");
-  const roundedBefore = getRoundedClass("rounded");
+  const roundedBefore = getRoundedClass();
+  const roundedStyles =
+    rounded === "none" ? "rounded-none" : `rounded-${rounded}`;
 
   return (
     <div
-      className={`inline-block ${roundedContainer} p-[2px] relative before:absolute before:-inset-[0.5px] before:${roundedBefore} before:bg-gradient-to-r before:from-[#FF6600]/60 before:via-[#FF4CFF]/60 before:to-[#00AAFF]/60 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:ease-in-out before:blur-[1.5px] ${className}`}
+      className={`inline-block ${roundedStyles} p-[2px] relative before:absolute before:-inset-[0.5px] ${roundedBefore} before:bg-gradient-to-r before:from-[#FF6600]/60 before:via-[#FF4CFF]/60 before:to-[#00AAFF]/60 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:ease-in-out before:blur-[1.5px] ${className}`}
     >
       <button
         type={type}
         {...props}
         className={`
-          relative z-10 w-full ${roundedContainer} bg-[#1C1F23]
-          text-white font-semibold transition-all
+          relative z-10 w-full ${roundedStyles} bg-[#1C1F23]
+          text-white transition-all
           duration-200 active:bg-[#2E333A]
           flex items-center justify-center gap-2
           ${sizeStyles}
