@@ -1,3 +1,4 @@
+"use client";
 import { Directive } from "@/types/directive.js";
 import React from "react";
 

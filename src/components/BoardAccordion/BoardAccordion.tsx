@@ -37,13 +37,11 @@ const BoardAccordion = () => {
         <AccordionItem
           key={section.id}
           value={section.id}
-          className="border-none w-full py-3"
+          className="border-none w-full"
         >
-          <AccordionTrigger className="flex justify-between items-center group py-4 text-left [&>svg]:hidden hover:no-underline">
-            <span className="flex items-start space-x-2 outline-none">
-              <span className="text-xl leading-6 sm:pl-0 text-[#232527] font-bold">
-                {section.title}
-              </span>
+          <AccordionTrigger className="flex justify-between items-center py-4 lg:py-8 group text-left [&>svg]:hidden hover:no-underline">
+            <span className="flex items-start text-xl lg:text-2xl lg:font-medium leading-6 sm:pl-0 text-[#232527] font-bold">
+              {section.title}
             </span>
             <span className="flex items-center">
               <Plus
@@ -58,7 +56,7 @@ const BoardAccordion = () => {
             <div className="space-y-2">
               {section.list.map((directivo) => (
                 <DirectivesCard
-                  key={section.id}
+                  key={`${section.id}-${directivo.cargo}`}
                   cargo={directivo.cargo}
                   nombre={directivo.nombre}
                 />
