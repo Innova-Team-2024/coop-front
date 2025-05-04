@@ -2,6 +2,7 @@
 import BoardAccordion from "@/components/BoardAccordion/BoardAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import ImageGridGallery from "@/components/ImageGrid/ImageGridGallery";
+import ImageSlideGallery from "@/components/ImageGrid/ImageSlideGallery";
 import {
   AboutUsPage1,
   AboutUsPage2,
@@ -29,7 +30,7 @@ export default function Nosotros() {
   ];
 
   return (
-    <main className="py-8 mt-6 mb-6 lg:mt-16 max-w-[1440px] mx-auto">
+    <main className="py-8 mt-6 mb-6 md:mt-16 max-w-[1440px] mx-auto">
       <Breadcrumb className="lg:px-32" items={pathItems} />
 
       <section className="px-6 py-10 md:px-24 lg:px-32 lg:py-16 space-y-8 lg:space-y-20">
@@ -51,7 +52,12 @@ export default function Nosotros() {
         </article>
       </section>
       <section>
-        <ImageGridGallery images={images} />
+        <article className="hidden lg:block">
+          <ImageSlideGallery images={images} />
+        </article>
+        <article className="lg:hidden">
+          <ImageGridGallery images={images} />
+        </article>
       </section>
     </main>
   );
