@@ -1,12 +1,31 @@
 // src/app/nosotros/page.tsx
 import BoardAccordion from "@/components/BoardAccordion/BoardAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
-/* import Link from "next/link"; */
+import ImageGridGallery from "@/components/ImageGrid/ImageGridGallery";
+import {
+  AboutUsPage1,
+  AboutUsPage2,
+  AboutUsPage3,
+  AboutUsPage4,
+  AboutUsPage5,
+  AboutUsPage6,
+} from "@/public";
 
 export default function Nosotros() {
   const pathItems = [
     { label: "Home", href: "/" },
     { label: "Nosotros", href: "" },
+  ];
+
+  //Imagenes para la galeria
+  const images = [
+    AboutUsPage1,
+    AboutUsPage2,
+    AboutUsPage3,
+    AboutUsPage4,
+    AboutUsPage5,
+    AboutUsPage6,
+    // etc...
   ];
 
   return (
@@ -30,6 +49,9 @@ export default function Nosotros() {
             <BoardAccordion />
           </div>
         </article>
+      </section>
+      <section>
+        <ImageGridGallery images={images} />
       </section>
     </main>
   );
