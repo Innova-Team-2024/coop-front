@@ -38,6 +38,7 @@ export { default as AboutUsPage3 } from "./aboutUsPage/aboutUsPage3.webp";
 export { default as AboutUsPage4 } from "./aboutUsPage/aboutUsPage4.webp";
 export { default as AboutUsPage5 } from "./aboutUsPage/aboutUsPage5.webp";
 export { default as AboutUsPage6 } from "./aboutUsPage/aboutUsPage6.webp";
+export { default as NoticeExample } from "./aboutUsPage/NoticeExample.png";
 
 //Banner
 export { default as BannerCeleste } from "./image/BannerCeleste.png";

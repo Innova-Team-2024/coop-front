@@ -3,6 +3,7 @@ import BoardAccordion from "@/components/BoardAccordion/BoardAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import ImageGridGallery from "@/components/ImageGrid/ImageGridGallery";
 import ImageSlideGallery from "@/components/ImageGrid/ImageSlideGallery";
+import NoticeSlide from "@/components/Notices/NoticeSlide";
 import {
   AboutUsPage1,
   AboutUsPage2,
@@ -58,6 +59,9 @@ export default function Nosotros() {
         <article className="lg:hidden">
           <ImageGridGallery images={images} />
         </article>
+      </section>
+      <section className="py-10">
+        <NoticeSlide />
       </section>
     </main>
   );
