@@ -1,9 +1,16 @@
 // src/app/nosotros/page.tsx
-import BoardAccordion from "@/components/BoardAccordion/BoardAccordion";
-import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
-import ImageGridGallery from "@/components/ImageGrid/ImageGridGallery";
-import ImageSlideGallery from "@/components/ImageGrid/ImageSlideGallery";
-import NoticeSlide from "@/components/Notices/NoticeSlide";
+
+import {
+  BoardAccordion,
+  Breadcrumb,
+  ContactForm,
+  Faqs,
+  ImageGridGallery,
+  ImageSlideGallery,
+  Molecules,
+  Notice,
+} from "@/components";
+
 import {
   AboutUsPage1,
   AboutUsPage2,
@@ -61,7 +68,21 @@ export default function Nosotros() {
         </article>
       </section>
       <section className="py-10">
-        <NoticeSlide />
+        <Notice />
+      </section>
+      <section className="relative -mt-20 lg:-mt-56 lg:-mb-40">
+        <div className="absolute top-96 left-28 -z-20 hidden lg:block">
+          <Molecules />
+        </div>
+        <div>
+          <Faqs />
+        </div>
+        <div className="absolute top-36 right-28 -z-20 hidden lg:block">
+          <Molecules />
+        </div>
+      </section>
+      <section>
+        <ContactForm />
       </section>
     </main>
   );

@@ -37,47 +37,43 @@ const notices = [
 
 const NoticeSlide = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <article className="text-center mb-3">
-        <h3 className="font-semibold mb-4">Sobre nosotros</h3>
-        <h2 className="text-3xl leading-10 font-semibold lg:mb-6 lg:text-5xl lg:leading-[56px]">
-          Últimas noticias <span className="lg:hidden block"> </span> en obras
-        </h2>
-      </article>
-
-      <div className="relative">
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={16}
-          freeMode={true}
-          modules={[FreeMode]}
-          className="w-full"
-          breakpoints={{
-            320: {
-              slidesPerView: 1.1,
-              spaceBetween: 4,
-            },
-            640: {
-              slidesPerView: 1.1,
-              spaceBetween: 6,
-            },
-            1024: {
-              slidesPerView: 2.4,
-              spaceBetween: 16,
-            },
-          }}
-        >
-          {notices.map((notice) => (
-            <SwiperSlide key={notice.id} className="h-auto">
-              <NoticeCard
-                title={notice.title}
-                description={notice.description}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </div>
+    <article className="relative">
+      <Swiper
+        slidesPerView="auto"
+        spaceBetween={16}
+        freeMode={true}
+        modules={[FreeMode]}
+        className="w-full"
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 8,
+          },
+          390: {
+            slidesPerView: 1.1,
+            spaceBetween: 4,
+          },
+          640: {
+            slidesPerView: 2.1,
+            spaceBetween: 6,
+          },
+          1024: {
+            slidesPerView: 2.1,
+            spaceBetween: 80,
+          },
+          1280: {
+            slidesPerView: 2.4,
+            spaceBetween: 16,
+          },
+        }}
+      >
+        {notices.map((notice) => (
+          <SwiperSlide key={notice.id} className="h-auto">
+            <NoticeCard title={notice.title} description={notice.description} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </article>
   );
 };
 
