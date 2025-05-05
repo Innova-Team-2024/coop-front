@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Logo } from "@/public";
+import { LogoLoader } from "@/public";
 
 const colors = [
   "rgba(253, 35, 28, 1)",
@@ -51,7 +51,7 @@ export default function Loader({ onFinish }: { onFinish: () => void }) {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-white z-50 fixed top-0 left-0">
-      <Image src={Logo} alt="Logo" width={100} height={100} priority />
+      <Image src={LogoLoader} alt="Logo" width={120} height={120} priority />
       <div className="mt-8 flex gap-2">
         {colors.map((color, index) => (
           <div
