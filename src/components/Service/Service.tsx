@@ -96,10 +96,10 @@ function ServicesCards({ items }: { items: typeof tecnologiesServices }) {
                 className="w-10 h-10 mb-4"
               />
               <h3 className="text-[24px] font-medium mb-2">{service.title}</h3>
-              <p className="text-[#475569] text-[16px]">{service.desc}</p>
+              <p className="text-descriptionServices text-[16px]">{service.desc}</p>
             </div>
 
-            <button className="mt-4 flex px-4 py-3 w-full text-[#1C1F23] justify-center items-center gap-2 rounded-full border border-[#E4E4E4] bg-white shadow-md text-sm font-medium hover:bg-gray-100 transition">
+            <button className="mt-4 flex px-4 py-3 w-full text-btnServices justify-center items-center gap-2 rounded-full border border-[#E4E4E4] bg-white shadow-md text-sm font-medium hover:bg-gray-100 transition">
               Me interesa
             </button>
           </Card>
@@ -119,9 +119,9 @@ export default function Service() {
   ];
 
   return (
-  <section className="w-full min-h-screen py-16 px-6 bg-[#f9f9ff] text-center flex flex-col justify-center items-center">
+  <section className="w-full min-h-screen py-16 px-6 text-center flex flex-col justify-center items-center">
       <h2 className="text-[40px] font-medium sm:text-[64px]">
-        Nuestros <span className="text-[#46AF3F]">servicios</span>
+        Nuestros <span className="text-titelServices">servicios</span>
       </h2>
 
       <Tabs
@@ -137,7 +137,7 @@ export default function Service() {
                 key={tab.id}
                 className={`flex-1 rounded-full  ${
                   isActive
-                    ? "p-[2px] bg-[linear-gradient(270deg,_rgba(0,170,255,0.44)_0.67%,_rgba(85,64,167,0.44)_21.34%,_rgba(255,76,255,0.44)_41.96%,_rgba(255,63,99,0.44)_62.45%,_rgba(255,102,0,0.44)_99.33%)] shadow-[0_0_8px_rgba(0,0,0,0.08)]"
+                    ? "p-[2px] bg-btn-gradient"
                     : ""
                 }`}
               >

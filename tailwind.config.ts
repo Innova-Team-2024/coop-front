@@ -10,11 +10,20 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "btn-gradient":
+          "linear-gradient(270deg, rgba(0,170,255,0.44) 0.67%, rgba(85,64,167,0.44) 21.34%, rgba(255,76,255,0.44) 41.96%, rgba(255,63,99,0.44) 62.45%, rgba(255,102,0,0.44) 99.33%)",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         titleFaqs: "#5540a7",
+        titleSucursal: "#0096D7",
         bgColorPageHome: "#F4F4FB",
+        colorArrowChevron: "rgba(255,255,255,0.13)",
+        titelServices: "#46AF3F",
+        btnServices: "#1C1F23",
+        descriptionServices: "#475569",
         textFaqs: {
           primary: "#334155",
         },
@@ -67,6 +76,7 @@ export default {
         contact:
           "0 8px 8px -4px rgba(0, 0, 0, 0.03), 0 20px 24px -4px rgba(0, 0, 0, 0.08)",
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -118,4 +128,3 @@ export default {
   },
   plugins: [tailwindcssAnimate],
 } satisfies Config;
-
