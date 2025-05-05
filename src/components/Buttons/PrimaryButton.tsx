@@ -91,7 +91,7 @@ export default function PrimaryButton({
         {...props}
         className={`
           relative z-10 w-full ${roundedStyles} bg-[#1C1F23]
-          text-white transition-all
+          text-white transition-all font-medium
           duration-200 active:bg-[#2E333A]
           flex items-center justify-center gap-2
           ${sizeStyles}

@@ -33,6 +33,12 @@ export { default as AboutUs } from "./AboutUs/AboutUs";
 //ConcatoFoms
 export { default as ContactForm } from "./Form/ContactForm";
 
+//AboutPage
+export { default as Notice } from "./Notices/Notice";
+export { default as BoardAccordion } from "./BoardAccordion/BoardAccordion";
+export { default as ImageGridGallery } from "./ImageGrid/ImageGridGallery";
+export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery";
+
 // UI Components
 export {
   Accordion,
@@ -40,6 +46,8 @@ export {
   AccordionTrigger,
   AccordionContent,
 } from "./ui/accordion";
+export { Molecules } from "./ui/molecules";
+export { Breadcrumb } from "./Breadcrumb/Breadcrumb";
 export { Button } from "./ui/button";
 export { default as PrimaryButton } from "./Buttons/PrimaryButton";
 export { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
