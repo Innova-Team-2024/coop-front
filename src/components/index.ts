@@ -39,6 +39,10 @@ export { default as BoardAccordion } from "./BoardAccordion/BoardAccordion";
 export { default as ImageGridGallery } from "./ImageGrid/ImageGridGallery";
 export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery";
 
+//Formas de Pago - Page
+export { default as GestarCoopAccess } from "./PaymentMethods/GestarCoopAccess";
+export { default as PaymentPlatform } from "./PaymentMethods/PaymentPlatform";
+
 // UI Components
 export {
   Accordion,

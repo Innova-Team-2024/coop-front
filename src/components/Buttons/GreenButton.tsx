@@ -68,7 +68,7 @@ export default function GreenButton({
           hover:bg-[#097237]
           text-white transition-all
           duration-200 active:bg-[#095E30]
-          disabled:bg-[#87c5a2] gap-2
+          disabled:bg-[#87c5a2] gap-2 inline-flex
           ${sizeStyles} ${className}
         `}
     >
