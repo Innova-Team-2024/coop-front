@@ -37,7 +37,7 @@ export { default as ContactForm } from "./Form/ContactForm";
 export { default as Notice } from "./Notices/Notice";
 export { default as BoardAccordion } from "./BoardAccordion/BoardAccordion";
 export { default as ImageGridGallery } from "./ImageGrid/ImageGridGallery";
-export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery.jsx";
+export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery";
 
 // UI Components
 export {
