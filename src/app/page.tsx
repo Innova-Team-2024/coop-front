@@ -10,6 +10,7 @@ import {
   AboutUs,
   Sucursal
 } from "@/components";
+import ButtonUploadBanner from "@/components/Buttons/ButtonUploadBanner";
 
 import Loader from "@/components/Loader/Loader";
 import { useState } from "react";
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <>
         <Banner />
+        <ButtonUploadBanner />
       {loading ? (
         <Loader onFinish={() => setLoading(false)} />
       ) : (
