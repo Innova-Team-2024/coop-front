@@ -31,6 +31,16 @@ export { default as AboutUs3 } from "./about/aboutUs3.png";
 export { default as AboutUs4 } from "./about/aboutUs4.png";
 export { default as AboutUs5 } from "./about/aboutUs5.png";
 
+//About us Page - Gallery Image
+export { default as AboutUsPage1 } from "./aboutUsPage/aboutUsPage1.webp";
+export { default as AboutUsPage2 } from "./aboutUsPage/aboutUsPage2.webp";
+export { default as AboutUsPage3 } from "./aboutUsPage/aboutUsPage3.webp";
+export { default as AboutUsPage4 } from "./aboutUsPage/aboutUsPage4.webp";
+export { default as AboutUsPage5 } from "./aboutUsPage/aboutUsPage5.webp";
+export { default as AboutUsPage6 } from "./aboutUsPage/aboutUsPage6.webp";
+export { default as NoticeExample } from "./aboutUsPage/NoticeExample.png";
+export { default as Mancha } from "./molecules/Vector 12.svg";
+
 //Banner
 export { default as BannerCeleste } from "./image/BannerCeleste.png";
 export { default as BannerVioleta } from "./image/BannerVioleta.png";
