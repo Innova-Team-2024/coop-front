@@ -58,7 +58,8 @@ function ImageSlideGallery({ images }: Props) {
             <Image
               src={image}
               alt={`Slide ${index + 1}`}
-              layout="responsive"
+              width={383}
+              height={383}
               className="select-none"
             />
           </SwiperSlide>

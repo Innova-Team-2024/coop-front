@@ -14,7 +14,6 @@ const NoticeCard = ({ title, description }: Props) => {
         <Image
           src={NoticeExample}
           alt={`Noticia ${title}`}
-          layout="responsive"
           className="select-none"
         />
       </div>
