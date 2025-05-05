@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Banner,
   PlansSection,
@@ -9,18 +11,28 @@ import {
   Sucursal
 } from "@/components";
 
+import Loader from "@/components/Loader/Loader";
+import { useState } from "react";
+
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
-      <Banner />
-      <PlansSection />
-      <PartnerCarousel />
-      <Service />
-      <AboutUs />
-      <Faqs />
-      <ContactForm />
-      <Sucursal />
+        <Banner />
+      {loading ? (
+        <Loader onFinish={() => setLoading(false)} />
+      ) : (
+        <>
+          <PlansSection />
+          <PartnerCarousel />
+          <Service />
+          <AboutUs />
+          <Faqs />
+          <ContactForm />
+          <Sucursal />
+        </>
+      )}
     </>
   );
 }
-
