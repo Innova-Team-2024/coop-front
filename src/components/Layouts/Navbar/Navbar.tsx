@@ -87,7 +87,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <nav className="w-full bg-[#e6e6e6] md:bg-white/80 backdrop-blur-[12px] shadow-none md:shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+      <nav className="w-full bg-white/80 backdrop-blur-[12px] shadow-none md:shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         <div
           className="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16 xl:px-[120px] py-[24px] h-[72px] md:h-[103px]"
         >
@@ -218,9 +218,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <>
-          <div className="md:hidden bg-white
-  shadow-md px-4 py-3 rounded-b-none">
-
+          <div className="md:hidden bg-white/80 backdrop-blur-[12px] shadow-md px-4 py-3 rounded-b-none">
             <ul className="flex flex-col gap-4 text-[18px] leading-[24px] font-normal text-black">
               {navItems.map(({ label, key, children }) => (
                 <li key={key}>
