@@ -128,7 +128,10 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   const shouldShowEllipsis = isMobile && items.length > 2;
 
   return (
-    <nav className={`flex px-6 pt-12 ${className}`} aria-label="Breadcrumb">
+    <nav
+      className={`flex px-6 pt-12 ${className} mt-24 md:mt-32 lg:mt-32`}
+      aria-label="Breadcrumb"
+    >
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         {/* Primer elemento siempre visible */}
         <li key={0}>{renderBreadcrumbItem(items[0], 0, items.length === 1)}</li>
