@@ -81,7 +81,7 @@ export default function Nosotros() {
           <Molecules />
         </div>
       </section>
-      <section>
+      <section className="px-2">
         <ContactForm />
       </section>
     </main>

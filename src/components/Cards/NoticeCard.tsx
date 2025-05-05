@@ -3,7 +3,6 @@ import Image from "next/image.js";
 import { NoticeExample } from "@/public";
 
 type Props = {
-  /* images: StaticImageData; */
   title: string;
   description: string;
 };
