@@ -38,7 +38,7 @@ export default function Nosotros() {
   ];
 
   return (
-    <main className="py-8 mt-6 mb-6 md:mt-16 max-w-[1440px] mx-auto">
+    <main className="pb-8 mb-6 max-w-[1440px] mx-auto">
       <Breadcrumb className="lg:px-32" items={pathItems} />
 
       <section className="px-6 py-10 md:px-24 lg:px-32 lg:py-16 space-y-8 lg:space-y-20">
@@ -81,7 +81,7 @@ export default function Nosotros() {
           <Molecules />
         </div>
       </section>
-      <section>
+      <section className="px-2">
         <ContactForm />
       </section>
     </main>

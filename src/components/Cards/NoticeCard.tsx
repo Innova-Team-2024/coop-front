@@ -3,7 +3,6 @@ import Image from "next/image.js";
 import { NoticeExample } from "@/public";
 
 type Props = {
-  /* images: StaticImageData; */
   title: string;
   description: string;
 };
@@ -15,7 +14,6 @@ const NoticeCard = ({ title, description }: Props) => {
         <Image
           src={NoticeExample}
           alt={`Noticia ${title}`}
-          layout="responsive"
           className="select-none"
         />
       </div>
