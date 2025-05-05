@@ -1,4 +1,5 @@
-'use client'
+
+'use client';
 
 import React, { useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
@@ -20,11 +21,19 @@ export default function MobilePlans({ plans }: MobilePlansProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [sliderRef] = useKeenSlider({
-    slides: { perView: 1.1, spacing: 16 },
+    slides: {
+      perView: 1,
+      spacing: 12,
+    },
     loop: false,
     mode: 'snap',
     breakpoints: {
-      '(min-width: 768px)': {},
+      '(min-width: 768px)': {
+        slides: {
+          perView: 1.1,
+          spacing: 16,
+        },
+      },
     },
     slideChanged(s) {
       setCurrentSlide(s.track.details.rel);
@@ -32,13 +41,13 @@ export default function MobilePlans({ plans }: MobilePlansProps) {
   });
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden px-4">
       <div ref={sliderRef} className="keen-slider">
         {mobileSortedPlans.map((plan, idx) => (
           <PlanCard key={idx} plan={plan} variant="mobile" />
         ))}
       </div>
-      {/* Indicadores del slider */}
+
       <div className="flex justify-center gap-2 mt-6">
         {mobileSortedPlans.map((_, idx) => (
           <div
