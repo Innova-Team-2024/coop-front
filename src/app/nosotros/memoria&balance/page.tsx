@@ -29,12 +29,7 @@ function page() {
           <h5 className="text-xl lg:text-3xl font-bold text-center lg:mt-2.5">
             Memoria & Balance 2025
           </h5>
-          <GreenButton
-            size="sm"
-            rounded="full"
-            className="lg:px-6 lg:py-3 lg:text-lg"
-            disabled
-          >
+          <GreenButton size="default" rounded="full" disabled>
             Descargar PDF
           </GreenButton>
         </div>
@@ -45,11 +40,7 @@ function page() {
           <h5 className="text-xl lg:text-3xl font-bold text-center">
             Memoria & Balance 2024
           </h5>
-          <GreenButton
-            size="sm"
-            rounded="full"
-            className="lg:px-6 lg:py-3 lg:text-lg"
-          >
+          <GreenButton size="default" rounded="full">
             Descargar PDF
           </GreenButton>
         </div>

@@ -30,7 +30,7 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 interface GreenButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode; // Contenido del botón (texto)
   icon?: ReactNode; // Ícono opcional que aparece junto al texto
-  size?: "sm" | "md" | "lg"; // Tamaño del botón: sm (pequeño), md (mediano), lg (grande)
+  size?: "sm" | "md" | "lg" | "default"; // Tamaño del botón: sm (pequeño), md (mediano), lg (grande), default toma todos los tamaños.
   className?: string; // Clases adicionales para personalizar el contenedor exterior
   type?: "button" | "submit" | "reset"; // Tipo de botón HTML
   rounded?: "none" | "md" | "lg" | "xl" | "2xl" | "full"; // Nivel de redondeo de esquinas
@@ -51,6 +51,8 @@ export default function GreenButton({
       ? "px-4 py-2 text-sm font-semibold"
       : size === "lg"
       ? "px-6 py-3 text-lg font-bold"
+      : size === "default"
+      ? "px-4 py-2 text-sm font-semibold md:px-5 md:py-3 md:text-base md:font-semibold lg:px-6 lg:py-3 lg:text-lg lg:font-bold"
       : "px-5 py-3 text-base font-semibold";
 
   // Configuración del nivel de redondeo
