@@ -22,7 +22,7 @@ export default function PartnerCarousel() {
   const duplicatedBrands = [...brands, ...brands]
 
   return (
-    <section className="relative w-full py-8 bg-[#f7f7ff]">
+    <section className="relative w-full py-8 ">
       <div className="pointer-events-none absolute top-0 left-0 w-24 h-full z-10 bg-gradient-to-r from-[#f7f7ff]/90 to-transparent" />
       <div className="pointer-events-none absolute top-0 right-0 w-24 h-full z-10 bg-gradient-to-l from-[#f7f7ff]/90 to-transparent" />
 
