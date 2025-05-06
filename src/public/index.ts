@@ -53,6 +53,7 @@ export { default as BannerMobileVioleta } from "./image/BannerMobileVioleta.png"
 export { default as BannerMobileVerde } from "./image/BannerMobileVerde.png";
 export { default as BannerMobileAzul } from "./image/BannerMobileAzul.png";
 export { default as BannerMobileNaranja } from "./image/BannerMobileNaranja.png";
+export { default as Portada } from "./ImagePortada.png";
 
 //Sucursal
 export { default as SucursalImage } from "./image/mapaSucursal.png";
