@@ -10,6 +10,7 @@ export { default as PlanCard } from "./Plans/PlanCard";
 //Buttons
 export { default as ButtonAccount } from "./Buttons/ButtonAccount";
 export { default as ScrollInfoButton } from "./Buttons/ScrollInfoButton";
+export { default as ButtonUploadBanner } from "./Buttons/ButtonUploadBanner";
 
 //Carousel
 export { default as PartnerCarousel } from "./Carousel/PartnerCarousel";
@@ -42,6 +43,9 @@ export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery";
 //Formas de Pago - Page
 export { default as GestarCoopAccess } from "./PaymentMethods/GestarCoopAccess";
 export { default as PaymentPlatform } from "./PaymentMethods/PaymentPlatform";
+
+//Loader
+export { default as Loader } from "./Loader/Loader";
 
 // UI Components
 export {
