@@ -8,11 +8,12 @@ import {
   ContactForm,
   PartnerCarousel,
   AboutUs,
-  Sucursal
+  Sucursal,
+  ButtonUploadBanner,
+  Loader
 } from "@/components";
-import ButtonUploadBanner from "@/components/Buttons/ButtonUploadBanner";
 
-import Loader from "@/components/Loader/Loader";
+
 import { useState } from "react";
 
 export default function Home() {
