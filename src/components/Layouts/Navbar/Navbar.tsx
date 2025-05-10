@@ -88,6 +88,8 @@ export default function Navbar() {
     setOpenSubDropdowns((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
+  const isActive = (href: string) => pathname === href;
+
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       <nav className="w-full bg-white/80 backdrop-blur-[12px] shadow-none transition-all duration-300">
@@ -122,7 +124,7 @@ export default function Navbar() {
                 </li>
               ))}
               <li>
-                <Link href="/formas-de-pago" className="transition-colors duration-300 hover:font-semibold">
+                <Link href="/formas-de-pago" className={`hover:font-semibold ${isActive("/formas-de-pago") ? "font-semibold" : ""}`}>
                   Formas de pago
                 </Link>
               </li>
@@ -145,14 +147,18 @@ export default function Navbar() {
               {navItems.find((item) => item.key === openMenu)?.children?.map((child) =>
                 typeof child === "string" ? (
                   <li key={child}>
-                    <Link href={getHref(child)} className="hover:underline">{child}</Link>
+                    <Link
+                      href={getHref(child)}
+                      className={`hover:no-underline ${
+                        isActive(getHref(child)) ? "font-semibold" : ""
+                      }`}
+                    >
+                      {child}
+                    </Link>
                   </li>
                 ) : (
                   <li key={child.key} className="min-w-[150px]">
-                    <div
-                      className="flex items-center gap-1 cursor-pointer"
-                      onClick={() => toggleSubDropdown(child.key)}
-                    >
+                    <div className="flex items-center gap-1 cursor-pointer" onClick={() => toggleSubDropdown(child.key)}>
                       <span className="font-semibold">{child.label}</span>
                       <HiChevronDown
                         size={16}
@@ -165,7 +171,12 @@ export default function Navbar() {
                       <ul className="mt-2 flex gap-x-4 ml-4">
                         {child.children.map((sub: string) => (
                           <li key={sub}>
-                            <Link href={getHref(sub)} className="hover:underline">{sub}</Link>
+                            <Link
+                              href={getHref(sub)}
+                              className={`hover:no-underline ${isActive(getHref(sub)) ? "font-semibold" : ""}`}
+                            >
+                              {sub}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -177,69 +188,14 @@ export default function Navbar() {
           </div>
         )}
 
-        {menuOpen && (
-          <div className="md:hidden bg-transparent shadow-md px-4 py-3 rounded-b-none">
-            <ul className="flex flex-col gap-4 text-[18px] font-normal text-black">
-              {navItems.map(({ label, key, children }) => (
-                <li key={key}>
-                  <div
-                    onClick={() => toggleMobileSubmenu(key)}
-                    className="flex items-center justify-start gap-1 cursor-pointer"
-                  >
-                    <span className={`$${openMobileSubmenus[key] ? "text-black font-semibold" : ""}`}>{label}</span>
-                    <HiChevronDown
-                      className={`transition-transform duration-300 ${
-                        openMobileSubmenus[key] ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-                  {openMobileSubmenus[key] && (
-                    <ul className="ml-4 mt-2 space-y-2">
-                      {Array.isArray(children) &&
-                        children.map((child) =>
-                          typeof child === "string" ? (
-                            <li key={child}>
-                              <Link href={getHref(child)} className="hover:underline">{child}</Link>
-                            </li>
-                          ) : (
-                            <li key={child.key}>
-                              <div
-                                onClick={() => toggleMobileSubmenu(child.key)}
-                                className="flex items-center justify-start gap-1 cursor-pointer"
-                              >
-                                <span className={`$${openMobileSubmenus[child.key] ? "text-black font-semibold" : ""}`}>
-                                  {child.label}
-                                </span>
-                                <HiChevronDown
-                                  className={`transition-transform duration-300 ${
-                                    openMobileSubmenus[child.key] ? "rotate-180" : ""
-                                  }`}
-                                />
-                              </div>
-                              {openMobileSubmenus[child.key] && (
-                                <ul className="ml-4 mt-2 space-y-2">
-                                  {child.children.map((sub: string) => (
-                                    <li key={sub}>
-                                      <Link href={getHref(sub)} className="hover:underline">{sub}</Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-                            </li>
-                          )
-                        )}
-                    </ul>
-                  )}
-                </li>
-              ))}
-              <li>
-                <Link href="/formas-de-pago" className="transition-colors duration-300 hover:font-semibold">
-                  Formas de pago
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )}
+        <div className="flex h-[4px] w-full">
+          <div className="w-[16.66%] bg-[#76257e]" />
+          <div className="w-[16.66%] bg-[#1b45aa]" />
+          <div className="w-[16.66%] bg-[#1dc2d2]" />
+          <div className="w-[16.66%] bg-[#f9ed0f]" />
+          <div className="w-[16.66%] bg-[#f2741f]" />
+          <div className="w-[16.66%] bg-[#e31e25]" />
+        </div>
       </nav>
     </header>
   );
