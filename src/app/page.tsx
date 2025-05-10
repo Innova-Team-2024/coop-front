@@ -9,10 +9,8 @@ import {
   PartnerCarousel,
   AboutUs,
   Sucursal,
-  ButtonUploadBanner,
   Loader
 } from "@/components";
-
 
 import { useState } from "react";
 
@@ -22,7 +20,6 @@ export default function Home() {
   return (
     <>
         <Banner />
-        <ButtonUploadBanner />
       {loading ? (
         <Loader onFinish={() => setLoading(false)} />
       ) : (
