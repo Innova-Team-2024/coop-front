@@ -8,11 +8,10 @@ import {
   ContactForm,
   PartnerCarousel,
   AboutUs,
-  Sucursal
+  Sucursal,
+  Loader
 } from "@/components";
-import ButtonUploadBanner from "@/components/Buttons/ButtonUploadBanner";
 
-import Loader from "@/components/Loader/Loader";
 import { useState } from "react";
 
 export default function Home() {
@@ -21,7 +20,6 @@ export default function Home() {
   return (
     <>
         <Banner />
-        <ButtonUploadBanner />
       {loading ? (
         <Loader onFinish={() => setLoading(false)} />
       ) : (
