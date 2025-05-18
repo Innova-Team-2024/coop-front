@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@/components";
+import { Breadcrumb, BibliotecaContent } from "@/components";
 
 export const metadata = {
   title: "Biblioteca Cooperativa | Espacio de lectura y aprendizaje",
@@ -16,6 +16,7 @@ export default function Biblioteca() {
   return (
     <main>
         <Breadcrumb items={breadcrumbItems} />
+        <BibliotecaContent />
     </main>
   );
 }

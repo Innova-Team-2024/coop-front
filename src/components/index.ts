@@ -88,3 +88,5 @@ export {
   CardTitle,
 } from "./ui/card";
 
+//Biblioteca
+export { default as BibliotecaContent } from "./BibliotecaContent/BibliotecaContent";

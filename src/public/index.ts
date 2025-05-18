@@ -67,3 +67,6 @@ export { default as jardinImagen1 } from "./jardinImagen1.jpg";
 //Primaria
 export { default as ArancelPrimaria } from "./ArancelPrimaria.png";
 
+//Biblioteca
+
+
