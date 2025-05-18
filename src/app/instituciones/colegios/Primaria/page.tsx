@@ -1,4 +1,11 @@
 
+
+export const metadata = {
+  title: "Instituto Dr. René Favaloro | Educación primaria en Grand Bourg",
+  description:
+    "Educación primaria accesible y de calidad, con valores cooperativos y compromiso social. Formación integral para una ciudadanía solidaria.",
+};
+
  export default function Primaria() {
   
   return (

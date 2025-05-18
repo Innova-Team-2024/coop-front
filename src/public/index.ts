@@ -58,3 +58,9 @@ export { default as Portada } from "./ImagePortada.png";
 //Sucursal
 export { default as SucursalImage } from "./image/mapaSucursal.png";
 
+//Jardin
+export { default as ImagenJardin } from "./imagenJardin.jpg";
+export { default as NosotrosJardin } from "./nostrosJardin.png";
+export { default as imagenAranceles } from "./imagenAranceles.png";
+export { default as jardinImagen1 } from "./jardinImagen1.jpg";
+

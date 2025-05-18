@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -149,9 +150,7 @@ export default function Navbar() {
                   <li key={child}>
                     <Link
                       href={getHref(child)}
-                      className={`hover:no-underline ${
-                        isActive(getHref(child)) ? "font-semibold" : ""
-                      }`}
+                      className={`hover:no-underline ${isActive(getHref(child)) ? "font-semibold" : ""}`}
                     >
                       {child}
                     </Link>
@@ -159,7 +158,7 @@ export default function Navbar() {
                 ) : (
                   <li key={child.key} className="min-w-[150px]">
                     <div className="flex items-center gap-1 cursor-pointer" onClick={() => toggleSubDropdown(child.key)}>
-                      <span className="font-semibold">{child.label}</span>
+                      <span>{child.label}</span>
                       <HiChevronDown
                         size={16}
                         className={`text-gray-500 mt-[2px] transition-transform duration-300 ${
@@ -184,6 +183,81 @@ export default function Navbar() {
                   </li>
                 )
               )}
+            </ul>
+          </div>
+        )}
+
+        {menuOpen && (
+          <div className="md:hidden bg-transparent  shadow-md px-4 py-3">
+            <ul className="flex flex-col gap-4 text-[18px] font-normal text-black">
+              {navItems.map(({ label, key, children }) => (
+                <li key={key}>
+                  <div
+                    onClick={() => toggleMobileSubmenu(key)}
+                    className="flex items-center justify-start gap-1 cursor-pointer"
+                  >
+                    <span>{label}</span>
+                    <HiChevronDown
+                      className={`transition-transform duration-300 ${
+                        openMobileSubmenus[key] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                  {openMobileSubmenus[key] && (
+                    <ul className="ml-4 mt-2 space-y-2">
+                      {Array.isArray(children) &&
+                        children.map((child) =>
+                          typeof child === "string" ? (
+                            <li key={child}>
+                              <Link
+                                href={getHref(child)}
+                                className={isActive(getHref(child)) ? "font-semibold" : ""}
+                              >
+                                {child}
+                              </Link>
+                            </li>
+                          ) : (
+                            <li key={child.key}>
+                              <div
+                                onClick={() => toggleMobileSubmenu(child.key)}
+                                className="flex items-center gap-1 cursor-pointer"
+                              >
+                                <span>{child.label}</span>
+                                <HiChevronDown
+                                  className={`transition-transform duration-300 ${
+                                    openMobileSubmenus[child.key] ? "rotate-180" : ""
+                                  }`}
+                                />
+                              </div>
+                              {openMobileSubmenus[child.key] && (
+                                <ul className="ml-4 mt-2 space-y-2">
+                                  {child.children.map((sub: string) => (
+                                    <li key={sub}>
+                                      <Link
+                                        href={getHref(sub)}
+                                        className={isActive(getHref(sub)) ? "font-semibold" : ""}
+                                      >
+                                        {sub}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          )
+                        )}
+                    </ul>
+                  )}
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/formas-de-pago"
+                  className={isActive("/formas-de-pago") ? "font-semibold" : ""}
+                >
+                  Formas de pago
+                </Link>
+              </li>
             </ul>
           </div>
         )}
