@@ -64,3 +64,6 @@ export { default as NosotrosJardin } from "./nostrosJardin.png";
 export { default as imagenAranceles } from "./imagenAranceles.png";
 export { default as jardinImagen1 } from "./jardinImagen1.jpg";
 
+//Primaria
+export { default as ArancelPrimaria } from "./ArancelPrimaria.png";
+

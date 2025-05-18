@@ -20,46 +20,43 @@ export default function ArancelesCard({
   logo,
   logoAlt = "Logo Institución",
 }: ArancelesCardProps) {
+  const items = [
+    { label: "Matrícula", value: matricula },
+    { label: "Cuota actual", value: cuotaActual },
+    ...(cuotaDesde ? [{ label: "Cuota desde", value: cuotaDesde }] : []),
+  ];
+
   return (
     <section className="flex justify-center items-center py-10">
       <div className="w-full max-w-[1040px] bg-white rounded-2xl border-2 border-lime-100 relative px-6 md:px-8 py-6 flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between gap-8 md:gap-0 overflow-hidden">
-        {/* Título centrado */}
+        {/* Título */}
         <div className="absolute left-1/2 -translate-x-1/2 top-6 md:top-8">
           <h2 className="text-lg md:text-3xl font-semibold text-zinc-900">
             {titulo} <span className="text-teal-700">2025</span>
           </h2>
         </div>
 
-        {/* Info aranceles */}
-        <div className="flex flex-col md:flex-row gap-6 md:gap-28 pt-16 md:pt-0 md:pl-[120px]">
-          {/* Matrícula */}
-          <div className="flex flex-col gap-2 md:gap-4">
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className="w-2.5 h-2.5 rounded-full bg-teal-700" />
-              <p className="text-sm md:text-xl font-medium text-slate-700">Matrícula</p>
-            </div>
-            <p className="text-sm md:text-xl font-normal text-slate-700">{matricula}</p>
-          </div>
-
-          {/* Cuota actual */}
-          <div className="flex flex-col gap-2 md:gap-4">
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className="w-2.5 h-2.5 rounded-full bg-teal-700" />
-              <p className="text-sm md:text-xl font-medium text-slate-700">Cuota actual</p>
-            </div>
-            <p className="text-sm md:text-xl font-normal text-slate-700">{cuotaActual}</p>
-          </div>
-
-          {/* Cuota desde (solo si se pasa) */}
-          {cuotaDesde && (
-            <div className="flex flex-col gap-2 md:gap-4">
+        {/* Datos */}
+        <div
+          className={`grid gap-6 pt-16 md:pt-0 md:pl-[120px] ${
+            items.length === 2
+              ? "md:grid-cols-2"
+              : "md:grid-cols-3"
+          }`}
+        >
+          {items.map((item) => (
+            <div key={item.label} className="flex flex-col gap-2 md:gap-4">
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="w-2.5 h-2.5 rounded-full bg-teal-700" />
-                <p className="text-sm md:text-xl font-medium text-slate-700">Cuota desde</p>
+                <p className="text-sm md:text-xl font-medium text-slate-700">
+                  {item.label}
+                </p>
               </div>
-              <p className="text-sm md:text-xl font-normal text-slate-700">{cuotaDesde}</p>
+              <p className="text-sm md:text-xl font-normal text-slate-700">
+                {item.value}
+              </p>
             </div>
-          )}
+          ))}
         </div>
 
         {/* Logo */}

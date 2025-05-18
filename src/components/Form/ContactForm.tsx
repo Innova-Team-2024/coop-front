@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, FormEvent } from "react";
@@ -81,8 +82,11 @@ export default function ContactForm({
 
             {email && (
               <div className="flex items-center gap-2 text-xl text-black font-medium leading-loose">
-                <FaEnvelope className="text-black" />
-                Email: {email}
+                <FaEnvelope className="text-black mt-1 text-xl min-w-[24px]" />
+                <span>
+                  <span className="mr-1">Email:</span>
+                  <span className="font-bold">{email}</span>
+                </span>
               </div>
             )}
           </>

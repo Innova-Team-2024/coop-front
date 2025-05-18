@@ -1,42 +1,33 @@
 
 "use client";
 
-import { InfoCard } from "@/components";
-import {
-  FaUsers,
-  FaFileAlt,
-  FaGraduationCap,
-  FaCamera,
-} from "react-icons/fa";
+import { ReactNode } from "react";
+import { InfoCard } from "@/components"; // asegurate que esté importando el componente correcto
 
-export default function InfoCardSection() {
+interface CardData {
+  icon: ReactNode;
+  title: string;
+  href: string;
+  iconBgColor: string;
+}
+
+interface InfoCardSectionProps {
+  cards: CardData[];
+}
+
+export default function InfoCardSection({ cards }: InfoCardSectionProps) {
   return (
     <section className="w-full px-6 md:px-[120px] py-6 md:py-[30px]">
       <div className="grid grid-cols-2 md:flex md:flex-nowrap justify-center items-center gap-4 md:gap-5 max-w-[1248px] mx-auto">
-        <InfoCard
-          icon={<FaUsers className="text-blue-600" />}
-          title="Nosotros"
-          href="/nosotros"
-          iconBgColor="bg-blue-50"
-        />
-        <InfoCard
-          icon={<FaFileAlt className="text-emerald-700" />}
-          title="Aranceles 2025"
-          href="/jardin/aranceles"
-          iconBgColor="bg-emerald-50"
-        />
-        <InfoCard
-          icon={<FaGraduationCap className="text-orange-300" />}
-          title="Inscripción"
-          href="/jardin/inscripcion"
-          iconBgColor="bg-stone-50"
-        />
-        <InfoCard
-          icon={<FaCamera className="text-rose-500" />}
-          title="Redes sociales"
-          href="/jardin/redes"
-          iconBgColor="bg-rose-50"
-        />
+        {cards.map((card, index) => (
+          <InfoCard
+            key={index}
+            icon={card.icon}
+            title={card.title}
+            href={card.href}
+            iconBgColor={card.iconBgColor}
+          />
+        ))}
       </div>
     </section>
   );
