@@ -1,3 +1,4 @@
+import MapaBiblioteca from '@/public/mapaBiblioteca.png';
 //Logos
 export { default as Logo } from "./Logo1.png";
 export { default as Logo2 } from "./Logo2.png";
@@ -68,5 +69,5 @@ export { default as jardinImagen1 } from "./jardinImagen1.jpg";
 export { default as ArancelPrimaria } from "./ArancelPrimaria.png";
 
 //Biblioteca
-
+export { default as MapaBiblioteca } from "./mapa-bibloteca.png";
 

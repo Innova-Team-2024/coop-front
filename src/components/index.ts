@@ -90,3 +90,4 @@ export {
 
 //Biblioteca
 export { default as BibliotecaContent } from "./BibliotecaContent/BibliotecaContent";
+export { default as BibliotecaSucursal  } from "./BibliotecaContent/BibliotecaSucursal";
