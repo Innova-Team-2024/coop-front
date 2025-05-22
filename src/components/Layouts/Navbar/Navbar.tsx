@@ -142,6 +142,7 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* SUBMENÚ ESCRITORIO */}
         {openMenu && ["servicios", "instituciones", "nosotros", "soporte"].includes(openMenu) && (
           <div className="hidden md:flex w-full justify-center bg-transparent transition-all duration-300 pb-6">
             <ul className="text-[18px] leading-[24px] font-normal text-gray-700 flex flex-wrap gap-x-10 gap-y-2 max-w-5xl">
@@ -158,7 +159,9 @@ export default function Navbar() {
                 ) : (
                   <li key={child.key} className="min-w-[150px]">
                     <div className="flex items-center gap-1 cursor-pointer" onClick={() => toggleSubDropdown(child.key)}>
-                      <span>{child.label}</span>
+                      <span className={openSubDropdowns[child.key] ? "font-semibold text-black" : ""}>
+                        {child.label}
+                      </span>
                       <HiChevronDown
                         size={16}
                         className={`text-gray-500 mt-[2px] transition-transform duration-300 ${
@@ -187,8 +190,9 @@ export default function Navbar() {
           </div>
         )}
 
+        {/* MENÚ MOBILE */}
         {menuOpen && (
-          <div className="md:hidden bg-transparent  shadow-md px-4 py-3">
+          <div className="md:hidden bg-transparent shadow-md px-4 py-3">
             <ul className="flex flex-col gap-4 text-[18px] font-normal text-black">
               {navItems.map(({ label, key, children }) => (
                 <li key={key}>
@@ -196,7 +200,9 @@ export default function Navbar() {
                     onClick={() => toggleMobileSubmenu(key)}
                     className="flex items-center justify-start gap-1 cursor-pointer"
                   >
-                    <span>{label}</span>
+                    <span className={openMobileSubmenus[key] ? "font-semibold text-black" : ""}>
+                      {label}
+                    </span>
                     <HiChevronDown
                       className={`transition-transform duration-300 ${
                         openMobileSubmenus[key] ? "rotate-180" : ""
@@ -222,7 +228,9 @@ export default function Navbar() {
                                 onClick={() => toggleMobileSubmenu(child.key)}
                                 className="flex items-center gap-1 cursor-pointer"
                               >
-                                <span>{child.label}</span>
+                                <span className={openMobileSubmenus[child.key] ? "font-semibold text-black" : ""}>
+                                  {child.label}
+                                </span>
                                 <HiChevronDown
                                   className={`transition-transform duration-300 ${
                                     openMobileSubmenus[child.key] ? "rotate-180" : ""
@@ -262,6 +270,7 @@ export default function Navbar() {
           </div>
         )}
 
+        {/* LINEA MULTICOLOR */}
         <div className="flex h-[4px] w-full">
           <div className="w-[16.66%] bg-[#76257e]" />
           <div className="w-[16.66%] bg-[#1b45aa]" />

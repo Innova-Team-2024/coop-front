@@ -41,7 +41,7 @@ export default function BibliotecaContent() {
           {/* Escritorio */}
           <div className="hidden md:block">
             <video
-              src="/videoBiblo.mp4"
+              src="/BIBLIOTECA-ALTA.mp4"
               width={670}
               height={384}
               className="rounded-2xl w-[670px] h-96 object-cover"
@@ -56,7 +56,7 @@ export default function BibliotecaContent() {
           {/* Mobile con decorativos */}
           <div className="relative md:hidden">
             <video
-              src="/videoBiblo.mp4"
+              src="/BIBLIOTECA-ALTA.mp4"
               className="rounded-lg w-full h-[176px] object-cover"
               autoPlay
               loop
