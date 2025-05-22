@@ -41,7 +41,7 @@ export default function BibliotecaContent() {
           {/* Escritorio */}
           <div className="hidden md:block">
             <video
-              src="/BIBLIOTECA-ALTA.mp4"
+              src="/biblioteca.mp4"
               width={670}
               height={384}
               className="rounded-2xl w-[670px] h-96 object-cover"
