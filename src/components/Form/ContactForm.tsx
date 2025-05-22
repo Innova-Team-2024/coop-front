@@ -1,5 +1,5 @@
 
-"use client";
+'use client';
 
 import { useState, FormEvent } from "react";
 import Image from "next/image";
@@ -49,12 +49,13 @@ export default function ContactForm({
       {/* IZQUIERDA */}
       <div className="flex flex-col gap-6">
         {mostrarLogo && (
-          <div className="mb-4 hidden md:block">
+          <div className="mb-4 flex justify-center md:justify-start">
             <Image
               src={isologoform}
               alt="Logo Cooperativa Telefónica"
-              width={287}
+              width={200}
               height={42}
+              className="md:w-[287px]"
             />
           </div>
         )}
