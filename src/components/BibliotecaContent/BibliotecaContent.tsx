@@ -36,17 +36,9 @@ export default function BibliotecaContent() {
 
       {/* CONTENIDO RESPONSIVE */}
       <div className="w-full flex flex-col lg:flex-row justify-center items-start gap-[40px]">
-        {/* VIDEO */}
-        <div className="relative w-full lg:w-[670px] h-auto rounded-2xl overflow-hidden">
-          {/* Escritorio */}
-          <div className="hidden md:block">
-           <span>Video no disponible temporalmente</span>
-          </div>
-
-          {/* Mobile con decorativos */}
-          <div className="relative md:hidden">
-            <span>Video no disponible</span>
-          </div>
+        {/* BLOQUE VIDEO DESACTIVADO */}
+        <div className="w-full lg:w-[670px] flex items-center justify-center rounded-2xl bg-gray-100 h-40 md:h-96 text-gray-500 text-center">
+          Video 
         </div>
 
         {/* TEXTO - ESCRITORIO */}
