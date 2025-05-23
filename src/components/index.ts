@@ -38,6 +38,7 @@ export { default as NosotrosSection } from "./NosotrosSection/NosotrosSection";
 //GallerySection
 export { default as GallerySection } from "./GallerySection/GallerySection";
 
+
 //Aranceles
 export { default as ArancelesCard } from "./ArancelesCard/ArancelesCard";
 

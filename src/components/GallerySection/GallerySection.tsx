@@ -22,7 +22,7 @@ const images = [
 
 export default function GallerySection() {
   return (
-    <section className="w-full px-[120px] py-[60px] bg-[#F7F7FB]">
+    <section className="w-full px-6 md:px-[120px] py-[60px] bg-[#F7F7FB]">
       <div className="max-w-[1200px] mx-auto">
         <ImageSlideGallery images={images} />
       </div>
