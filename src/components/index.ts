@@ -28,6 +28,20 @@ export { default as Service } from "./Service/Service";
 //Sucursal
 export { default as Sucursal } from "./Sucursal/Sucursal";
 
+//Cards
+export { default as InfoCard } from "./Cards/InfoCard";
+export { default as InfoCardSection } from "./Cards/InfoCardSection";
+
+//NosotrosSection
+export { default as NosotrosSection } from "./NosotrosSection/NosotrosSection";
+
+//GallerySection
+export { default as GallerySection } from "./GallerySection/GallerySection";
+
+
+//Aranceles
+export { default as ArancelesCard } from "./ArancelesCard/ArancelesCard";
+
 //About Banne
 export { default as AboutUs } from "./AboutUs/AboutUs";
 
@@ -40,12 +54,19 @@ export { default as BoardAccordion } from "./BoardAccordion/BoardAccordion";
 export { default as ImageGridGallery } from "./ImageGrid/ImageGridGallery";
 export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery";
 
+//HeroSection
+export { default as Herosection } from "./Herosection/Herosection";
+
+//SocialMediaSection
+export { default as SocialMediaSection } from "./SocialMediaSection/SocialMediaSection";
+
 //Formas de Pago - Page
 export { default as GestarCoopAccess } from "./PaymentMethods/GestarCoopAccess";
 export { default as PaymentPlatform } from "./PaymentMethods/PaymentPlatform";
 
 //Loader
 export { default as Loader } from "./Loader/Loader";
+export { default as RouteLoader } from "./Loader/RouteLoader";
 
 // UI Components
 export {
@@ -69,3 +90,10 @@ export {
   CardTitle,
 } from "./ui/card";
 
+//Biblioteca
+export { default as BibliotecaContent } from "./BibliotecaContent/BibliotecaContent";
+export { default as BibliotecaSucursal  } from "./BibliotecaContent/BibliotecaSucursal";
+
+//Sepelio
+export { default as  SepeliosAccordion } from "./SepeliosAccordion/SepeliosAccordion";
+export { default as  SepeliosResponsive } from "./SepeliosAccordion/SepeliosResponsive";

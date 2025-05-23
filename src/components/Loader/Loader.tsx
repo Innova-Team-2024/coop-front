@@ -28,7 +28,7 @@ export default function Loader({ onFinish }: { onFinish: () => void }) {
           setActiveIndex(-1);
           index = (index + 1) % colors.length;
           animateNext();
-        }, 200);
+        }, 180);
       };
   
       animateNext();
@@ -39,7 +39,7 @@ export default function Loader({ onFinish }: { onFinish: () => void }) {
     const timeout = setTimeout(() => {
       setShow(false);
       onFinish();
-    }, 2000);
+    }, 1500);
   
     return () => {
       clearTimeout(timeout);

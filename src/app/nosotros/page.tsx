@@ -82,7 +82,12 @@ export default function Nosotros() {
         </div>
       </section>
       <section className="px-2">
-        <ContactForm />
+        <ContactForm
+          titulo="¿Tenés alguna duda?"
+          descripcion="Completá el formulario y contanos en qué podemos ayudarte. Ya sea una consulta, una sugerencia o un reclamo, tu mensaje es importante para nosotros."
+          horario="Respondemos de lunes a viernes, entre las 8 y las 16 h. ¡Te vamos a estar leyendo!"
+          mostrarLogo={true}
+        />
       </section>
     </main>
   );

@@ -1,6 +1,8 @@
+
 "use client";
+
 import React from "react";
-import Image, { StaticImageData } from "next/image.js";
+import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
@@ -15,39 +17,50 @@ function ImageSlideGallery({ images }: Props) {
   return (
     <>
       <style jsx global>{`
-        /* Estilos personalizados para las flechas de navegación */
         .swiper-button-next,
         .swiper-button-prev {
-          color: #000; /* Color de las flechas */
-          background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-          width: 40px; /* Ancho personalizado */
-          height: 40px; /* Altura personalizada */
-          border-radius: 50%; /* Forma circular */
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+          color: #000;
+          background: rgba(255, 255, 255, 0.8);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
-        /* Posicionamiento y tamaño del icono de la flecha */
         .swiper-button-next:after,
         .swiper-button-prev:after {
-          font-size: 18px; /* Tamaño más pequeño para el icono */
+          font-size: 18px;
         }
 
-        /* Efecto hover para las flechas */
         .swiper-button-next:hover,
         .swiper-button-prev:hover {
-          background: rgba(255, 255, 255, 1); /* Fondo sólido en hover */
-          color: #007bff; /* Cambio de color en hover */
+          background: rgba(255, 255, 255, 1);
+          color: #007bff;
         }
 
-        /* Deshabilitar estilo */
         .swiper-button-disabled {
           opacity: 0.35;
           cursor: auto;
           pointer-events: none;
         }
       `}</style>
+
       <Swiper
-        slidesPerView={4}
+        slidesPerView={1.3}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 12,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 16,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 16,
+          },
+        }}
         spaceBetween={8}
         navigation={true}
         modules={[Navigation]}
@@ -55,13 +68,15 @@ function ImageSlideGallery({ images }: Props) {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <Image
-              src={image}
-              alt={`Slide ${index + 1}`}
-              width={383}
-              height={383}
-              className="select-none"
-            />
+            <div className="relative w-full h-[383px] rounded-2xl overflow-hidden">
+              <Image
+                src={image}
+                alt={`Slide ${index + 1}`}
+                fill
+                className="object-cover select-none"
+                sizes="(max-width: 768px) 100vw, 25vw"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
