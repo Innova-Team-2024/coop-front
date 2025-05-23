@@ -40,30 +40,12 @@ export default function BibliotecaContent() {
         <div className="relative w-full lg:w-[670px] h-auto rounded-2xl overflow-hidden">
           {/* Escritorio */}
           <div className="hidden md:block">
-            <video
-              src="/biblioteca.mp4"
-              width={670}
-              height={384}
-              className="rounded-2xl w-[670px] h-96 object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              controls
-            />
+           <span>Video no disponible temporalmente</span>
           </div>
 
           {/* Mobile con decorativos */}
           <div className="relative md:hidden">
-            <video
-              src="/BIBLIOTECA-ALTA.mp4"
-              className="rounded-lg w-full h-[176px] object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              controls
-            />
+            <span>Video no disponible</span>
           </div>
         </div>
 
