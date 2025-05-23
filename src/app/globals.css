@@ -16,6 +16,11 @@ body {
   }
 }
 
+#toast-container > .toast-success {
+  background-color: #06A84D !important;
+  opacity: 1 !important;
+}
+
 .bounce-once {
   animation: waveBounce 0.4s ease;
 }
