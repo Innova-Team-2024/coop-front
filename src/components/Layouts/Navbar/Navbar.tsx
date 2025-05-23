@@ -13,12 +13,8 @@ import { ButtonAccount } from "@/components";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [openSubDropdowns, setOpenSubDropdowns] = useState<{
-    [key: string]: boolean;
-  }>({});
-  const [openMobileSubmenus, setOpenMobileSubmenus] = useState<{
-    [key: string]: boolean;
-  }>({});
+  const [openSubDropdowns, setOpenSubDropdowns] = useState<{ [key: string]: boolean }>({});
+  const [openMobileSubmenus, setOpenMobileSubmenus] = useState<{ [key: string]: boolean }>({});
   const [isClient, setIsClient] = useState(false);
 
   const pathname = usePathname();
@@ -35,20 +31,12 @@ export default function Navbar() {
   }, [pathname]);
 
   const navItems = [
-    {
-      label: "Servicios",
-      key: "servicios",
-      children: ["Internet", "Televisión", "Telefonía"],
-    },
+    { label: "Servicios", key: "servicios", children: ["Internet", "Televisión", "Telefonía"] },
     {
       label: "Instituciones",
       key: "instituciones",
       children: [
-        {
-          label: "Colegios",
-          key: "colegios",
-          children: ["Jardín", "Primaria"],
-        },
+        { label: "Colegios", key: "colegios", children: ["Jardín", "Primaria"] },
         "Biblioteca",
         "Salón de eventos",
         "Sepelios",
@@ -61,11 +49,7 @@ export default function Navbar() {
         "Consejo directivo",
         "Historia",
         "Obras",
-        {
-          label: "Socios",
-          key: "socios",
-          children: ["Memoria y balance", "Reuniones sociales"],
-        },
+        { label: "Socios", key: "socios", children: ["Memoria y balance", "Reuniones sociales"] },
       ],
     },
     {
@@ -79,19 +63,19 @@ export default function Navbar() {
     const map: { [key: string]: string } = {
       "Formas de pago": "/formas-de-pago",
       "Memoria y balance": "/nosotros/memoria&balance",
-      Reclamos: "/soporte/reclamos",
+      "Reclamos": "/soporte/reclamos",
       "Consultas técnicas": "/soporte/consultas-tecnicas",
       "Ayuda online": "/soporte/ayuda-online",
-      Internet: "/servicios/internet",
-      Televisión: "/servicios/television",
-      Telefonía: "/servicios/telefonia",
-      Biblioteca: "/instituciones/biblioteca",
+      "Internet": "/servicios/internet",
+      "Televisión": "/servicios/television",
+      "Telefonía": "/servicios/telefonia",
+      "Biblioteca": "/instituciones/biblioteca",
       "Salón de eventos": "/instituciones/salon-de-eventos",
-      Sepelios: "/instituciones/sepelios",
-      Jardín: "/instituciones/colegios/jardin",
-      Primaria: "/instituciones/colegios/primaria",
-      Obras: "/nosotros/obras",
-      Historia: "/nosotros/historia",
+      "Sepelios": "/instituciones/sepelios",
+      "Jardín": "/instituciones/colegios/jardin",
+      "Primaria": "/instituciones/colegios/primaria",
+      "Obras": "/nosotros/obras",
+      "Historia": "/nosotros/historia",
       "Consejo directivo": "/nosotros/consejo-directivo",
     };
     return map[label] || "#";
@@ -112,24 +96,11 @@ export default function Navbar() {
       <nav className="w-full bg-white/80 backdrop-blur-[12px] shadow-none transition-all duration-300">
         <div className="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16 xl:px-[120px] py-[24px] h-[72px] md:h-[103px]">
           <div className="flex items-center gap-4 md:gap-0 md:flex-none">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="block md:hidden"
-            >
-              {menuOpen ? (
-                <HiX className="text-3xl text-black" />
-              ) : (
-                <HiMenu className="text-3xl text-black" />
-              )}
+            <button onClick={() => setMenuOpen(!menuOpen)} className="block md:hidden">
+              {menuOpen ? <HiX className="text-3xl text-black" /> : <HiMenu className="text-3xl text-black" />}
             </button>
             <div className="absolute md:static left-1/2 transform -translate-x-1/2 md:translate-x-0">
-              <Image
-                src={Logo}
-                alt="Logo"
-                width={50}
-                height={50}
-                className="mx-auto"
-              />
+              <Image src={Logo} alt="Logo" width={50} height={50} className="mx-auto" />
             </div>
           </div>
 
@@ -166,11 +137,7 @@ export default function Navbar() {
               <ButtonAccount />
             </div>
             <div className="xl:hidden">
-              <FaRegUserCircle
-                onClick={handleRedirect}
-                size={26}
-                className="text-black"
-              />
+              <FaRegUserCircle size={26} className="text-black" />
             </div>
           </div>
         </div>
@@ -266,9 +233,7 @@ export default function Navbar() {
                                 </span>
                                 <HiChevronDown
                                   className={`transition-transform duration-300 ${
-                                    openMobileSubmenus[child.key]
-                                      ? "rotate-180"
-                                      : ""
+                                    openMobileSubmenus[child.key] ? "rotate-180" : ""
                                   }`}
                                 />
                               </div>

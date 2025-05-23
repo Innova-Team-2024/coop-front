@@ -11,6 +11,7 @@ import {
   Sucursal,
   Loader
 } from "@/components";
+import {SucursalImage} from "@/public"; 
 
 import { useState } from "react";
 

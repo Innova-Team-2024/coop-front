@@ -65,6 +65,7 @@ export { default as PaymentPlatform } from "./PaymentMethods/PaymentPlatform";
 
 //Loader
 export { default as Loader } from "./Loader/Loader";
+export { default as RouteLoader } from "./Loader/RouteLoader";
 
 // UI Components
 export {
