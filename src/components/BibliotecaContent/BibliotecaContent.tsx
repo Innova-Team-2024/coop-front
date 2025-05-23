@@ -1,21 +1,10 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function BibliotecaContent() {
   const [mostrarTextoCompleto, setMostrarTextoCompleto] = useState(false);
-  const [esEscritorio, setEsEscritorio] = useState(false);
-
-  useEffect(() => {
-    const actualizarVista = () => {
-      setEsEscritorio(window.innerWidth >= 768);
-    };
-
-    actualizarVista();
-    window.addEventListener("resize", actualizarVista);
-    return () => window.removeEventListener("resize", actualizarVista);
-  }, []);
 
   const parrafos = [
     `El sueño de contar con una biblioteca comunitaria, impulsado por nuestras socias Amanda Acosta y María Capdevila, se hizo realidad gracias al apoyo incondicional de su fundador, Segundo Severino Lago. El 23 de enero de 2006, inauguramos este espacio acompañados por el consejo administrativo de nuestra cooperativa, autoridades y socios.`,
@@ -27,29 +16,17 @@ export default function BibliotecaContent() {
 
   return (
     <section className="w-full max-w-[1440px] mx-auto px-6 md:px-28 pt-14 pb-28 flex flex-col items-center gap-12">
-      {/* TÍTULO */}
       <div className="w-full flex flex-col items-center gap-4">
         <div className="text-center text-[#222427] text-3xl md:text-5xl font-semibold leading-[56px]">
           Defendamos lo nuestro
         </div>
       </div>
 
-      {/* CONTENIDO RESPONSIVE */}
       <div className="w-full flex flex-col lg:flex-row justify-center items-start gap-[40px]">
-        {/* VIDEO */}
-        <div className="relative w-full lg:w-[670px] h-auto rounded-2xl overflow-hidden">
-          {/* Escritorio */}
-          <div className="hidden md:block">
-           <span>Video no disponible temporalmente</span>
-          </div>
-
-          {/* Mobile con decorativos */}
-          <div className="relative md:hidden">
-            <span>Video no disponible</span>
-          </div>
+        <div className="w-full lg:w-[670px] flex items-center justify-center rounded-2xl bg-gray-100 h-40 md:h-96 text-gray-500 text-center">
+          Video
         </div>
 
-        {/* TEXTO - ESCRITORIO */}
         <div className="hidden md:flex flex-col gap-4 mt-[-16px] w-[470px]">
           <div>
             <p className="text-Texto-general-Color text-2xl font-medium font-['Roboto'] leading-loose">
@@ -69,7 +46,6 @@ export default function BibliotecaContent() {
           ))}
         </div>
 
-        {/* TEXTO - MOBILE */}
         <div className="md:hidden flex flex-col items-center gap-4 mt-6">
           <div className="text-center text-Texto-general-Color text-xl font-bold font-['Roboto'] leading-normal">
             Biblioteca <br />

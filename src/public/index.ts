@@ -1,4 +1,3 @@
-import MapaBiblioteca from '@/public/mapaBiblioteca.png';
 //Logos
 export { default as Logo } from "./Logo1.png";
 export { default as Logo2 } from "./Logo2.png";

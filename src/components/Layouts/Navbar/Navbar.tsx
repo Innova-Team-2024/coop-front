@@ -101,7 +101,7 @@ export default function Navbar() {
             </button>
             <div className="absolute md:static left-1/2 transform -translate-x-1/2 md:translate-x-0">
               <Link href="/">
-              <Image src={Logo} alt="Logo" width={50} height={50} className="mx-auto" />
+                <Image src={Logo} alt="Logo" width={50} height={50} className="mx-auto" />
               </Link>
             </div>
           </div>
