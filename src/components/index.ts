@@ -97,3 +97,6 @@ export { default as BibliotecaSucursal  } from "./BibliotecaContent/BibliotecaSu
 //Sepelio
 export { default as  SepeliosAccordion } from "./SepeliosAccordion/SepeliosAccordion";
 export { default as  SepeliosResponsive } from "./SepeliosAccordion/SepeliosResponsive";
+
+//Soporte
+export  { default as TabsSoporteSection }  from "./TabsSoporteSection/TabsSoporteSection";
