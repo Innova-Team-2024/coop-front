@@ -1,3 +1,4 @@
+import FaqsSoporteSection from './SoporteSection/FaqsSoporteSection';
 //Layouts
 export { default as Navbar } from "./Layouts/Navbar/Navbar";
 export { default as Footer } from "./Layouts/Footer/Footer";
@@ -99,4 +100,5 @@ export { default as  SepeliosAccordion } from "./SepeliosAccordion/SepeliosAccor
 export { default as  SepeliosResponsive } from "./SepeliosAccordion/SepeliosResponsive";
 
 //Soporte
-export  { default as TabsSoporteSection }  from "./TabsSoporteSection/TabsSoporteSection";
+export  { default as TabsSoporteSection }  from "./SoporteSection/TabsSoporteSection";
+export { default as FaqsSoporteSection } from "./SoporteSection/FaqsSoporteSection";
