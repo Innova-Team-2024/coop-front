@@ -6,26 +6,26 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
  *
  * @example
  * // Botón básico
- * <PrimaryButton onClick={handleClick}>Enviar</PrimaryButton>
+ * <GreenButton onClick={handleClick}>Enviar</GreenButton>
  *
  * // Botón con ícono
- * <PrimaryButton icon={<IconoEnviar />}>Enviar Mensaje</PrimaryButton>
+ * <GreenButton icon={<IconoEnviar />}>Enviar Mensaje</GreenButton>
  *
  * // Botón de tipo "submit" para formularios
- * <PrimaryButton type="submit">Guardar</PrimaryButton>
+ * <GreenButton type="submit">Guardar</GreenButton>
  *
  * // Con clases personalizadas
- * <PrimaryButton className="mt-4 w-full">Botón con margen</PrimaryButton>
+ * <GreenButton className="mt-4 w-full">Botón con margen</GreenButton>
  *
  * // Diferentes niveles de redondeo
- * <PrimaryButton rounded="none">Sin bordes redondeados</PrimaryButton>
- * <PrimaryButton rounded="sm">Poco redondeado</PrimaryButton>
- * <PrimaryButton rounded="full">Totalmente redondeado</PrimaryButton>
+ * <GreenButton rounded="none">Sin bordes redondeados</GreenButton>
+ * <GreenButton rounded="sm">Poco redondeado</GreenButton>
+ * <GreenButton rounded="full">Totalmente redondeado</GreenButton>
  *
  * // Diferentes tamaños
- * <PrimaryButton size="sm">Botón pequeño</PrimaryButton>
- * <PrimaryButton size="md">Botón mediano (por defecto)</PrimaryButton>
- * <PrimaryButton size="lg">Botón grande</PrimaryButton>
+ * <GreenButton size="sm">Botón pequeño</GreenButton>
+ * <GreenButton size="md">Botón mediano (por defecto)</GreenButton>
+ * <GreenButton size="lg">Botón grande</GreenButton>
  */
 interface GreenButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode; // Contenido del botón (texto)

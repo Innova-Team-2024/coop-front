@@ -111,7 +111,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
       ) : (
         <Link
           href={item.href}
-          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-[#46AF3F] dark:text-gray-400 dark:hover:text-white"
         >
           {item.label}
         </Link>
@@ -157,7 +157,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
               </svg>
               <button
                 onClick={handleEllipsisClick}
-                className="ms-1 text-sm font-medium text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white cursor-pointer"
+                className="ms-1 text-sm font-medium text-gray-500 hover:text-[#46AF3F] dark:text-gray-400 dark:hover:text-white cursor-pointer"
                 aria-expanded={isDropdownOpen}
               >
                 ...

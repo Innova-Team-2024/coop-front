@@ -60,6 +60,7 @@ export { Button } from "./ui/button";
 export { default as GreenButton } from "./Buttons/GreenButton";
 export { default as PrimaryButton } from "./Buttons/PrimaryButton";
 export { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+export { default as TabItem } from "./ui/tabItem";
 export {
   Card,
   CardContent,
