@@ -10,115 +10,142 @@ import {
   CardTitle,
   TabsSoporteSection,
   FaqsSoporteSection,
-  ContactForm
+  ContactForm,
 } from "@/components";
 import { BannerSoporte } from "@/public";
 
+type Item = {
+  titulo: string;
+  descripcion: React.ReactNode;
+  email: string;
+};
+
+const items: Item[] = [
+  {
+    titulo: "Administración",
+    descripcion: (
+      <>
+        Para realizar trámites, consultas y reclamos podés contactarte con
+        nosotros vía mail y responderemos a la brevedad.
+      </>
+    ),
+    email: "ventas@interbourg.com.ar",
+  },
+  {
+    titulo: "Ventas",
+    descripcion: (
+      <>
+        Estamos atendiendo en la sucursal de Grand Bourg y Pablo Nogués.
+        <br />
+        8:30 – 16:00 de Lunes a Viernes.
+      </>
+    ),
+    email: "notificaciones@cooperativagb.com.ar",
+  },
+  {
+    titulo: "Servicio técnico",
+    descripcion: (
+      <>
+        Si necesitás soporte técnico de telefonía o internet podés contactarte
+        con nuestros profesionales.
+      </>
+    ),
+    email: "soporte@interbourg.com.ar",
+  },
+];
+
+function SupportCard({ item }: { item: Item }) {
+  return (
+    <Card className="bg-white shadow-lg rounded-2xl">
+      <CardHeader>
+        <CardTitle className="text-lg sm:text-xl text-center font-semibold">
+          {item.titulo}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="text-sm sm:text-base">
+        <p className="text-gray-700 mb-3 sm:mb-4 text-center">
+          {item.descripcion}
+        </p>
+        <p className="text-green-700 text-center font-semibold break-words">
+          {item.email}
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function SoportePage() {
   return (
-    <>
-      <section className="relative w-full h-[650px] md:h-[720px]">
+    // Evita cualquier desplazamiento lateral en móviles muy chicos
+    <div className="overflow-x-hidden">
+      {/* BANNER */}
+      <section className="relative w-full h-[320px] sm:h-[420px] md:h-[640px] overflow-hidden">
         <Image
           src={BannerSoporte}
           alt="Banner Soporte"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-          className="z-0"
+          fill
+          priority
+          className="object-cover object-center z-0"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
-        <div className="relative z-20 flex flex-col items-center justify-center h-full px-4">
-          <div className="w-full max-w-6xl mb-4">
+        <div className="absolute inset-0 bg-black/50 z-10" />
+
+        {/* Contenido del banner */}
+        <div className="relative z-20 flex flex-col items-center h-full px-4">
+          <div className="w-full max-w-6xl mt-6 mb-3 sm:mb-4 px-2 sm:px-4 self-start">
             <Breadcrumb
-              className="
-                text-white
-                [&_a]:text-white
-                [&_a:hover]:text-gray-400
-                [&_span]:text-white
-                [&_svg]:text-white
-                [&_svg:hover]:text-gray-400"
+              className="text-white [&_a]:text-white [&_a:hover]:text-gray-300 [&_span]:text-white [&_svg]:text-white [&_svg:hover]:text-gray-300"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Soporte", href: "/soporte" },
               ]}
             />
           </div>
-          <h1 className="text-white text-3xl md:text-5xl font-bold mb-12 text-center">
+
+          <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center mt-2">
             Estamos para ayudarte
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
-            <Card className="bg-white shadow-md rounded-lg">
-              <CardHeader>
-                <CardTitle className="text-lg text-center font-semibold">
-                  Administración
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-700 mb-4">
-                  Para realizar trámites, consultas y reclamos podés
-                  contactarte con nosotros vía mail y responderemos a la
-                  brevedad.
-                </p>
-                <p className="text-green-700 text-center font-semibold">
-                  ventas@interbourg.com.ar
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white shadow-md rounded-lg">
-              <CardHeader>
-                <CardTitle className="text-lg text-center font-semibold">
-                  Ventas
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-700 mb-4">
-                  Estamos atendiendo en la sucursal de Grand Bourg y Pablo
-                  Nogués.
-                  <br />
-                  8:30 – 16:00 de Lunes a Viernes.
-                </p>
-                <p className="text-green-700 text-center font-semibold">
-                  notificaciones@cooperativagb.com.ar
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white shadow-md rounded-lg">
-              <CardHeader>
-                <CardTitle className="text-lg text-center font-semibold">
-                  Servicio técnico
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-700 mb-4">
-                  Si necesitás soporte técnico de telefonía o internet podés
-                  contactarte con nuestros profesionales.
-                </p>
-                <p className="text-green-700 text-center font-semibold">
-                  soporte@interbourg.com.ar
-                </p>
-              </CardContent>
-            </Card>
+          {/* GRID DE CARDS DENTRO DEL BANNER (solo desktop/tablet) */}
+          <div className="hidden md:block w-full">
+            <div className="mx-auto w-full max-w-6xl mt-10">
+              <div className="grid grid-cols-3 gap-6">
+                {items.map((it, i) => (
+                  <div key={i} className="relative">
+                    <SupportCard item={it} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16 px-4 md:px-8">
+      {/* CARDS APILADAS PARA MOBILE (debajo del banner) */}
+      <section className="md:hidden bg-[#F7F8F9] pt-8 pb-10 sm:pb-14 px-4">
+        {/* Limitamos el ancho y centramos para que no “bailen” en dispositivos 360–390px */}
+        <div className="w-full max-w-[28rem] mx-auto grid grid-cols-1 gap-6">
+          {items.map((it, i) => (
+            <SupportCard key={i} item={it} />
+          ))}
+        </div>
+      </section>
+
+      {/* TABS */}
+      <section className="bg-white py-12 sm:py-16 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <TabsSoporteSection />
         </div>
       </section>
 
-      <section className="bg-[#F7F8F9] py-16 px-4 md:px-8">
+      {/* FAQS */}
+      <section className="bg-[#F7F8F9] py-12 sm:py-16 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <FaqsSoporteSection />
         </div>
       </section>
 
-      {/* NUEVA SECCIÓN DE FORMULARIO */}
-      <section className="bg-white py-20 px-4 md:px-8">
+      {/* CONTACTO */}
+      <section className="bg-white py-16 sm:py-20 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <ContactForm
             titulo="¿Tenés alguna duda?"
@@ -128,6 +155,6 @@ export default function SoportePage() {
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }

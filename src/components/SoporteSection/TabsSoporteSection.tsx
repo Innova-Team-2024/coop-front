@@ -13,25 +13,31 @@ export default function TabsSoporteSection() {
     <section className="w-full max-w-7xl mx-auto px-4 py-12">
       {/* Tabs */}
       <div className="flex justify-center mb-12">
-        <div className="flex bg-white rounded-[32px] border border-gray-200 overflow-hidden">
-          {TABS.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={clsx(
-                "flex-1 px-8 py-3 text-lg font-roboto transition-all duration-300",
-                activeTab === tab
-                  ? "text-zinc-900 font-medium relative z-10"
-                  : "text-zinc-600 font-normal",
-                "relative"
-              )}
-            >
-              {activeTab === tab && (
-                <div className="absolute inset-0 rounded-[32px] bg-white shadow-[0px_4px_6px_rgba(0,0,0,0.1),_0px_2px_4px_rgba(0,0,0,0.06)] z-[-1]" />
-              )}
-              {tab}
-            </button>
-          ))}
+        <div className="flex bg-white rounded-[32px] border border-gray-200 p-1">
+          {TABS.map((tab) => {
+            const isActive = activeTab === tab
+            return (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={clsx(
+                  "relative flex-1 px-8 py-3 text-lg font-roboto rounded-full transition-all duration-300",
+                  isActive
+                    ? "text-zinc-900 font-medium"
+                    : "text-zinc-600 font-normal"
+                )}
+                style={{
+                  background: isActive
+                    ? "linear-gradient(white, white) padding-box, linear-gradient(to right, #FF6600, #FF4CFF, #00AAFF) border-box"
+                    : "transparent",
+                  border: isActive ? "2px solid transparent" : "2px solid transparent",
+                  borderRadius: "9999px"
+                }}
+              >
+                {tab}
+              </button>
+            )
+          })}
         </div>
       </div>
 
