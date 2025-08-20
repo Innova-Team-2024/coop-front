@@ -31,7 +31,7 @@ export default function Navbar() {
   }, [pathname]);
 
   const navItems = [
-    { label: "Servicios", key: "servicios", children: ["Internet", "Televisión", "Telefonía"] },
+    { label: "Servicios", key: "servicios" }, // link directo
     {
       label: "Instituciones",
       key: "instituciones",
@@ -52,22 +52,19 @@ export default function Navbar() {
         { label: "Socios", key: "socios", children: ["Memoria y balance", "Reuniones sociales"] },
       ],
     },
-    {
-      label: "Soporte",
-      key: "soporte",
-    },
+    { label: "Soporte", key: "soporte" },
   ];
 
   const getHref = (label: string) => {
     const map: { [key: string]: string } = {
+      "Servicios": "/servicios",
+      "Nosotros": "/nosotros",
+      "Soporte": "/soporte",
       "Formas de pago": "/formas-de-pago",
       "Memoria y balance": "/nosotros/memoria&balance",
       "Reclamos": "/soporte/reclamos",
       "Consultas técnicas": "/soporte/consultas-tecnicas",
       "Ayuda online": "/soporte/ayuda-online",
-      "Internet": "/servicios/internet",
-      "Televisión": "/servicios/television",
-      "Telefonía": "/servicios/telefonia",
       "Biblioteca": "/instituciones/biblioteca",
       "Salón de eventos": "/instituciones/salon-de-eventos",
       "Sepelios": "/instituciones/sepelios",
@@ -76,7 +73,6 @@ export default function Navbar() {
       "Obras": "/nosotros/obras",
       "Historia": "/nosotros/historia",
       "Consejo directivo": "/nosotros/consejo-directivo",
-      "Soporte": "/soporte",
     };
     return map[label] || "#";
   };
@@ -86,14 +82,11 @@ export default function Navbar() {
     setOpenMobileSubmenus((prev) => {
       const isNested = allowMultiple.includes(key);
       const wasOpen = !!prev[key];
-
       if (isNested) {
         return { ...prev, [key]: !wasOpen };
       } else {
         const newState: { [key: string]: boolean } = {};
-        Object.keys(prev).forEach((k) => {
-          newState[k] = false;
-        });
+        Object.keys(prev).forEach((k) => (newState[k] = false));
         newState[key] = !wasOpen;
         return newState;
       }
@@ -121,26 +114,51 @@ export default function Navbar() {
             </div>
           </div>
 
+          {/* ESCRITORIO */}
           {isClient && (
             <ul className="hidden md:flex gap-4 items-center justify-center text-[18px] font-normal text-black relative z-10">
               {navItems.map(({ label, key, children }) =>
                 children ? (
-                  <li key={key} className="relative">
-                    <button
-                      onClick={() => setOpenMenu(openMenu === key ? null : key)}
-                      className={`flex items-center gap-1 transition-colors duration-300 ${
-                        openMenu === key ? "text-black font-semibold" : ""
-                      }`}
-                    >
-                      <span>{label}</span>
-                      <HiChevronDown
-                        size={16}
-                        className={`text-gray-500 transition-transform duration-300 ${
-                          openMenu === key ? "rotate-180" : ""
+                  key === "nosotros" ? (
+                    <li key={key} className="relative flex items-center gap-1">
+                      <Link
+                        href={getHref(label)}
+                        className={`hover:font-semibold ${isActive(getHref(label)) ? "font-semibold" : ""}`}
+                      >
+                        {label}
+                      </Link>
+                      <button
+                        onClick={() => setOpenMenu(openMenu === key ? null : key)}
+                        aria-expanded={openMenu === key}
+                        aria-controls={`submenu-${key}`}
+                        className="flex items-center"
+                      >
+                        <HiChevronDown
+                          size={16}
+                          className={`text-gray-500 transition-transform duration-300 ${
+                            openMenu === key ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </li>
+                  ) : (
+                    <li key={key} className="relative">
+                      <button
+                        onClick={() => setOpenMenu(openMenu === key ? null : key)}
+                        className={`flex items-center gap-1 transition-colors duration-300 ${
+                          openMenu === key ? "text-black font-semibold" : ""
                         }`}
-                      />
-                    </button>
-                  </li>
+                      >
+                        <span>{label}</span>
+                        <HiChevronDown
+                          size={16}
+                          className={`text-gray-500 transition-transform duration-300 ${
+                            openMenu === key ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </li>
+                  )
                 ) : (
                   <li key={key}>
                     <Link
@@ -174,9 +192,12 @@ export default function Navbar() {
         </div>
 
         {/* SUBMENÚ ESCRITORIO */}
-        {openMenu && ["servicios", "instituciones", "nosotros"].includes(openMenu) && (
+        {openMenu && ["instituciones", "nosotros"].includes(openMenu) && (
           <div className="hidden md:flex w-full justify-center bg-transparent transition-all duration-300 pb-6">
-            <ul className="text-[18px] leading-[24px] font-normal text-gray-700 flex flex-wrap gap-x-10 gap-y-2 max-w-5xl">
+            <ul
+              id={`submenu-${openMenu}`}
+              className="text-[18px] leading-[24px] font-normal text-gray-700 flex flex-wrap gap-x-10 gap-y-2 max-w-5xl"
+            >
               {navItems.find((item) => item.key === openMenu)?.children?.map((child) =>
                 typeof child === "string" ? (
                   <li key={child}>
@@ -228,69 +249,136 @@ export default function Navbar() {
               {navItems.map(({ label, key, children }) => (
                 <li key={key}>
                   {children ? (
-                    <>
-                      <div
-                        onClick={() => toggleMobileSubmenu(key)}
-                        className="flex items-center justify-start gap-1 cursor-pointer"
-                      >
-                        <span className={openMobileSubmenus[key] ? "font-semibold text-black" : ""}>{label}</span>
-                        <HiChevronDown
-                          className={`transition-transform duration-300 ${
-                            openMobileSubmenus[key] ? "rotate-180" : ""
-                          }`}
-                        />
-                      </div>
-                      {openMobileSubmenus[key] && (
-                        <ul className="ml-4 mt-2 space-y-2">
-                          {children.map((child) =>
-                            typeof child === "string" ? (
-                              <li key={child}>
-                                <Link
-                                  href={getHref(child)}
-                                  className={isActive(getHref(child)) ? "font-semibold" : ""}
-                                >
-                                  {child}
-                                </Link>
-                              </li>
-                            ) : (
-                              <li key={child.key}>
-                                <div
-                                  onClick={() => toggleMobileSubmenu(child.key)}
-                                  className="flex items-center gap-1 cursor-pointer"
-                                >
-                                  <span
-                                    className={
-                                      openMobileSubmenus[child.key] ? "font-semibold text-black" : ""
-                                    }
+                    key === "nosotros" ? (
+                      <>
+                        <div className="flex items-center gap-2">
+                          <Link
+                            href={getHref(label)}
+                            className={isActive(getHref(label)) ? "font-semibold" : ""}
+                          >
+                            {label}
+                          </Link>
+                          <button
+                            onClick={() => toggleMobileSubmenu(key)}
+                            aria-expanded={!!openMobileSubmenus[key]}
+                            aria-controls={`m-submenu-${key}`}
+                            className="p-1"
+                          >
+                            <HiChevronDown
+                              className={`transition-transform duration-300 ${
+                                openMobileSubmenus[key] ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+                        </div>
+                        {openMobileSubmenus[key] && (
+                          <ul id={`m-submenu-${key}`} className="ml-4 mt-2 space-y-2">
+                            {children.map((child) =>
+                              typeof child === "string" ? (
+                                <li key={child}>
+                                  <Link
+                                    href={getHref(child)}
+                                    className={isActive(getHref(child)) ? "font-semibold" : ""}
                                   >
-                                    {child.label}
-                                  </span>
-                                  <HiChevronDown
-                                    className={`transition-transform duration-300 ${
-                                      openMobileSubmenus[child.key] ? "rotate-180" : ""
-                                    }`}
-                                  />
-                                </div>
-                                {openMobileSubmenus[child.key] && (
-                                  <ul className="ml-4 mt-2 space-y-2">
-                                    {child.children.map((sub: string) => (
-                                      <li key={sub}>
-                                        <Link
-                                          href={getHref(sub)}
-                                          className={isActive(getHref(sub)) ? "font-semibold" : ""}
-                                        >
-                                          {sub}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                )}
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      )}
-                    </>
+                                    {child}
+                                  </Link>
+                                </li>
+                              ) : (
+                                <li key={child.key}>
+                                  <div
+                                    onClick={() => toggleMobileSubmenu(child.key)}
+                                    className="flex items-center gap-1 cursor-pointer"
+                                  >
+                                    <span className={openMobileSubmenus[child.key] ? "font-semibold text-black" : ""}>
+                                      {child.label}
+                                    </span>
+                                    <HiChevronDown
+                                      className={`transition-transform duration-300 ${
+                                        openMobileSubmenus[child.key] ? "rotate-180" : ""
+                                      }`}
+                                    />
+                                  </div>
+                                  {openMobileSubmenus[child.key] && (
+                                    <ul className="ml-4 mt-2 space-y-2">
+                                      {child.children.map((sub: string) => (
+                                        <li key={sub}>
+                                          <Link
+                                            href={getHref(sub)}
+                                            className={isActive(getHref(sub)) ? "font-semibold" : ""}
+                                          >
+                                            {sub}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          onClick={() => toggleMobileSubmenu(key)}
+                          className="flex items-center justify-start gap-1 cursor-pointer"
+                        >
+                          <span className={openMobileSubmenus[key] ? "font-semibold text-black" : ""}>{label}</span>
+                          <HiChevronDown
+                            className={`transition-transform duration-300 ${
+                              openMobileSubmenus[key] ? "rotate-180" : ""
+                            }`}
+                          />
+                        </div>
+                        {openMobileSubmenus[key] && (
+                          <ul className="ml-4 mt-2 space-y-2">
+                            {children.map((child) =>
+                              typeof child === "string" ? (
+                                <li key={child}>
+                                  <Link
+                                    href={getHref(child)}
+                                    className={isActive(getHref(child)) ? "font-semibold" : ""}
+                                  >
+                                    {child}
+                                  </Link>
+                                </li>
+                              ) : (
+                                <li key={child.key}>
+                                  <div
+                                    onClick={() => toggleMobileSubmenu(child.key)}
+                                    className="flex items-center gap-1 cursor-pointer"
+                                  >
+                                    <span className={openMobileSubmenus[child.key] ? "font-semibold text-black" : ""}>
+                                      {child.label}
+                                    </span>
+                                    <HiChevronDown
+                                      className={`transition-transform duration-300 ${
+                                        openMobileSubmenus[child.key] ? "rotate-180" : ""
+                                      }`}
+                                    />
+                                  </div>
+                                  {openMobileSubmenus[child.key] && (
+                                    <ul className="ml-4 mt-2 space-y-2">
+                                      {child.children.map((sub: string) => (
+                                        <li key={sub}>
+                                          <Link
+                                            href={getHref(sub)}
+                                            className={isActive(getHref(sub)) ? "font-semibold" : ""}
+                                          >
+                                            {sub}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        )}
+                      </>
+                    )
                   ) : (
                     <Link
                       href={getHref(label)}
