@@ -9,7 +9,6 @@ import {
   PartnerCarousel,
   AboutUs,
   Sucursal,
-  Loader,
   ButtonUploadBanner
 } from "@/components";
 import { SucursalImage } from "@/public";
@@ -18,6 +17,7 @@ export default function Home() {
   return (
     <>
       <Banner />
+      <ButtonUploadBanner/>
       <PlansSection />
       <PartnerCarousel />
       <Service />
