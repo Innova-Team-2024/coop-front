@@ -1,76 +1,62 @@
 "use client";
 
+import { useEffect } from "react";
+import { useBannerStore } from "@/stores/bannerStore";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { useEffect, useState } from "react";
-
-import {
-  BannerCeleste,
-  BannerVioleta,
-  BannerVerde,
-  BannerAzul,
-  BannerNaranja,
-  BannerMobileCeleste,
-  BannerMobileVioleta,
-  BannerMobileVerde,
-  BannerMobileAzul,
-  BannerMobileNaranja,
-} from "@/public";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { usePathname } from "next/navigation";
+import { fetchGetBanners } from "@/apis/bannerService";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export default function Banner() {
-  const [isMobile, setIsMobile] = useState(false);
+  const {
+    banners,
+    setBanners,
+    loadBannersFromLocalStorage,
+    globalLoading,
+    setGlobalLoading,
+    actionLoading,
+  } = useBannerStore();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const load = async () => {
+      setGlobalLoading(true);
+      try {
+        const data = await fetchGetBanners();
+        setBanners(data);
+        localStorage.setItem("banners", JSON.stringify(data));
+      } catch (err) {
+        console.error("Error al cargar banners:", err);
+      } finally {
+        setGlobalLoading(false);
+      }
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    loadBannersFromLocalStorage();
+    load();
+  }, [pathname, setBanners, loadBannersFromLocalStorage, setGlobalLoading]);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const bannersToShow = [
-    {
-      image: isMobile ? BannerMobileCeleste : BannerCeleste,
-      title: "Atención al Cliente",
-      description: "Lunes a viernes de 08:30hs a 16:00hs",
-    },
-    {
-      image: isMobile ? BannerMobileVioleta : BannerVioleta,
-      title: "Comunicado para nuestros asociados",
-      description: "Leer articulo",
-    },
-    {
-      image: isMobile ? BannerMobileVerde : BannerVerde,
-      title: "Abona desde casa",
-      description: "Sumate a la factura electronica",
-    },
-    {
-      image: isMobile ? BannerMobileAzul : BannerAzul,
-      title: "¿Tenes linea de cobre?",
-      description:
-        "Acercate a nuestras oficinas y pasate a VOIP para disfrutar de una mejor calidad de servicio",
-    },
-    {
-      image: isMobile ? BannerMobileNaranja : BannerNaranja,
-      title: "Conectate a lo que te gusta",
-      description:
-        "Telecoop te espera con una grilla de canales para toda la familia",
-    },
-  ];
+  const getImageSrc = (fileUrl: string) => {
+    if (!fileUrl) return "";
+    return fileUrl.startsWith("http")
+      ? fileUrl
+      : `http://localhost:3000/uploads/banners/${fileUrl}`;
+  };
 
   return (
     <div className="relative w-full h-[700px] overflow-hidden">
+      {(globalLoading || actionLoading) && (
+        <div className="absolute inset-0 z-50 bg-black/60 flex items-center justify-center">
+          <AiOutlineLoading className="text-white text-4xl animate-spin" />
+        </div>
+      )}
+
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={{
@@ -81,20 +67,20 @@ export default function Banner() {
         loop
         className="w-full h-full"
       >
-        {bannersToShow.map((banner, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative w-full h-full">  
+        {banners.map((banner, index) => (
+          <SwiperSlide key={banner.id}>
+            <div className="relative w-full h-full">
               <Image
-                src={banner.image}
+                src={getImageSrc(
+                  banner.fileUrl && banner.fileUrl.length > 0
+                    ? banner.fileUrl[0]
+                    : ""
+                )}
                 alt={`Slide ${index + 1}`}
                 fill
-                unoptimized
+                unoptimized={true}
                 className="object-cover transition-opacity duration-700"
               />
-
-              {/* Esta logica va cambiar cuando un usuario admin este logqueado en el sitio web. El podra modificar el titulo, el parrafo y el Slogan/Lema/Leyenda
-                  Ademas de de poder cambiar el banner de fondo.
-              */}
 
               <div className="absolute top-[53%] left-1/2 md:left-28 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 text-white max-w-[90%] md:max-w-md space-y-4 text-center md:text-left">
                 <h2 className="text-[22px] md:text-[36px] font-bold uppercase">
@@ -104,21 +90,11 @@ export default function Banner() {
                   {banner.description}
                 </p>
 
-                {index === 0 && (
-                  <div className="text-[14px] md:text-[18px] space-y-1">
-                    <p className="flex items-center justify-center md:justify-start gap-2">
-                      El Callao 1328, Grand Bourg
-                    </p>
-                    <p className="flex items-center justify-center md:justify-start gap-2">
-                      Francisco Seguí 354, Pablo Nogués
-                    </p>
-                  </div>
-                )}
-
-                {(index === 1 || index === 3) && (
-                  <div className="text-sm text-center md:text-left mt-2">
-                    <p className="uppercase">#DEFENDAMOSLONUESTRO</p>
-                    <p className="mt-2">Gestión Jorge Lago</p>
+                {banner.footer && (
+                  <div className="text-sm text-center md:text-left mt-2 whitespace-pre-line">
+                    {banner.footer.split("\n").map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
                   </div>
                 )}
               </div>
