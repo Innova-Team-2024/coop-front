@@ -98,3 +98,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.accordion-chevron[data-state='open'] {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-in-out;
+}

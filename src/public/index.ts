@@ -44,7 +44,20 @@ export { default as Mancha } from "./molecules/Vector 12.svg";
 
 //Banner
 export { default as Portada } from "./ImagePortada.png";
+export { default as BannerSoporte } from "./bannerSoporte.png";
 
 //Sucursal
 export { default as SucursalImage } from "./image/mapaSucursal.png";
+
+//Jardin
+export { default as ImagenJardin } from "./imagenJardin.jpg";
+export { default as NosotrosJardin } from "./nostrosJardin.png";
+export { default as imagenAranceles } from "./imagenAranceles.png";
+export { default as jardinImagen1 } from "./jardinImagen1.jpg";
+
+//Primaria
+export { default as ArancelPrimaria } from "./ArancelPrimaria.png";
+
+//Biblioteca
+export { default as MapaBiblioteca } from "./mapa-bibloteca.png";
 
