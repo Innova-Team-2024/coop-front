@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useBannerStore } from "@/stores/bannerStore";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -11,30 +11,52 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { usePathname } from "next/navigation";
 import { fetchGetBanners } from "@/apis/bannerService";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export default function Banner() {
-  const { banners, setBanners, loadBannersFromLocalStorage } = useBannerStore();
-  const [isLoading, setIsLoading] = useState(true);
+  const {
+    banners,
+    setBanners,
+    loadBannersFromLocalStorage,
+    globalLoading,
+    setGlobalLoading,
+    actionLoading,
+  } = useBannerStore();
   const pathname = usePathname();
 
- useEffect(() => {
-  const load = async () => {
-    try {
-      const data = await fetchGetBanners();
-      setBanners(data);
-    } catch (err) {
-      console.error("Error al cargar banners:", err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  useEffect(() => {
+    const load = async () => {
+      setGlobalLoading(true);
+      try {
+        const data = await fetchGetBanners();
+        setBanners(data);
+        localStorage.setItem("banners", JSON.stringify(data));
+      } catch (err) {
+        console.error("Error al cargar banners:", err);
+      } finally {
+        setGlobalLoading(false);
+      }
+    };
 
-  loadBannersFromLocalStorage();
-  load();
-}, [pathname, setBanners, loadBannersFromLocalStorage]);
+    loadBannersFromLocalStorage();
+    load();
+  }, [pathname, setBanners, loadBannersFromLocalStorage, setGlobalLoading]);
+
+  const getImageSrc = (fileUrl: string) => {
+    if (!fileUrl) return "";
+    return fileUrl.startsWith("http")
+      ? fileUrl
+      : `http://localhost:3000/uploads/banners/${fileUrl}`;
+  };
 
   return (
     <div className="relative w-full h-[700px] overflow-hidden">
+      {(globalLoading || actionLoading) && (
+        <div className="absolute inset-0 z-50 bg-black/60 flex items-center justify-center">
+          <AiOutlineLoading className="text-white text-4xl animate-spin" />
+        </div>
+      )}
+
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={{
@@ -45,39 +67,40 @@ export default function Banner() {
         loop
         className="w-full h-full"
       >
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          banners.map((banner, index) => (
-            <SwiperSlide key={banner.id}>
-              <div className="relative w-full h-full">
-                <Image
-                  src={`http://localhost:3000/uploads/banners/${banner.fileUrl[0]}`}
-                  alt={`Slide ${index + 1}`}
-                  fill
-                  unoptimized={true}
-                  className="object-cover transition-opacity duration-700"
-                />
-                <div className="absolute top-[53%] left-1/2 md:left-28 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 text-white max-w-[90%] md:max-w-md space-y-4 text-center md:text-left">
-                  <h2 className="text-[22px] md:text-[36px] font-bold uppercase">
-                    {banner.title}
-                  </h2>
-                  <p className="text-[18px] md:text-[28px]">
-                    {banner.description}
-                  </p>
+        {banners.map((banner, index) => (
+          <SwiperSlide key={banner.id}>
+            <div className="relative w-full h-full">
+              <Image
+                src={getImageSrc(
+                  banner.fileUrl && banner.fileUrl.length > 0
+                    ? banner.fileUrl[0]
+                    : ""
+                )}
+                alt={`Slide ${index + 1}`}
+                fill
+                unoptimized={true}
+                className="object-cover transition-opacity duration-700"
+              />
 
-                  {banner.footer && (
-                    <div className="text-sm text-center md:text-left mt-2 whitespace-pre-line">
-                      {banner.footer.split("\n").map((line, i) => (
-                        <p key={i}>{line}</p>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              <div className="absolute top-[53%] left-1/2 md:left-28 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 text-white max-w-[90%] md:max-w-md space-y-4 text-center md:text-left">
+                <h2 className="text-[22px] md:text-[36px] font-bold uppercase">
+                  {banner.title}
+                </h2>
+                <p className="text-[18px] md:text-[28px]">
+                  {banner.description}
+                </p>
+
+                {banner.footer && (
+                  <div className="text-sm text-center md:text-left mt-2 whitespace-pre-line">
+                    {banner.footer.split("\n").map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
+                )}
               </div>
-            </SwiperSlide>
-          ))
-        )}
+            </div>
+          </SwiperSlide>
+        ))}
 
         <button className="custom-prev absolute left-2 sm:left-10 md:left-10 top-1/2 -translate-y-1/2 z-10 bg-colorArrowChevron text-white hover:bg-white/20 rounded-full p-3 md:p-2 shadow">
           <ChevronLeft className="h-8 w-8 md:h-6 md:w-6" />
