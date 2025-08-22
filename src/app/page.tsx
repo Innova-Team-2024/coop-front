@@ -9,6 +9,8 @@ import {
   PartnerCarousel,
   AboutUs,
   Sucursal,
+  Loader,
+  ButtonUploadBanner
 } from "@/components";
 import { SucursalImage } from "@/public";
 
