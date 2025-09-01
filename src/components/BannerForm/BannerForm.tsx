@@ -48,7 +48,7 @@ const BannerForm = ({
       setFooter("");
       setPreviewImage(portadaEstatica.src);
       setSelectedFile(null);
-    } else {
+    } else if (typeof window !== "undefined") {
       const stored = localStorage.getItem("banners");
       if (stored) {
         const banners: Banner[] = JSON.parse(stored);
@@ -64,7 +64,7 @@ const BannerForm = ({
             setPreviewImage(
               isAbsoluteUrl
                 ? url
-                : `http://localhost:3000/uploads/banners/${url}`
+                : `${process.env.NEXT_PUBLIC_UPLOADS_URL}/${url}`
             );
           } else {
             setPreviewImage(portadaEstatica.src);
@@ -97,8 +97,8 @@ const BannerForm = ({
     try {
       const method = isNew ? "POST" : "PUT";
       const url = isNew
-        ? "http://localhost:3000/banner"
-        : `http://localhost:3000/banner/${selectedBannerId}`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/banner`
+        : `${process.env.NEXT_PUBLIC_API_URL}/banner/${selectedBannerId}`;
 
       const data = new FormData();
       data.append("title", title);
@@ -114,8 +114,6 @@ const BannerForm = ({
       });
 
       const result = await res.json().catch(() => ({}));
-      console.log("Resultado backend:", result);
-
       if (!res.ok) {
         throw new Error(result?.message || "Error al guardar portada");
       }
@@ -127,7 +125,7 @@ const BannerForm = ({
           ? "La portada se subió correctamente."
           : "La portada se actualizó correctamente."
       );
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error("Error en handleSubmit:", err);
       toastr.error(err.message || "Ocurrió un error al guardar la portada.");
@@ -145,7 +143,7 @@ const BannerForm = ({
         <div className="flex flex-col items-start gap-2 px-4 md:px-8 w-full md:w-1/2">
           <p className="text-sm">Tamaño recomendado: 1440x668</p>
           <Image
-            src={previewImage || "image"}
+            src={previewImage || portadaEstatica.src}
             alt="Preview"
             width={300}
             height={140}
