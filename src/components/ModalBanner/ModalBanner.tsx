@@ -41,7 +41,7 @@ const ModalBanner = ({ isOpen, onClose, onSuccess }: ModalBannerProps) => {
   const getImageUrl = (url: string) => {
     return url.startsWith("http")
       ? url
-      : `http://localhost:3000/uploads/banners/${url}`;
+      : `${process.env.NEXT_PUBLIC_UPLOADS_URL}/${url}`;
   };
 
   const reloadAndClose = async () => {
@@ -92,11 +92,12 @@ const ModalBanner = ({ isOpen, onClose, onSuccess }: ModalBannerProps) => {
 
     try {
       const res = await fetch(
-        `http://localhost:3000/banner/${bannerToDelete}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/banner/${bannerToDelete}`,
         {
           method: "DELETE",
         }
       );
+
       if (!res.ok) throw new Error("Error al eliminar portada");
 
       toastr.success("La portada se eliminó correctamente.");
