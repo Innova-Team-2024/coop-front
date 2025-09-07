@@ -63,29 +63,33 @@ const ModalBanner = ({ isOpen, onClose, onSuccess }: ModalBannerProps) => {
 
   useEffect(() => {
     if (isOpen) {
-      fetchBanners().then(() => {
-        const imageUrls = banners
-          .filter((b: Banner) => (b.fileUrl ?? []).length > 0)
-          .map((b: Banner) => getImageUrl(b.fileUrl![0]));
-
-        if (imageUrls.length === 0) {
-          setTimeout(() => setImagesLoaded(true), 2000);
-        } else {
-          Promise.all(
-            imageUrls.map(
-              (url: string) =>
-                new Promise((resolve) => {
-                  const img = new window.Image();
-                  img.src = url;
-                  img.onload = resolve;
-                  img.onerror = resolve;
-                })
-            )
-          ).then(() => setTimeout(() => setImagesLoaded(true), 2000));
-        }
-      });
+      fetchBanners();
     }
-  }, [isOpen, fetchBanners, banners]);
+  }, [isOpen, fetchBanners]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const imageUrls = banners
+      .filter((b: Banner) => (b.fileUrl ?? []).length > 0)
+      .map((b: Banner) => getImageUrl(b.fileUrl![0]));
+
+    if (imageUrls.length === 0) {
+      setTimeout(() => setImagesLoaded(true), 2000);
+    } else {
+      Promise.all(
+        imageUrls.map(
+          (url: string) =>
+            new Promise((resolve) => {
+              const img = new window.Image();
+              img.src = url;
+              img.onload = resolve;
+              img.onerror = resolve;
+            })
+        )
+      ).then(() => setTimeout(() => setImagesLoaded(true), 2000));
+    }
+  }, [isOpen, banners]);
 
   const handleDelete = async () => {
     if (!bannerToDelete) return;
