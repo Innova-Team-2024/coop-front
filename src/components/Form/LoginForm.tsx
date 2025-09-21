@@ -56,6 +56,9 @@ export default function LoginForm({
             className="w-full px-4 sm:px-6 py-3 sm:py-4 border outline outline-1 outline-[#AAB2B6] bg-white rounded-3xl text-sm placeholder:text-[#7F8A91] shadow-xl"
           />
         </div>
+        <div className="hidden lg:block">
+          <p className="text-base underline ">Olvidé mi contraseña</p>
+        </div>
         <div className="flex justify-center md:justify-start ">
                   <PrimaryButton className="w-full shadow-xl" type="submit" size="lg" rounded="2xl">
                     Iniciar sesión

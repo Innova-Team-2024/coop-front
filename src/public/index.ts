@@ -61,3 +61,5 @@ export { default as ArancelPrimaria } from "./ArancelPrimaria.png";
 //Biblioteca
 export { default as MapaBiblioteca } from "./mapa-bibloteca.png";
 
+//Login
+export { default as LoginDesktop } from "./loginDesktop.svg";
