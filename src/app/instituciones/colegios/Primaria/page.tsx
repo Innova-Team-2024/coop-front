@@ -90,9 +90,10 @@ Envianos tu consulta!`}
         <ContactForm
           titulo="¿Consulta o inscripción?"
           descripcion="Completá el formulario y contanos en qué podemos ayudarte. Ya sea para solicitar información, iniciar la inscripción o comunicarte con nosotros, tu mensaje es importante para seguir creciendo juntos."
-          telefono="02320 - 411000"
+          telefono="02320-487906 - 02320-414600"
+          whatsapp="11 2758-2013"
           email="institutorenefavaloro@cooperativagb.com.ar"
-          horario="Respondemos de lunes a viernes, entre las 8:30 a las 12 h. ¡Te vamos a estar leyendo!"
+          horario="Lunes a Viernes: 8:30 a 12:00 hs / 13:00 a 16:00 hs"
           mostrarLogo={false}
         />
       </div>
