@@ -2,7 +2,7 @@
 import { BannerItem } from "../types/bannerItem";
 
 export const fetchGetBanners = async (): Promise<BannerItem[]> => {
-  const res = await fetch("http://localhost:3000/banner", {
+  const res =   await fetch(`${process.env.NEXT_PUBLIC_API_URL}/banner`, {
     cache: "no-store", // evita cacheo en dev
   });
 

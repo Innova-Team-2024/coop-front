@@ -41,7 +41,7 @@ const ModalBanner = ({ isOpen, onClose, onSuccess }: ModalBannerProps) => {
   const getImageUrl = (url: string) => {
     return url.startsWith("http")
       ? url
-      : `http://localhost:3000/uploads/banners/${url}`;
+      : `${process.env.NEXT_PUBLIC_UPLOADS_URL}/${url}`;
   };
 
   const reloadAndClose = async () => {
@@ -63,40 +63,45 @@ const ModalBanner = ({ isOpen, onClose, onSuccess }: ModalBannerProps) => {
 
   useEffect(() => {
     if (isOpen) {
-      fetchBanners().then(() => {
-        const imageUrls = banners
-          .filter((b: Banner) => (b.fileUrl ?? []).length > 0)
-          .map((b: Banner) => getImageUrl(b.fileUrl![0]));
-
-        if (imageUrls.length === 0) {
-          setTimeout(() => setImagesLoaded(true), 2000);
-        } else {
-          Promise.all(
-            imageUrls.map(
-              (url: string) =>
-                new Promise((resolve) => {
-                  const img = new window.Image();
-                  img.src = url;
-                  img.onload = resolve;
-                  img.onerror = resolve;
-                })
-            )
-          ).then(() => setTimeout(() => setImagesLoaded(true), 2000));
-        }
-      });
+      fetchBanners();
     }
-  }, [isOpen, fetchBanners, banners]);
+  }, [isOpen, fetchBanners]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const imageUrls = banners
+      .filter((b: Banner) => (b.fileUrl ?? []).length > 0)
+      .map((b: Banner) => getImageUrl(b.fileUrl![0]));
+
+    if (imageUrls.length === 0) {
+      setTimeout(() => setImagesLoaded(true), 2000);
+    } else {
+      Promise.all(
+        imageUrls.map(
+          (url: string) =>
+            new Promise((resolve) => {
+              const img = new window.Image();
+              img.src = url;
+              img.onload = resolve;
+              img.onerror = resolve;
+            })
+        )
+      ).then(() => setTimeout(() => setImagesLoaded(true), 2000));
+    }
+  }, [isOpen, banners]);
 
   const handleDelete = async () => {
     if (!bannerToDelete) return;
 
     try {
       const res = await fetch(
-        `http://localhost:3000/banner/${bannerToDelete}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/banner/${bannerToDelete}`,
         {
           method: "DELETE",
         }
       );
+
       if (!res.ok) throw new Error("Error al eliminar portada");
 
       toastr.success("La portada se eliminó correctamente.");
