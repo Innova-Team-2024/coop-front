@@ -86,7 +86,7 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 gap-1">
+    <form onSubmit={handleSubmit} className="space-y-6 gap-1 mt-8">
       {/* Email */}
       <div>
         <label className="block text-sm sm:text-lg font-semibold text-[#1C1F23] mb-2 px-3">
@@ -165,18 +165,18 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
       </div>
 
       {/* Botones */}
-      <div className="flex justify-between items-center gap-3 ml-5 mr-28">
+      <div className="flex items-center gap-3 ml-5 mr-5 ">
         <button
           type="button"
           onClick={() => router.push("/login")}
-          className="flex items-center text-base font-medium text-[#1C1F23] hover:text-[#5A5A5A] transition-colors duration-200"
+          className="flex items-center text-base font-medium text-[#1C1F23] hover:text-[#5A5A5A] transition-colors duration-200 lg:mr-5"
         >
           <MdOutlineKeyboardArrowLeft size={22} />
           <span>Volver</span>
         </button>
 
         <PrimaryButton
-          className="shadow-xl mr-96 sm:mr-0 md:mr-96"
+          className="ml-auto shadow-xl lg:ml-0"
           type="submit"
           size="lg"
           rounded="2xl"

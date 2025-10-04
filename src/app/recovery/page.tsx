@@ -26,10 +26,10 @@ export default function RecoveryForm() {
                     priority
                 />
             </section>
-            <section className="flex flex-col justify-center px-8 lg:px-24 py-12 bg-[#f4f4fb] ">
+            <section className="flex flex-col justify-center px-8 lg:px-24 py-12 bg-[#f4f4fb] -mt-5">
                 {/* <section className="py-8 px-4 flex- flex-col space-y-8 "></section> */}
                 <div className="space-y-4 text-center lg:hidden">
-                    <h1 className="font-bold text-2xl pt-4 ">Iniciar sesión</h1>
+                    <h1 className="font-bold text-2xl pt-4 ">¿Olvidaste tu contraseña?</h1>
                     <p className="text-[#232527] text-base leading-5 ">Ingresá tu correo regristado para cambiar tu<br />
                         contraseña de forma inmediata.
                     </p>

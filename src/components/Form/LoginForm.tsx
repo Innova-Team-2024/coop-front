@@ -73,7 +73,7 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 gap-1">
+    <form onSubmit={handleSubmit} className="space-y-6 gap-1 mt-8">
       {/* Campo Email */}
       <div>
         <label className="block text-sm sm:text-lg font-semibold text-[#1C1F23] mb-2 px-3">
@@ -112,7 +112,7 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 "
           >
             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
@@ -128,7 +128,7 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
 
       <div className="flex justify-center md:justify-start">
         <PrimaryButton
-          className="w-full shadow-xl"
+          className=" w-156 shadow-xl "
           type="submit"
           size="lg"
           rounded="2xl"
