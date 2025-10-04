@@ -1,12 +1,11 @@
-import LoginForm from "@/components/Form/LoginForm";
+import RecoverPasswordForm from "@/components/Form/RecoverPasswordForm";
 import { isologoform, LoginDesktop } from "@/public";
-import { log } from "console";
 import Image from "next/image";
 
 
-export default function Login() {
+export default function RecoveryForm() {
     return (
-        <main className="mt-16 lg:mt-0 lg:pt-0 pt-20 min-h-screen lg:grid lg:grid-cols-2">
+        <main className="mt-16 lg:mt-0 lg:pt-0 pt-20 min-h-screen lg:grid lg:grid-cols-2 bg-[#f4f4fb]">
             <section className="hidden lg:flex flex-col justify-center items-start px-24 text-white bg-[linear-gradient(68deg,#5540A7_0.17%,#7A58FF_81.17%)]">
                 <Image
                     src={LoginDesktop}
@@ -14,10 +13,10 @@ export default function Login() {
                     priority
                     className="mb-8 w-40"
                 />
-                <h1 className="text-5xl font-bold mb-4">Iniciar sesión</h1>
+                <h1 className="text-5xl font-bold mb-4">¿Olvidaste tu contraseña?</h1>
                 <p className="text-lg leading-relaxed">
-                    Accedé al panel exclusivo para administradores <br />
-                    con tu usuario y contraseña.
+                    Ingresá tu correo registrado para cambiar tu <br />
+                    contraseña de forma inmediata.
                 </p>
             </section>
             <section className="w-72 h-11 mx-auto opacity-75 lg:hidden ">
@@ -31,12 +30,12 @@ export default function Login() {
                 {/* <section className="py-8 px-4 flex- flex-col space-y-8 "></section> */}
                 <div className="space-y-4 text-center lg:hidden">
                     <h1 className="font-bold text-2xl pt-4 ">Iniciar sesión</h1>
-                    <p className="text-[#232527] text-base leading-5 ">Accedé al panel para adminsitradores <br />
-                        con tu usuario y contraseña
+                    <p className="text-[#232527] text-base leading-5 ">Ingresá tu correo regristado para cambiar tu<br />
+                        contraseña de forma inmediata.
                     </p>
                 </div>
                 <div >
-                    <LoginForm email={""} password={""}></LoginForm>
+                    <RecoverPasswordForm email={""} newPassword={""} confirmPassword={""} ></RecoverPasswordForm>
                 </div>
             </section>
         </main>
