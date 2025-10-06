@@ -2,7 +2,6 @@ import RecoverPasswordForm from "@/components/Form/RecoverPasswordForm";
 import { isologoform, LoginDesktop } from "@/public";
 import Image from "next/image";
 
-
 export default function RecoveryForm() {
     return (
         <main className="mt-16 lg:mt-0 lg:pt-0 pt-20 min-h-screen lg:grid lg:grid-cols-2 bg-[#f4f4fb]">

@@ -1,8 +1,6 @@
 import LoginForm from "@/components/Form/LoginForm";
 import { isologoform, LoginDesktop } from "@/public";
-import { log } from "console";
 import Image from "next/image";
-
 
 export default function Login() {
     return (
@@ -42,9 +40,3 @@ export default function Login() {
         </main>
     )
 }
-
-
-
-/*
-- en este mismo componente voy a hacer la parte de desktop como mobile
-*/

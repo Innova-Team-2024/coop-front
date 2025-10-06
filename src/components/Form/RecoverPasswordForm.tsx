@@ -16,9 +16,9 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    email: "",
-    newPassword: "",
-    confirmPassword: "",
+    email,
+    newPassword,
+    confirmPassword,
   });
 
   const [errors, setErrors] = useState({
@@ -97,7 +97,7 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
           value={formData.email}
           onChange={handleChange}
           placeholder="Ingresar correo electrónico..."
-          className={`w-full px-4 sm:px-6 py-3 sm:py-4 border outline outline-1 rounded-3xl text-sm placeholder:text-[#7F8A91] shadow-xl ${
+          className={`w-full px-4 sm:px-6 py-3 sm:py-4 border outline outline-1 rounded-3xl text-sm placeholder:text-[#7F8A91] shadow-xl transition-all duration-300 ${
             errors.email ? "outline-red-500" : "outline-[#AAB2B6]"
           }`}
         />
@@ -118,7 +118,7 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
             value={formData.newPassword}
             onChange={handleChange}
             placeholder="Ingresar nueva contraseña..."
-            className={`w-full px-4 sm:px-6 py-3 sm:py-4 border outline outline-1 rounded-3xl text-sm placeholder:text-[#7F8A91] shadow-xl pr-12 ${
+            className={`w-full px-4 sm:px-6 py-3 sm:py-4 border outline outline-1 rounded-3xl text-sm placeholder:text-[#7F8A91] shadow-xl pr-12 transition-all duration-300 ${
               errors.newPassword ? "outline-red-500" : "outline-[#AAB2B6]"
             }`}
           />
@@ -147,7 +147,7 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
             value={formData.confirmPassword}
             onChange={handleChange}
             placeholder="Vuelva a ingresar la contraseña..."
-            className={`w-full px-4 sm:px-6 py-3 sm:py-4 border outline outline-1 rounded-3xl text-sm placeholder:text-[#7F8A91] shadow-xl pr-12 ${
+            className={`w-full px-4 sm:px-6 py-3 sm:py-4 border outline outline-1 rounded-3xl text-sm placeholder:text-[#7F8A91] shadow-xl pr-12 transition-all duration-300 ${
               errors.confirmPassword ? "outline-red-500" : "outline-[#AAB2B6]"
             }`}
           />
@@ -165,7 +165,7 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
       </div>
 
       {/* Botones */}
-      <div className="flex items-center gap-3 ml-5 mr-5 ">
+      <div className="flex items-center gap-3 ml-5 mr-5">
         <button
           type="button"
           onClick={() => router.push("/login")}
