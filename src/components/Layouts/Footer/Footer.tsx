@@ -1,10 +1,12 @@
+
 'use client'
 
 import Image from 'next/image'
 import {
   FaFacebookF,
   FaInstagram,
-  FaYoutube
+  FaYoutube,
+  FaWhatsapp
 } from 'react-icons/fa'
 import { Logo2, Logo3 } from '@/public'
 
@@ -59,9 +61,34 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-4">Soporte</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
-                <li>Ayuda</li>
-                <li>Centro de reclamos</li>
-                <li>Contacto</li>
+                <li>
+                  <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSchQcAqGjkGcGny3BFcj_y0oT1QTvU2ZPBvGiUvon7JFAM7Zw/viewform?usp=sf_link" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:underline"
+                  >
+                    Factura Electrónica
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://docs.google.com/forms/d/1l5uyhRL8QSqeL-Y7p4tBFtsptXiMnWJrjp8XWsY9RDg/viewform?pli=1" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:underline"
+                  >
+                    Débito Automático
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="mailto:tramites@interbourg.com.ar"
+                    className="hover:underline"
+                  >
+                    Contacto
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -82,10 +109,39 @@ export default function Footer() {
           </div>
 
           {/* Redes sociales */}
-          <div className="flex gap-4 text-white text-lg mt-2 md:mt-0 cursor-pointer">
-            <FaFacebookF />
-            <FaInstagram />
-            <FaYoutube />
+          <div className="flex gap-4 text-white text-lg mt-2 md:mt-0">
+            <a
+              href="https://www.facebook.com/interbourg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF className="hover:text-gray-300" />
+            </a>
+            <a
+              href="https://www.instagram.com/cooptgbourg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram className="hover:text-gray-300" />
+            </a>
+            <a
+              href="https://www.youtube.com" // ⚠️ si tienen canal real cambiar este
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <FaYoutube className="hover:text-gray-300" />
+            </a>
+            <a
+              href="https://wa.me/5492320483000"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp className="hover:text-gray-300" />
+            </a>
           </div>
         </div>
       </div>
