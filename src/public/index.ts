@@ -61,3 +61,7 @@ export { default as ArancelPrimaria } from "./ArancelPrimaria.png";
 //Biblioteca
 export { default as MapaBiblioteca } from "./mapa-bibloteca.png";
 
+//Sepelios
+export { default as CasaOviedo } from "./casa-oviedo.jpg";
+
+

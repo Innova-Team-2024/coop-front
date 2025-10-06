@@ -11,29 +11,30 @@ export default function TabsSoporteSection() {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-12">
-      {/* Tabs */}
+      {/* Tabs — ahora con mismo estilo que Servicios */}
       <div className="flex justify-center mb-12">
-        <div className="flex bg-white rounded-[32px] border border-gray-200 p-1">
+        <div className="flex justify-between gap-2 p-0 rounded-full border mx-auto shadow-sm bg-white w-fit sm:w-[495px]">
           {TABS.map((tab) => {
             const isActive = activeTab === tab;
             return (
-              <button
+              <div
                 key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={clsx(
-                  "relative flex-1 px-8 py-3 text-lg font-roboto rounded-full transition-all duration-300",
-                  isActive ? "text-zinc-900 font-medium" : "text-zinc-600 font-normal"
-                )}
-                style={{
-                  background: isActive
-                    ? "linear-gradient(white, white) padding-box, linear-gradient(to right, #FF6600, #FF4CFF, #00AAFF) border-box"
-                    : "transparent",
-                  border: isActive ? "2px solid transparent" : "2px solid transparent",
-                  borderRadius: "9999px",
-                }}
+                className={clsx("flex-1 rounded-full", isActive && "p-[2px] bg-btn-gradient")}
               >
-                {tab}
-              </button>
+                <button
+                  onClick={() => setActiveTab(tab)}
+                  type="button"
+                  aria-pressed={isActive}
+                  className={clsx(
+                    "w-full rounded-full text-[12px] sm:text-[14px] transition-all px-4 md:px-6 py-2",
+                    isActive
+                      ? "bg-white text-black font-medium"
+                      : "bg-white text-[#5F5F5F] font-normal"
+                  )}
+                >
+                  {tab}
+                </button>
+              </div>
             );
           })}
         </div>
