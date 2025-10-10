@@ -18,7 +18,7 @@ import {
   AboutUsPage4,
   AboutUsPage5,
   AboutUsPage6,
-} from "@/public";
+} from "../../../public";
 
 export default function Nosotros() {
   const pathItems = [
