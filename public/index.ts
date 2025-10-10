@@ -65,3 +65,5 @@ export { default as MapaBiblioteca } from "./mapa-bibloteca.png";
 export { default as CasaOviedo } from "./casa-oviedo.jpg";
 
 
+//Login
+export { default as LoginDesktop } from "./loginDesktop.svg";
