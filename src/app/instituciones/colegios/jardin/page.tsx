@@ -9,7 +9,7 @@ import {
   SocialMediaSection,
   Sucursal
 } from "@/components";
-import {ImagenJardin,imagenAranceles, NosotrosJardin,jardinImagen1,SucursalImage} from "@/public";
+import {ImagenJardin,imagenAranceles, NosotrosJardin,jardinImagen1,SucursalImage} from "../../../../../public";
 import { FaUsers, FaFileAlt,FaGraduationCap,FaCamera,} from "react-icons/fa";
 
 export const metadata = {

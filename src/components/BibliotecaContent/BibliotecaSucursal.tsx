@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { MapaBiblioteca } from "@/public";
+import { MapaBiblioteca } from "../../../public";
 
 export default function BibliotecaSucursal() {
   return (

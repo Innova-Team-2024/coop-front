@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image.js";
-import { NoticeExample } from "@/public";
+import { NoticeExample } from "../../../public";
 
 type Props = {
   title: string;

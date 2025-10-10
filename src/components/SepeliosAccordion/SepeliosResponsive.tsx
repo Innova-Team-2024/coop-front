@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { SepeliosAccordion } from '@/components';
-import { CasaOviedo } from '@/public'; // ya lo tenés exportado en index.ts
+import { CasaOviedo } from '../../../public'; // ya lo tenés exportado en index.ts
 
 export default function SepeliosResponsive() {
   const [mostrarTextoCompleto, setMostrarTextoCompleto] = useState(false);

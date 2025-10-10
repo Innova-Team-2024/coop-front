@@ -1,4 +1,3 @@
-
 'use client'
 
 import Image from 'next/image'
@@ -8,23 +7,17 @@ import {
   FaYoutube,
   FaWhatsapp
 } from 'react-icons/fa'
-import { Logo2, Logo3 } from '@/public'
 
 export default function Footer() {
   return (
     <footer className="w-full bg-[#17253D] text-white py-[80px] px-6">
       <div className="max-w-[1200px] mx-auto flex flex-col gap-[80px]">
-
-        {/* Top: Logo + Links */}
         <div className="flex flex-col items-center md:items-start gap-[40px] md:flex-row md:justify-start md:gap-[80px]">
-
-          {/* Logo */}
           <div className="flex flex-col items-center md:items-start min-w-[180px]">
-            <Image src={Logo2} alt="Logo principal" width={90} height={40} />
-            <Image src={Logo3} alt="Texto logo" width={140} height={20} className="-mt-1" />
+            <Image src="/logo2.png" alt="Logo principal" width={90} height={40} />
+            <Image src="/logo3.png" alt="Texto logo" width={140} height={20} className="-mt-1" />
           </div>
 
-          {/* Links */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[60px] gap-y-[40px] text-sm text-left w-full justify-between">
             <div>
               <h4 className="font-semibold mb-4">Servicios</h4>
@@ -94,12 +87,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="border-t border-white/40 w-full" />
 
-        {/* Bottom: Legales + RRSS */}
         <div className="flex flex-col items-center md:flex-row md:justify-between gap-4 text-xs text-gray-400 text-center md:text-left">
-          {/* Textos legales */}
           <div className="flex flex-col items-center md:flex-row md:items-center md:gap-2">
             <span>© 2025 Innova. All rights reserved.</span>
             <span className="hidden md:inline-block">|</span>
@@ -108,7 +98,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Redes sociales */}
           <div className="flex gap-4 text-white text-lg mt-2 md:mt-0">
             <a
               href="https://www.facebook.com/interbourg"
@@ -127,7 +116,7 @@ export default function Footer() {
               <FaInstagram className="hover:text-gray-300" />
             </a>
             <a
-              href="https://www.youtube.com" // ⚠️ si tienen canal real cambiar este
+              href="https://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"

@@ -12,7 +12,7 @@ import {
   FaqsSoporteSection,
   ContactForm,
 } from "@/components";
-import { BannerSoporte } from "@/public";
+import { BannerSoporte } from "../../../public";
 
 type Item = {
   titulo: string;

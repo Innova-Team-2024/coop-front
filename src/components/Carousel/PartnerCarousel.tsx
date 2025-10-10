@@ -8,7 +8,7 @@ import {
   Provincia,
   PagoFacil,
   Credicoop,
-} from '@/public'
+} from '../../../public'
 
 const brands = [
   { src: Link, alt: 'Link' },

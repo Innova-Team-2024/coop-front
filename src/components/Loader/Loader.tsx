@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { LogoLoader } from "@/public";
+import { LogoLoader } from "../../../public";
 
 const colors = [
   "rgba(253, 35, 28, 1)",
