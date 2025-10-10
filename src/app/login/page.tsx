@@ -1,5 +1,5 @@
 import LoginForm from "@/components/Form/LoginForm";
-import { isologoform, LoginDesktop } from "@/public";
+import { isologoform, LoginDesktop } from "../../../public";
 import Image from "next/image";
 
 export default function Login() {

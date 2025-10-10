@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Image from "next/image";
-import { isologoform } from "@/public";
+import { isologoform } from "../../../public";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 

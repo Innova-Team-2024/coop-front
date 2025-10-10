@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -7,7 +6,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { HiMenu, HiX, HiChevronDown } from "react-icons/hi";
 import { FaRegUserCircle } from "react-icons/fa";
-import { Logo } from "@/public";
+import { Logo } from "../../../../public"; // ⬅️ ajustado: antes era "../../../public"
 import { ButtonAccount } from "@/components";
 
 export default function Navbar() {

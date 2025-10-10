@@ -9,7 +9,7 @@ import {
   AboutUsPage4,
   AboutUsPage5,
   AboutUsPage6,
-} from "@/public";
+} from "../../../public";
 
 const images = [
   AboutUsPage1,

@@ -9,7 +9,7 @@ import { PiInfo } from "react-icons/pi";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { useBannerStore } from "@/stores/bannerStore";
-import { Portada } from "@/public";
+import { Portada } from "../../../public";
 import { AiOutlineLoading } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
 import toastr from "toastr";

@@ -1,5 +1,5 @@
 import RecoverPasswordForm from "@/components/Form/RecoverPasswordForm";
-import { isologoform, LoginDesktop } from "@/public";
+import { isologoform, LoginDesktop } from "../../../public";
 import Image from "next/image";
 
 export default function RecoveryForm() {

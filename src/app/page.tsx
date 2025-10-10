@@ -11,7 +11,7 @@ import {
   Sucursal,
   ButtonUploadBanner
 } from "@/components";
-import { SucursalImage } from "@/public";
+import { SucursalImage } from "../../public";
 
 export default function Home() {
   return (

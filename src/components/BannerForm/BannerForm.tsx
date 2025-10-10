@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
-import portadaEstatica from "../../public/Portada6.png";
+import portadaEstatica from "../../../public/Portada6.png";
 import { useBannerStore } from "@/stores/bannerStore";
 
 interface BannerFormProps {

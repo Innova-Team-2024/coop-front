@@ -9,7 +9,7 @@ import {
   SocialMediaSection,
   Sucursal
 } from "@/components";
-import {ImagenJardin,ArancelPrimaria,jardinImagen1,NosotrosJardin,SucursalImage} from "@/public";
+import {ImagenJardin,ArancelPrimaria,jardinImagen1,NosotrosJardin,SucursalImage} from "../../../../../public";
 import { FaUsers, FaFileAlt,FaGraduationCap,FaCamera,} from "react-icons/fa";
 
 export const metadata = {
@@ -30,25 +30,25 @@ export const metadata = {
     {
       icon: <FaUsers className="text-blue-600" />,
       title: "Nosotros",
-      href: "/primaria/nosotros",
+      href: "#",
       iconBgColor: "bg-blue-50",
     },
     {
       icon: <FaFileAlt className="text-emerald-700" />,
       title: "Aranceles 2025",
-      href: "/primaria/aranceles",
+      href: "#",
       iconBgColor: "bg-emerald-50",
     },
     {
       icon: < FaGraduationCap className="text-orange-300"/>,
       title: "Inscripción",
-      href: "/primaria/inscripcion",
+      href: "#",
       iconBgColor: "bg-stone-50",
     },
     {
       icon: <FaCamera className="text-rose-500" />,
       title: "Redes sociales",
-      href: "/primaria/redes",
+      href: "#",
       iconBgColor: "bg-rose-50",
     },
   ];  
