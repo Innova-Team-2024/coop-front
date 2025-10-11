@@ -27,7 +27,7 @@ export default function BibliotecaContent() {
           <video
             src="/BIBLIOTECA-ALTA.mp4"
             controls
-            autoPlay={false}
+            autoPlay={true}
             loop
             muted={false}
             className="w-full h-full object-cover"
