@@ -14,7 +14,7 @@ export default function Footer() {
   const router = useRouter();
   
   const [showAdminButton, setShowAdminButton] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
