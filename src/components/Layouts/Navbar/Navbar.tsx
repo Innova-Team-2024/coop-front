@@ -9,12 +9,25 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Logo } from "../../../../public"; // ⬅️ ajustado: antes era "../../../public"
 import { ButtonAccount } from "@/components";
 
-export default function Navbar() {
+type NavbarProps = {
+  hasAdminBanner?: boolean;
+};
+
+const ADMIN_MARGIN_CLASS = "mt-12 sm:mt-12";
+const NORMAL_MARGIN_CLASS = "mt-0";
+
+export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [openSubDropdowns, setOpenSubDropdowns] = useState<{ [key: string]: boolean }>({});
-  const [openMobileSubmenus, setOpenMobileSubmenus] = useState<{ [key: string]: boolean }>({});
+  const [openSubDropdowns, setOpenSubDropdowns] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const [openMobileSubmenus, setOpenMobileSubmenus] = useState<{
+    [key: string]: boolean;
+  }>({});
   const [isClient, setIsClient] = useState(false);
+
+  const marginClass = hasAdminBanner ? ADMIN_MARGIN_CLASS : NORMAL_MARGIN_CLASS;
 
   const pathname = usePathname();
 
@@ -35,7 +48,11 @@ export default function Navbar() {
       label: "Instituciones",
       key: "instituciones",
       children: [
-        { label: "Colegios", key: "colegios", children: ["Jardín", "Primaria"] },
+        {
+          label: "Colegios",
+          key: "colegios",
+          children: ["Jardín", "Primaria"],
+        },
         "Biblioteca",
         "Salón de eventos",
         "Sepelios",
@@ -48,7 +65,11 @@ export default function Navbar() {
         "Consejo directivo",
         "Historia",
         "Obras",
-        { label: "Socios", key: "socios", children: ["Memoria y balance", "Reuniones sociales"] },
+        {
+          label: "Socios",
+          key: "socios",
+          children: ["Memoria y balance", "Reuniones sociales"],
+        },
       ],
     },
     { label: "Soporte", key: "soporte" },
@@ -56,21 +77,21 @@ export default function Navbar() {
 
   const getHref = (label: string) => {
     const map: { [key: string]: string } = {
-      "Servicios": "/servicios",
-      "Nosotros": "/nosotros",
-      "Soporte": "/soporte",
+      Servicios: "/servicios",
+      Nosotros: "/nosotros",
+      Soporte: "/soporte",
       "Formas de pago": "/formas-de-pago",
       "Memoria y balance": "/nosotros/memoria&balance",
-      "Reclamos": "/soporte/reclamos",
+      Reclamos: "/soporte/reclamos",
       "Consultas técnicas": "/soporte/consultas-tecnicas",
       "Ayuda online": "/soporte/ayuda-online",
-      "Biblioteca": "/instituciones/biblioteca",
+      Biblioteca: "/instituciones/biblioteca",
       "Salón de eventos": "/instituciones/salon-de-eventos",
-      "Sepelios": "/instituciones/sepelios",
-      "Jardín": "/instituciones/colegios/jardin",
-      "Primaria": "/instituciones/colegios/primaria",
-      "Obras": "/nosotros/obras",
-      "Historia": "/nosotros/historia",
+      Sepelios: "/instituciones/sepelios",
+      Jardín: "/instituciones/colegios/jardin",
+      Primaria: "/instituciones/colegios/primaria",
+      Obras: "/nosotros/obras",
+      Historia: "/nosotros/historia",
       "Consejo directivo": "/nosotros/consejo-directivo",
     };
     return map[label] || "#";
@@ -100,15 +121,31 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <nav className="w-full bg-white/80 backdrop-blur-[12px] shadow-none transition-all duration-300">
+      <nav
+        className={`w-full bg-white/80 backdrop-blur-[12px] shadow-none transition-all duration-300 ${marginClass}`}
+      >
+        {" "}
         <div className="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16 xl:px-[120px] py-[24px] h-[72px] md:h-[103px]">
           <div className="flex items-center gap-4 md:gap-0 md:flex-none">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="block md:hidden">
-              {menuOpen ? <HiX className="text-3xl text-black" /> : <HiMenu className="text-3xl text-black" />}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="block md:hidden"
+            >
+              {menuOpen ? (
+                <HiX className="text-3xl text-black" />
+              ) : (
+                <HiMenu className="text-3xl text-black" />
+              )}
             </button>
             <div className="absolute md:static left-1/2 transform -translate-x-1/2 md:translate-x-0">
               <Link href="/">
-                <Image src={Logo} alt="Logo" width={50} height={50} className="mx-auto" />
+                <Image
+                  src={Logo}
+                  alt="Logo"
+                  width={50}
+                  height={50}
+                  className="mx-auto"
+                />
               </Link>
             </div>
           </div>
@@ -122,12 +159,16 @@ export default function Navbar() {
                     <li key={key} className="relative flex items-center gap-1">
                       <Link
                         href={getHref(label)}
-                        className={`hover:font-semibold ${isActive(getHref(label)) ? "font-semibold" : ""}`}
+                        className={`hover:font-semibold ${
+                          isActive(getHref(label)) ? "font-semibold" : ""
+                        }`}
                       >
                         {label}
                       </Link>
                       <button
-                        onClick={() => setOpenMenu(openMenu === key ? null : key)}
+                        onClick={() =>
+                          setOpenMenu(openMenu === key ? null : key)
+                        }
                         aria-expanded={openMenu === key}
                         aria-controls={`submenu-${key}`}
                         className="flex items-center"
@@ -143,7 +184,9 @@ export default function Navbar() {
                   ) : (
                     <li key={key} className="relative">
                       <button
-                        onClick={() => setOpenMenu(openMenu === key ? null : key)}
+                        onClick={() =>
+                          setOpenMenu(openMenu === key ? null : key)
+                        }
                         className={`flex items-center gap-1 transition-colors duration-300 ${
                           openMenu === key ? "text-black font-semibold" : ""
                         }`}
@@ -162,7 +205,9 @@ export default function Navbar() {
                   <li key={key}>
                     <Link
                       href={getHref(label)}
-                      className={`hover:font-semibold ${isActive(getHref(label)) ? "font-semibold" : ""}`}
+                      className={`hover:font-semibold ${
+                        isActive(getHref(label)) ? "font-semibold" : ""
+                      }`}
                     >
                       {label}
                     </Link>
@@ -172,7 +217,9 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/formas-de-pago"
-                  className={`hover:font-semibold ${isActive("/formas-de-pago") ? "font-semibold" : ""}`}
+                  className={`hover:font-semibold ${
+                    isActive("/formas-de-pago") ? "font-semibold" : ""
+                  }`}
                 >
                   Formas de pago
                 </Link>
@@ -189,7 +236,6 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-
         {/* SUBMENÚ ESCRITORIO */}
         {openMenu && ["instituciones", "nosotros"].includes(openMenu) && (
           <div className="hidden md:flex w-full justify-center bg-transparent transition-all duration-300 pb-6">
@@ -197,50 +243,64 @@ export default function Navbar() {
               id={`submenu-${openMenu}`}
               className="text-[18px] leading-[24px] font-normal text-gray-700 flex flex-wrap gap-x-10 gap-y-2 max-w-5xl"
             >
-              {navItems.find((item) => item.key === openMenu)?.children?.map((child) =>
-                typeof child === "string" ? (
-                  <li key={child}>
-                    <Link
-                      href={getHref(child)}
-                      className={`hover:no-underline ${isActive(getHref(child)) ? "font-semibold" : ""}`}
-                    >
-                      {child}
-                    </Link>
-                  </li>
-                ) : (
-                  <li key={child.key} className="min-w-[150px]">
-                    <div className="flex items-center gap-1 cursor-pointer" onClick={() => toggleSubDropdown(child.key)}>
-                      <span className={openSubDropdowns[child.key] ? "font-semibold text-black" : ""}>
-                        {child.label}
-                      </span>
-                      <HiChevronDown
-                        size={16}
-                        className={`text-gray-500 mt-[2px] transition-transform duration-300 ${
-                          openSubDropdowns[child.key] ? "rotate-180" : ""
+              {navItems
+                .find((item) => item.key === openMenu)
+                ?.children?.map((child) =>
+                  typeof child === "string" ? (
+                    <li key={child}>
+                      <Link
+                        href={getHref(child)}
+                        className={`hover:no-underline ${
+                          isActive(getHref(child)) ? "font-semibold" : ""
                         }`}
-                      />
-                    </div>
-                    {openSubDropdowns[child.key] && (
-                      <ul className="mt-2 flex gap-x-4 ml-4">
-                        {child.children.map((sub: string) => (
-                          <li key={sub}>
-                            <Link
-                              href={getHref(sub)}
-                              className={`hover:no-underline ${isActive(getHref(sub)) ? "font-semibold" : ""}`}
-                            >
-                              {sub}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                )
-              )}
+                      >
+                        {child}
+                      </Link>
+                    </li>
+                  ) : (
+                    <li key={child.key} className="min-w-[150px]">
+                      <div
+                        className="flex items-center gap-1 cursor-pointer"
+                        onClick={() => toggleSubDropdown(child.key)}
+                      >
+                        <span
+                          className={
+                            openSubDropdowns[child.key]
+                              ? "font-semibold text-black"
+                              : ""
+                          }
+                        >
+                          {child.label}
+                        </span>
+                        <HiChevronDown
+                          size={16}
+                          className={`text-gray-500 mt-[2px] transition-transform duration-300 ${
+                            openSubDropdowns[child.key] ? "rotate-180" : ""
+                          }`}
+                        />
+                      </div>
+                      {openSubDropdowns[child.key] && (
+                        <ul className="mt-2 flex gap-x-4 ml-4">
+                          {child.children.map((sub: string) => (
+                            <li key={sub}>
+                              <Link
+                                href={getHref(sub)}
+                                className={`hover:no-underline ${
+                                  isActive(getHref(sub)) ? "font-semibold" : ""
+                                }`}
+                              >
+                                {sub}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  )
+                )}
             </ul>
           </div>
         )}
-
         {/* MENÚ MOBILE */}
         {menuOpen && (
           <div className="md:hidden bg-transparent shadow-md px-4 py-3">
@@ -253,7 +313,9 @@ export default function Navbar() {
                         <div className="flex items-center gap-2">
                           <Link
                             href={getHref(label)}
-                            className={isActive(getHref(label)) ? "font-semibold" : ""}
+                            className={
+                              isActive(getHref(label)) ? "font-semibold" : ""
+                            }
                           >
                             {label}
                           </Link>
@@ -271,13 +333,20 @@ export default function Navbar() {
                           </button>
                         </div>
                         {openMobileSubmenus[key] && (
-                          <ul id={`m-submenu-${key}`} className="ml-4 mt-2 space-y-2">
+                          <ul
+                            id={`m-submenu-${key}`}
+                            className="ml-4 mt-2 space-y-2"
+                          >
                             {children.map((child) =>
                               typeof child === "string" ? (
                                 <li key={child}>
                                   <Link
                                     href={getHref(child)}
-                                    className={isActive(getHref(child)) ? "font-semibold" : ""}
+                                    className={
+                                      isActive(getHref(child))
+                                        ? "font-semibold"
+                                        : ""
+                                    }
                                   >
                                     {child}
                                   </Link>
@@ -285,15 +354,25 @@ export default function Navbar() {
                               ) : (
                                 <li key={child.key}>
                                   <div
-                                    onClick={() => toggleMobileSubmenu(child.key)}
+                                    onClick={() =>
+                                      toggleMobileSubmenu(child.key)
+                                    }
                                     className="flex items-center gap-1 cursor-pointer"
                                   >
-                                    <span className={openMobileSubmenus[child.key] ? "font-semibold text-black" : ""}>
+                                    <span
+                                      className={
+                                        openMobileSubmenus[child.key]
+                                          ? "font-semibold text-black"
+                                          : ""
+                                      }
+                                    >
                                       {child.label}
                                     </span>
                                     <HiChevronDown
                                       className={`transition-transform duration-300 ${
-                                        openMobileSubmenus[child.key] ? "rotate-180" : ""
+                                        openMobileSubmenus[child.key]
+                                          ? "rotate-180"
+                                          : ""
                                       }`}
                                     />
                                   </div>
@@ -303,7 +382,11 @@ export default function Navbar() {
                                         <li key={sub}>
                                           <Link
                                             href={getHref(sub)}
-                                            className={isActive(getHref(sub)) ? "font-semibold" : ""}
+                                            className={
+                                              isActive(getHref(sub))
+                                                ? "font-semibold"
+                                                : ""
+                                            }
                                           >
                                             {sub}
                                           </Link>
@@ -323,7 +406,15 @@ export default function Navbar() {
                           onClick={() => toggleMobileSubmenu(key)}
                           className="flex items-center justify-start gap-1 cursor-pointer"
                         >
-                          <span className={openMobileSubmenus[key] ? "font-semibold text-black" : ""}>{label}</span>
+                          <span
+                            className={
+                              openMobileSubmenus[key]
+                                ? "font-semibold text-black"
+                                : ""
+                            }
+                          >
+                            {label}
+                          </span>
                           <HiChevronDown
                             className={`transition-transform duration-300 ${
                               openMobileSubmenus[key] ? "rotate-180" : ""
@@ -337,7 +428,11 @@ export default function Navbar() {
                                 <li key={child}>
                                   <Link
                                     href={getHref(child)}
-                                    className={isActive(getHref(child)) ? "font-semibold" : ""}
+                                    className={
+                                      isActive(getHref(child))
+                                        ? "font-semibold"
+                                        : ""
+                                    }
                                   >
                                     {child}
                                   </Link>
@@ -345,15 +440,25 @@ export default function Navbar() {
                               ) : (
                                 <li key={child.key}>
                                   <div
-                                    onClick={() => toggleMobileSubmenu(child.key)}
+                                    onClick={() =>
+                                      toggleMobileSubmenu(child.key)
+                                    }
                                     className="flex items-center gap-1 cursor-pointer"
                                   >
-                                    <span className={openMobileSubmenus[child.key] ? "font-semibold text-black" : ""}>
+                                    <span
+                                      className={
+                                        openMobileSubmenus[child.key]
+                                          ? "font-semibold text-black"
+                                          : ""
+                                      }
+                                    >
                                       {child.label}
                                     </span>
                                     <HiChevronDown
                                       className={`transition-transform duration-300 ${
-                                        openMobileSubmenus[child.key] ? "rotate-180" : ""
+                                        openMobileSubmenus[child.key]
+                                          ? "rotate-180"
+                                          : ""
                                       }`}
                                     />
                                   </div>
@@ -363,7 +468,11 @@ export default function Navbar() {
                                         <li key={sub}>
                                           <Link
                                             href={getHref(sub)}
-                                            className={isActive(getHref(sub)) ? "font-semibold" : ""}
+                                            className={
+                                              isActive(getHref(sub))
+                                                ? "font-semibold"
+                                                : ""
+                                            }
                                           >
                                             {sub}
                                           </Link>
@@ -381,7 +490,9 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={getHref(label)}
-                      className={isActive(getHref(label)) ? "font-semibold" : ""}
+                      className={
+                        isActive(getHref(label)) ? "font-semibold" : ""
+                      }
                     >
                       {label}
                     </Link>
@@ -399,7 +510,6 @@ export default function Navbar() {
             </ul>
           </div>
         )}
-
         {/* LINEA MULTICOLOR */}
         <div className="flex h-[4px] w-full">
           <div className="w-[16.66%] bg-[#76257e]" />

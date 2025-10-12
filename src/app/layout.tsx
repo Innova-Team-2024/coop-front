@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
-import { Navbar, RouteLoader ,  Footer } from "@/components";
+import { RouteLoader, Footer } from "@/components";
+import MensageAdmin from "@/components/MensageAdmin/MensageAdmin";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper/ClientLayoutWrapper";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -21,13 +23,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+ return (
     <html lang="es" className={roboto.variable}>
       <body className="antialiased bg-bgColorPageHome">
-        <Navbar />
-        <RouteLoader />
-        {children}
-        <Footer />
+        {/* Banner de Admin: fixed top-0 */}
+        <MensageAdmin />
+
+        <ClientLayoutWrapper /> 
+
+        <div className="pt-12 sm:pt-14"> 
+          <RouteLoader />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
