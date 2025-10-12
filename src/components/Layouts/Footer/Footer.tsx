@@ -14,8 +14,8 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto flex flex-col gap-[80px]">
         <div className="flex flex-col items-center md:items-start gap-[40px] md:flex-row md:justify-start md:gap-[80px]">
           <div className="flex flex-col items-center md:items-start min-w-[180px]">
-            <Image src="/logo2.png" alt="Logo principal" width={90} height={40} />
-            <Image src="/logo3.png" alt="Texto logo" width={140} height={20} className="-mt-1" />
+            <Image src="/Logo2.png" alt="Logo principal" width={90} height={40} />
+            <Image src="/Logo3.png" alt="Texto logo" width={140} height={20} className="-mt-1" />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[60px] gap-y-[40px] text-sm text-left w-full justify-between">
