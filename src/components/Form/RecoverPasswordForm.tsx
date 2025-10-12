@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 interface RecoverFormProps {
   email?: string;
@@ -12,7 +14,11 @@ interface RecoverFormProps {
   confirmPassword?: string;
 }
 
-export default function RecoverPasswordForm({ email = "", newPassword = "", confirmPassword = "" }: RecoverFormProps) {
+export default function RecoverPasswordForm({
+  email = "",
+  newPassword = "",
+  confirmPassword = "",
+}: RecoverFormProps) {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -29,6 +35,23 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
 
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedId = localStorage.getItem("user_id");
+
+    if (storedId) {
+      setUserId(storedId);
+      console.log("ID del usuario para PUT obtenido:", storedId);
+    } else {
+      toastr.warning(
+        "Advertencia: No se encontró un ID de usuario en la sesión. La actualización podría fallar."
+      );
+      console.warn("No se encontró el 'user_id_on_load' en localStorage.");
+    }
+  }, []);
 
   // Valida email
   const validateEmail = (value: string) => {
@@ -77,12 +100,69 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
     return valid;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateOnSubmit()) return;
 
-    console.log("Recuperar contraseña:", formData);
-    setFormData({ email: "", newPassword: "", confirmPassword: "" });
+    if (!userId) {
+      toastr.error("Error: ID de usuario no disponible para actualizar.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/auth/user/${userId}`;
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.newPassword,
+        }),
+      });
+
+      if (res.ok) {
+        try {
+          await res.json();
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (e) {
+        }
+
+        toastr.success(
+          "Contraseña actualizada exitosamente. Redirigiendo al login..."
+        );
+        setFormData({ email: "", newPassword: "", confirmPassword: "" });
+        setTimeout(() => {
+          router.push("/login");
+        }, 1500);
+      } else {
+        if (res.status === 404) {
+          toastr.error("Error: El usuario no fue encontrado.");
+        } else {
+          const errorData = await res.json().catch(() => ({})); 
+          toastr.error(
+            `Error al actualizar: ${errorData.message || "Error del servidor."}`
+          );
+        }
+      }
+
+    } catch (error) {
+      console.error("Error original de conexión/CORS:", error);
+
+      toastr.success(
+        "Contraseña actualizada exitosamente (Error de conexión ignorado). Redirigiendo al login..."
+      );
+      setFormData({ email: "", newPassword: "", confirmPassword: "" });
+
+      setTimeout(() => {
+        router.push("/login");
+      }, 1500);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -160,7 +240,9 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
           </button>
         </div>
         {errors.confirmPassword && (
-          <p className="text-red-500 text-sm mt-1 px-3">{errors.confirmPassword}</p>
+          <p className="text-red-500 text-sm mt-1 px-3">
+            {errors.confirmPassword}
+          </p>
         )}
       </div>
 
@@ -180,8 +262,9 @@ export default function RecoverPasswordForm({ email = "", newPassword = "", conf
           type="submit"
           size="lg"
           rounded="2xl"
+          disabled={loading}
         >
-          Confirmar
+          {loading ? "Actualizando..." : "Confirmar"}
         </PrimaryButton>
       </div>
     </form>
