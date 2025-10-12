@@ -197,7 +197,7 @@ export default function LoginForm({
         )}
       </div>
 
-      <div className="hidden lg:block">
+      <div className="lg:block">
         <button
           className="text-base underline cursor-pointer"
           type="button"
