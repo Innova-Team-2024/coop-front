@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from 'react';
 import {
   FaFacebookF,
   FaInstagram,
@@ -9,6 +11,29 @@ import {
 } from 'react-icons/fa'
 
 export default function Footer() {
+  const router = useRouter();
+  
+  const [showAdminButton, setShowAdminButton] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    
+    const token = localStorage.getItem('auth_token');
+    setShowAdminButton(!token);
+
+    const handleStorageChange = () => {
+      const newToken = localStorage.getItem('auth_token');
+      setShowAdminButton(!newToken);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   return (
     <footer className="w-full bg-[#17253D] text-white py-[80px] px-6">
       <div className="max-w-[1200px] mx-auto flex flex-col gap-[80px]">
@@ -19,6 +44,7 @@ export default function Footer() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[60px] gap-y-[40px] text-sm text-left w-full justify-between">
+            {/* ... Columna de Servicios ... */}
             <div>
               <h4 className="font-semibold mb-4">Servicios</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
@@ -27,7 +53,7 @@ export default function Footer() {
                 <li>Telefonía</li>
               </ul>
             </div>
-
+            {/* ... Columna de Instituciones ... */}
             <div>
               <h4 className="font-semibold mb-4">Instituciones</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
@@ -38,7 +64,7 @@ export default function Footer() {
                 <li>Sepelios</li>
               </ul>
             </div>
-
+            {/* ... Columna de Nosotros ... */}
             <div>
               <h4 className="font-semibold mb-4">Nosotros</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
@@ -50,7 +76,7 @@ export default function Footer() {
                 <li>Reuniones sociales</li>
               </ul>
             </div>
-
+            {/* ... Columna de Soporte ... */}
             <div>
               <h4 className="font-semibold mb-4">Soporte</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
@@ -96,6 +122,13 @@ export default function Footer() {
             <a href="#" className="hover:underline text-gray-300">
               Términos y condiciones
             </a>
+            
+            {isClient && showAdminButton && (
+              <button className="hover:underline text-gray-300" type='button' onClick={() => router.push('/login')}>
+                Acceso admin
+              </button>
+            )}
+            
           </div>
 
           <div className="flex gap-4 text-white text-lg mt-2 md:mt-0">

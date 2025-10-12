@@ -1,28 +1,68 @@
-'use client';
+"use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
+import { useRouter } from "next/navigation";
 
 interface LoginFormProps {
   email?: string;
   password?: string;
 }
 
-export default function LoginForm({ email = "", password = "" }: LoginFormProps) {
-  const [formData, setFormData] = useState({
-    email,
-    password,
-  });
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
-
+export default function LoginForm({
+  email = "",
+  password = "",
+}: LoginFormProps) {
+  const [formData, setFormData] = useState({ email, password });
+  const [errors, setErrors] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  // Validar formato de email en tiempo real
+  useEffect(() => {
+    const fetchAllUsersAndStoreId = async () => {
+      try {
+        const usersRes = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/users`
+        );
+
+        if (!usersRes.ok) {
+          console.error(
+            "No se pudo obtener la lista de usuarios al cargar la página."
+          );
+          return;
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const users: any[] = await usersRes.json();
+
+        const targetUser = users[0];
+
+        if (targetUser && targetUser.id) {
+          localStorage.setItem("user_id", targetUser.id.toString());
+          console.log(
+            "ID del primer usuario de /users guardado en localStorage al cargar:",
+            targetUser.id
+          );
+        } else {
+          console.warn(
+            "No se encontraron usuarios o ID no disponible en la carga inicial."
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Error al obtener datos de usuarios en la carga inicial:",
+          error
+        );
+      }
+    };
+
+    fetchAllUsersAndStoreId();
+  }, []);
+
   const validateEmail = (value: string) => {
     if (!value) return "El correo es obligatorio";
     if (!/\S+@\S+\.\S+/.test(value)) return "Correo no válido";
@@ -34,13 +74,11 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === "email") {
-      // Validar email mientras escribe
       const errorMsg = validateEmail(value);
       setErrors((prev) => ({ ...prev, email: errorMsg }));
     }
 
     if (name === "password") {
-      // Limpia error de contraseña si empieza a escribir
       setErrors((prev) => ({ ...prev, password: "" }));
     }
   };
@@ -49,11 +87,9 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
     let valid = true;
     const newErrors = { email: "", password: "" };
 
-    // Email (por si no lo completó)
     newErrors.email = validateEmail(formData.email);
     if (newErrors.email) valid = false;
 
-    // Contraseña
     if (!formData.password) {
       newErrors.password = "La contraseña es obligatoria";
       valid = false;
@@ -63,13 +99,52 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
     return valid;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!validateOnSubmit()) return;
 
-    console.log("Enviando datos:", formData);
-    setFormData({ email: "", password: "" });
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      if (!res.ok) {
+        if (res.status === 401) {
+          toastr.error("Credenciales incorrectas. Intente nuevamente.");
+        } else {
+          toastr.error(
+            "Error al intentar iniciar sesión. Inténtelo más tarde."
+          );
+        }
+        return;
+      } 
+
+      const data = await res.json();
+
+      if (data.token) {
+        localStorage.setItem("auth_token", data.token);
+        console.log("Token JWT guardado en localStorage.");
+      }
+
+      toastr.success("Ingresando a la página principal");
+      router.push("/");
+
+      setFormData({ email: "", password: "" });
+    } catch (error) {
+      console.error(error);
+      toastr.error("No se pudo conectar con el servidor.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -112,7 +187,7 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 "
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"
           >
             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
@@ -123,17 +198,24 @@ export default function LoginForm({ email = "", password = "" }: LoginFormProps)
       </div>
 
       <div className="hidden lg:block">
-        <p className="text-base underline cursor-pointer">Olvidé mi contraseña</p>
+        <button
+          className="text-base underline cursor-pointer"
+          type="button"
+          onClick={() => router.push("/recovery")}
+        >
+          Olvidé mi contraseña
+        </button>
       </div>
 
       <div className="flex justify-center md:justify-start">
         <PrimaryButton
-          className=" w-156 shadow-xl "
+          className="w-156 shadow-xl"
           type="submit"
           size="lg"
           rounded="2xl"
+          disabled={loading}
         >
-          Iniciar sesión
+          {loading ? "Verificando..." : "Iniciar sesión"}
         </PrimaryButton>
       </div>
     </form>

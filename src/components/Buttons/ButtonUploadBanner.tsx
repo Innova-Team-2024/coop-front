@@ -1,12 +1,36 @@
 'use client';
 
 import { BiPencil } from 'react-icons/bi';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ModalBanner from '../ModalBanner/ModalBanner';
 
 export default function ButtonAccount() {
   const [open, setOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
+  useEffect(() => {
+    setIsClient(true);
+
+    const token = localStorage.getItem('auth_token');
+    setIsAuthenticated(!!token);
+
+    const handleStorageChange = () => {
+      const newToken = localStorage.getItem('auth_token');
+      setIsAuthenticated(!!newToken);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+  if (!isClient || !isAuthenticated) {
+    return null;
+  }
+  
   return (
     <>
       <button
