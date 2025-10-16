@@ -1,4 +1,4 @@
-//Layouts
+
 export { default as Navbar } from "./Layouts/Navbar/Navbar";
 export { default as Footer } from "./Layouts/Footer/Footer";
 
@@ -101,3 +101,6 @@ export { default as  SepeliosResponsive } from "./SepeliosAccordion/SepeliosResp
 //Soporte
 export  { default as TabsSoporteSection }  from "./SoporteSection/TabsSoporteSection";
 export { default as FaqsSoporteSection } from "./SoporteSection/FaqsSoporteSection";
+
+//Nuestra Historia
+export { default as NuestraHistoria } from "./NuestraHistoria/NuestraHistoria";
