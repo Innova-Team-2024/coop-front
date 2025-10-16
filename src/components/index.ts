@@ -1,5 +1,4 @@
-import NuestraHistoria from './NuestraHistoria/NuestraHistoria';
-//Layouts
+
 export { default as Navbar } from "./Layouts/Navbar/Navbar";
 export { default as Footer } from "./Layouts/Footer/Footer";
 
