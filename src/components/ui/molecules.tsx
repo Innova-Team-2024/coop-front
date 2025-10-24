@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image.js";
-import { Mancha } from "@/public";
+import { Mancha } from "../../../public";
 
 const Molecules = () => {
   return (

@@ -19,7 +19,7 @@ import {
   Calendario,
   Flor,
   Sombrero,
-} from "@/public";
+} from "../../../public";
 
 const tecnologiesServices = [
   {

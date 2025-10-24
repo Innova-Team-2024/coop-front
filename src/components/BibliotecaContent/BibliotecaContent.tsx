@@ -24,7 +24,14 @@ export default function BibliotecaContent() {
 
       <div className="w-full flex flex-col lg:flex-row justify-center items-start gap-[40px]">
         <div className="w-full lg:w-[670px] flex items-center justify-center rounded-2xl bg-gray-100 h-40 md:h-96 text-gray-500 text-center">
-          Video
+          <video
+            src="/BIBLIOTECA-ALTA.mp4"
+            controls
+            autoPlay={true}
+            loop
+            muted={false}
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="hidden md:flex flex-col gap-4 mt-[-16px] w-[470px]">

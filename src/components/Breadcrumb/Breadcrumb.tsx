@@ -56,7 +56,10 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   // Estado para controlar la visualización del menú desplegable de items ocultos
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // Estado para controlar si estamos en vista móvil
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+  /* const [isMobile, setIsMobile] = useState(false); */
 
   // Efecto para detectar el tamaño de la pantalla
   useEffect(() => {
@@ -129,7 +132,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <nav
-      className={`flex px-6 lg:px-32 pt-12 ${className} mt-14 md:mt-24 lg:mt-24`}
+      className={`flex px-6 lg:px-32 pt-12 ${className} mt-5 md:mt-24 lg:mt-24`}
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">

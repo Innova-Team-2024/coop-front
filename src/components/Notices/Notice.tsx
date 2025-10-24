@@ -1,6 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import NoticeSlide from "./NoticeSlide";
+import NoticesSlide from "./NoticesSlide";
+import notices from "@/data/listNotice.json";
 
 function Notice() {
   return (
@@ -12,7 +13,7 @@ function Notice() {
         </h2>
       </article>
 
-      <NoticeSlide />
+      <NoticesSlide notices={notices} />
 
       <article className="md:hidden">
         <button className="px-6 py-2 bg-transparent font-semibold text-lg text-center mx-auto text-[#0071D2] hover:text-[#0071D2]/50 transition-colors text-nowrap flex items-center gap-2">

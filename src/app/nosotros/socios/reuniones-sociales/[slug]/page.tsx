@@ -1,11 +1,12 @@
 import React from "react";
 import { Breadcrumb } from "@/components";
-import { Logo2 } from "@/public/index";
+
 import Image from "next/image";
-import { notice1, notice2, notice3, notice4, Logotipo } from "@/public";
-import NoticeSlide from "@/components/Notices/NoticeSlide";
+/* import Logotipo from "/logo-large.png"; */
+import NoticesSlide from "@/components/Notices/NoticesSlide";
 import notices from "@/data/listNotice.json";
 import { notFound } from "next/navigation";
+/* import { Logo2 } from "../../../../../../public/index.js"; */
 
 export const metadata = {
   title: "Reuniones Sociales | Comunidad y encuentro",
@@ -35,12 +36,12 @@ export default async function page({ params }: { params: { slug: string } }) {
   ];
 
   //Imagenes para la galeria
-  const images = {
+  /*   const images = {
     "notice_1.jpg": notice1,
     "notice_2.jpg": notice2,
     "notice_3.jpg": notice3,
     "notice_4.jpg": notice4,
-  };
+  }; */
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -55,7 +56,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             <div className="w-full h-full flex items-center justify-center">
               <picture className="w-full flex justify-center items-center">
                 <Image
-                  src={images[notice.image as keyof typeof images] || Logotipo}
+                  src={notice.image || "/logo-large.png"}
                   alt={`Noticia ${notice.title}`}
                   fill
                   className="object-cover rounded-2xl select-none"
@@ -95,7 +96,7 @@ export default async function page({ params }: { params: { slug: string } }) {
               <div className="w-28 h-14 rounded-lg flex items-center justify-center relative">
                 <div className="w-full h-full absolute">
                   <Image
-                    src={Logo2}
+                    src="/logo2.png"
                     alt={"Logo empresa"}
                     fill
                     priority
@@ -126,7 +127,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             <ImageGridGallery images={images} />
           </article>
         </section> */}
-        <section className="lg:py-14">
+        <section className="w-full">
           <article className="text-center mb-3">
             <h2 className="text-3xl leading-10 font-semibold lg:mb-6 lg:text-5xl lg:leading-[56px]">
               Conocé más <span className="lg:hidden block"> </span> nuestras
@@ -134,7 +135,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             </h2>
           </article>
 
-          <NoticeSlide pagination={true} />
+          <NoticesSlide notices={notices} pagination={true} />
         </section>
       </main>
     </div>

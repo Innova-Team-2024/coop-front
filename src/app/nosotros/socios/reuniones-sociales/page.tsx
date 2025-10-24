@@ -1,14 +1,13 @@
 import React from "react";
 import { Breadcrumb, SocialMeetingIntro } from "@/components";
 
-import { Logo2, Logotipo } from "@/public/index";
 import Image from "next/image";
 /* import SecondaryButton from "@/components/Buttons/SecondaryButton"; */
-import { NoticeExample } from "@/public";
 import notices from "@/data/listNotice.json";
-import { notice1, notice2, notice3, notice4 } from "@/public";
+/* import { notice1, notice2, notice3, notice4 } from "@/public"; */
 import Link from "next/link.js";
 import slugify from "slugify";
+/* import NoticeExample from "/aboutUsPage/NoticeExample.png"; */
 
 export const metadata = {
   title: "Reuniones Sociales | Comunidad y encuentro",
@@ -16,22 +15,18 @@ export const metadata = {
     "Espacios de encuentro para socios, familias y vecinos. Promovemos el lazo social con actividades abiertas y participativas.",
 };
 
-const images = {
-  "notice_1.jpg": notice1,
-  "notice_2.jpg": notice2,
-  "notice_3.jpg": notice3,
-  "notice_4.jpg": notice4,
-};
-
 function Page() {
   const pathItems = [
     { label: "Home", href: "/" },
-    { label: "Nosotros", href: "" },
-    { label: "Socios", href: "" },
-    { label: "Reuniones Sociales", href: "" },
+    { label: "Nosotros", href: "/nosotros" },
+    { label: "Socios", href: "/nosotros/socios/reuniones-sociales" },
+    {
+      label: "Reuniones Sociales",
+      href: "/nosotros/socios/reuniones-sociales",
+    },
   ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen ">
       <Breadcrumb items={pathItems} />
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 py-8">
@@ -40,16 +35,17 @@ function Page() {
           {/* Background Image Container - Aquí pondrás tu imagen completa */}
           <div className="absolute inset-0 bg-white">
             {/* Aquí reemplazarás este div con tu background-image que incluye las casas + logo + texto cooperativa */}
-            <div className="w-full h-full flex items-center justify-center">
-              <picture className="w-full flex justify-center items-center">
-                <Image
-                  src={Logotipo}
-                  alt={"Logo empresa"}
-                  priority
-                  className="max-w-xs md:max-w-sm"
-                />
-              </picture>
-            </div>
+            <picture className="relative w-full h-full flex justify-center items-center">
+              <Image
+                src="/logo-large.png"
+                alt={"Logo empresa"}
+                priority
+                fill
+                className="max-w-sm object-contain mx-auto"
+              />
+            </picture>
+            {/* <div className="w-full h-full flex items-center justify-center">
+            </div> */}
           </div>
 
           {/* Gradient Overlay - Claro arriba, oscuro abajo */}
@@ -62,12 +58,12 @@ function Page() {
           ></div>
 
           {/* Content positioned at bottom left */}
-          <div className="absolute bottom-8 left-8 z-10">
+          <div className="absolute bottom-8 left-4 lg:left-8 z-10">
             {/* Title and subtitle in white */}
             <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
               ¡Estamos de vuelta!
             </h3>
-            <p className="text-white text-base md:text-lg leading-relaxed line-clamp-2 w-3/4">
+            <p className="text-white text-base md:text-lg leading-relaxed lg:line-clamp-2 w-3/4">
               Renovamos el diálogo con nuestros asociados para seguir impulsando
               soluciones, valores y programas para toda la comunidad.
             </p>
@@ -84,7 +80,7 @@ function Page() {
               <div className="w-28 h-14 rounded-lg flex items-center justify-center relative">
                 <div className="w-full h-full absolute">
                   <Image
-                    src={Logo2}
+                    src="/Logo2.png"
                     alt={"Logo empresa"}
                     fill
                     priority
@@ -135,10 +131,7 @@ function Page() {
                     <div className="flex flex-col gap-3 p-4 w-full lg:h-[451px] h-[359px] rounded-xl  border border-[#DDD] bg-white shadow-[0px_10px_15px_0px_rgba(0,0,0,0.10),0px_4px_6px_0px_rgba(0,0,0,0.05)]">
                       <div className="relative w-full max-w-[459px] h-80 rounded-2xl mx-auto">
                         <Image
-                          src={
-                            images[notice.image as keyof typeof images] ||
-                            NoticeExample
-                          }
+                          src={notice.image || "/aboutUsPage/NoticeExample.png"}
                           alt={`Noticia ${notice.title}`}
                           fill
                           className="object-cover rounded-2xl select-none"

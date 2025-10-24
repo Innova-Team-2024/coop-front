@@ -18,7 +18,7 @@ import {
   AboutUsPage4,
   AboutUsPage5,
   AboutUsPage6,
-} from "@/public";
+} from "../../../public";
 
 export default function Nosotros() {
   const pathItems = [
@@ -67,7 +67,7 @@ export default function Nosotros() {
           <ImageGridGallery images={images} />
         </article>
       </section>
-      <section className="py-10">
+      <section className="py-10 lg:px-10">
         <Notice />
       </section>
       <section className="relative -mt-20 lg:-mt-56 lg:-mb-40">
@@ -92,3 +92,4 @@ export default function Nosotros() {
     </main>
   );
 }
+

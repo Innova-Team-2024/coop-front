@@ -2,7 +2,7 @@ import Link from "next/link.js";
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 
-import { AboutUs1, AboutUs2, AboutUs3, AboutUs4, AboutUs5 } from "@/public";
+import { AboutUs1, AboutUs2, AboutUs3, AboutUs4, AboutUs5 } from "../../../public";
 import CarouselCol from "./CarouselCol";
 import CarouselRow from "./CarouselRow";
 
