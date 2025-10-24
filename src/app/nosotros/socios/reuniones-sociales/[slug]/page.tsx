@@ -2,11 +2,9 @@ import React from "react";
 import { Breadcrumb } from "@/components";
 
 import Image from "next/image";
-/* import Logotipo from "/logo-large.png"; */
 import NoticesSlide from "@/components/Notices/NoticesSlide";
 import notices from "@/data/listNotice.json";
 import { notFound } from "next/navigation";
-/* import { Logo2 } from "../../../../../../public/index.js"; */
 
 export const metadata = {
   title: "Reuniones Sociales | Comunidad y encuentro",
@@ -35,16 +33,8 @@ export default async function page({ params }: { params: { slug: string } }) {
     { label: "Publicación", href: "" },
   ];
 
-  //Imagenes para la galeria
-  /*   const images = {
-    "notice_1.jpg": notice1,
-    "notice_2.jpg": notice2,
-    "notice_3.jpg": notice3,
-    "notice_4.jpg": notice4,
-  }; */
-
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Breadcrumb items={pathItems} />
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 py-8">

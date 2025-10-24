@@ -2,12 +2,9 @@ import React from "react";
 import { Breadcrumb, SocialMeetingIntro } from "@/components";
 
 import Image from "next/image";
-/* import SecondaryButton from "@/components/Buttons/SecondaryButton"; */
 import notices from "@/data/listNotice.json";
-/* import { notice1, notice2, notice3, notice4 } from "@/public"; */
 import Link from "next/link.js";
 import slugify from "slugify";
-/* import NoticeExample from "/aboutUsPage/NoticeExample.png"; */
 
 export const metadata = {
   title: "Reuniones Sociales | Comunidad y encuentro",
