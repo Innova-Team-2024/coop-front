@@ -12,7 +12,11 @@ export const metadata = {
     "Espacios de encuentro para socios, familias y vecinos. Promovemos el lazo social con actividades abiertas y participativas.",
 };
 
-export default async function page({ params }: { params: { slug: string } }) {
+export default async function page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const slug = (await params).slug;
   const id = slug.split("-").pop();
 
