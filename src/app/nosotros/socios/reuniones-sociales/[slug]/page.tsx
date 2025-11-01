@@ -2,9 +2,11 @@ import React from "react";
 import { Breadcrumb } from "@/components";
 
 import Image from "next/image";
-import NoticesSlide from "@/components/Notices/NoticesSlide";
+import { NoticesSlide } from "@/components/Notices/NoticesSlide";
 import notices from "@/data/listNotice.json";
 import { notFound } from "next/navigation";
+import NoticeCard from "@/components/Cards/NoticeCard";
+import slugify from "slugify";
 
 export const metadata = {
   title: "Reuniones Sociales | Comunidad y encuentro",
@@ -129,7 +131,25 @@ export default async function page({
             </h2>
           </article>
 
-          <NoticesSlide notices={notices} pagination={true} />
+          {/* <NoticesSlide notices={notices} pagination={true} clickeable={true} /> */}
+          <NoticesSlide pagination={true} spaceBetween={24}>
+            {notices.map((notice) => (
+              <NoticeCard
+                key={notice.id}
+                title={notice.title}
+                description={notice.description}
+                image={notice.image}
+                cardClasses="my-6 lg:p-6 w-[312px] lg:w-[492px]"
+                href={`/nosotros/socios/reuniones-sociales/${slugify(
+                  notice.title,
+                  {
+                    lower: true,
+                    strict: true,
+                  }
+                )}-${id}`}
+              />
+            ))}
+          </NoticesSlide>
         </section>
       </main>
     </div>

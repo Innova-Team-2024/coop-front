@@ -1,78 +1,74 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { StaticImageData } from "next/image";
-
-// Import required Swiper styles and modules
 import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode, Pagination } from "swiper/modules";
-import NoticeCard from "../Cards/NoticeCard";
 
-// Tipo para una noticia individual
-export interface Notice {
-  id: string | number;
-  title: string;
-  description: string;
-  image: StaticImageData | string;
-}
+/**
+ * @component NoticesSlide
+ * @description Slider reutilizable usando patrón Compound Components. Acepta cualquier contenido.
+ *
+ * @example
+ * <NoticesSlide pagination={true}>
+ *   {items.map(item => (
+ *     <NoticesSlide.Item key={item.id}>
+ *       <YourCard {...item} />
+ *     </NoticesSlide.Item>
+ *   ))}
+ * </NoticesSlide>
+ */
 
-interface NoticeSlideProps {
-  notices: Notice[];
+interface NoticesSlideProps {
+  children: React.ReactNode;
   pagination?: boolean;
+  spaceBetween?: number;
+  className?: string;
 }
 
-const NoticeSlide = ({ notices, pagination = false }: NoticeSlideProps) => {
+interface SlideItemProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const NoticesSlideRoot = ({
+  children,
+  pagination = false,
+  spaceBetween = 16,
+  className = "",
+}: NoticesSlideProps) => {
   return (
-    <article className="relative">
+    <article className={`relative ${className}`}>
       <Swiper
         slidesPerView="auto"
-        spaceBetween={16}
+        spaceBetween={spaceBetween}
         freeMode={true}
-        pagination={
-          pagination
-            ? {
-                clickable: true,
-              }
-            : false
-        }
+        pagination={pagination ? { clickable: true } : false}
         modules={pagination ? [FreeMode, Pagination] : [FreeMode]}
         className="w-full"
         breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 8,
-          },
-          390: {
-            slidesPerView: 1.1,
-            spaceBetween: 4,
-          },
-          640: {
-            slidesPerView: 2.1,
-            spaceBetween: 6,
-          },
-          1024: {
-            slidesPerView: 2.1,
-            spaceBetween: 80,
-          },
-          1280: {
-            slidesPerView: 2.4,
-            spaceBetween: 16,
-          },
+          320: { slidesPerView: 1, spaceBetween: 8 },
+          390: { slidesPerView: 1.1, spaceBetween: 4 },
+          640: { slidesPerView: 2.1, spaceBetween: 6 },
+          1024: { slidesPerView: 2.1, spaceBetween: 80 },
+          1280: { slidesPerView: 2.4, spaceBetween: 16 },
         }}
       >
-        {notices.map((notice) => (
-          <SwiperSlide key={notice.id} className="h-auto mb-8">
-            <NoticeCard
-              title={notice.title}
-              description={notice.description}
-              image={notice.image}
-              id={notice.id}
-            />
-          </SwiperSlide>
-        ))}
+        {/* ⬇️ AQUÍ ESTÁ EL CAMBIO: Envolvemos children automáticamente */}
+        {React.Children.map(children, (child, index) => {
+          // Si ya es un SwiperSlide (SlideItem), lo devolvemos tal cual
+          if (React.isValidElement(child) && child.type === SlideItem) {
+            return child;
+          }
+          // Si no, lo envolvemos en SwiperSlide
+          return (
+            <SwiperSlide key={index} className="h-auto mb-8">
+              {child}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
-      {/* Estilos del paginador */}
+
       {pagination && (
         <style jsx global>{`
           .swiper-pagination-bullet {
@@ -93,4 +89,13 @@ const NoticeSlide = ({ notices, pagination = false }: NoticeSlideProps) => {
   );
 };
 
-export default NoticeSlide;
+const SlideItem = ({ children, className = "" }: SlideItemProps) => {
+  return (
+    <SwiperSlide className={`h-auto mb-8 ${className}`}>{children}</SwiperSlide>
+  );
+};
+
+// Exporta usando Object.assign para patrón Compound Component
+export const NoticesSlide = Object.assign(NoticesSlideRoot, {
+  Item: SlideItem,
+});
