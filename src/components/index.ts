@@ -1,4 +1,3 @@
-
 export { default as Navbar } from "./Layouts/Navbar/Navbar";
 export { default as Footer } from "./Layouts/Footer/Footer";
 
@@ -38,7 +37,6 @@ export { default as NosotrosSection } from "./NosotrosSection/NosotrosSection";
 //GallerySection
 export { default as GallerySection } from "./GallerySection/GallerySection";
 
-
 //Aranceles
 export { default as ArancelesCard } from "./ArancelesCard/ArancelesCard";
 
@@ -49,7 +47,7 @@ export { default as AboutUs } from "./AboutUs/AboutUs";
 export { default as ContactForm } from "./Form/ContactForm";
 
 //AboutPage
-export { default as Notice } from "./Notices/Notice";
+export { default as ObrasSection } from "./NosotrosSection/ObrasSection";
 export { default as BoardAccordion } from "./BoardAccordion/BoardAccordion";
 export { default as ImageGridGallery } from "./ImageGrid/ImageGridGallery";
 export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery";
@@ -59,6 +57,7 @@ export { default as Herosection } from "./Herosection/Herosection";
 
 //SocialMediaSection
 export { default as SocialMediaSection } from "./SocialMediaSection/SocialMediaSection";
+export { default as SocialMeetingIntro } from "./SocialMediaSection/SocialMeetingIntro";
 
 //Formas de Pago - Page
 export { default as GestarCoopAccess } from "./PaymentMethods/GestarCoopAccess";
@@ -92,15 +91,16 @@ export {
 
 //Biblioteca
 export { default as BibliotecaContent } from "./BibliotecaContent/BibliotecaContent";
-export { default as BibliotecaSucursal  } from "./BibliotecaContent/BibliotecaSucursal";
+export { default as BibliotecaSucursal } from "./BibliotecaContent/BibliotecaSucursal";
 
 //Sepelio
-export { default as  SepeliosAccordion } from "./SepeliosAccordion/SepeliosAccordion";
-export { default as  SepeliosResponsive } from "./SepeliosAccordion/SepeliosResponsive";
+export { default as SepeliosAccordion } from "./SepeliosAccordion/SepeliosAccordion";
+export { default as SepeliosResponsive } from "./SepeliosAccordion/SepeliosResponsive";
 
 //Soporte
-export  { default as TabsSoporteSection }  from "./SoporteSection/TabsSoporteSection";
+export { default as TabsSoporteSection } from "./SoporteSection/TabsSoporteSection";
 export { default as FaqsSoporteSection } from "./SoporteSection/FaqsSoporteSection";
 
 //Nuestra Historia
 export { default as NuestraHistoria } from "./NuestraHistoria/NuestraHistoria";
+

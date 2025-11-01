@@ -8,7 +8,7 @@ import {
   ImageGridGallery,
   ImageSlideGallery,
   Molecules,
-  Notice,
+  ObrasSection,
 } from "@/components";
 
 import {
@@ -79,7 +79,7 @@ export default function Nosotros() {
 
       {/* AVISO */}
       <section className="py-10">
-        <Notice />
+        <ObrasSection />
       </section>
 
       {/* FAQS + MOLÉCULAS */}
@@ -107,3 +107,4 @@ export default function Nosotros() {
     </main>
   );
 }
+

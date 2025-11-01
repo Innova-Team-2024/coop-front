@@ -1,10 +1,17 @@
 import React from "react";
 import { Breadcrumb, GreenButton } from "@/components";
 
+export const metadata = {
+  title: "Memoria y Balance | Gestión y resultados anuales",
+  description:
+    "Accedé a los informes económicos y sociales de cada año. Transparencia y responsabilidad en la administración cooperativa.",
+};
+
 function page() {
   const pathItems = [
     { label: "Home", href: "/" },
-    { label: "Nosotros", href: "" },
+    { label: "Nosotros", href: "/nosotros" },
+    { label: "Socios", href: "/nosotros/socios/memoria-y-balance" },
     { label: "Memoria & Balance", href: "" },
   ];
   return (
