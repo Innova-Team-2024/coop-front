@@ -77,6 +77,7 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
       Nosotros: "/nosotros",
       Soporte: "/soporte",
       "Formas de pago": "/formas-de-pago",
+      "Test Velocidad": "/test-velocidad", //nuevo 
 
       // Instituciones
       Biblioteca: "/instituciones/biblioteca",
@@ -196,6 +197,14 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                   className={`hover:font-semibold ${isActive("/formas-de-pago") ? "font-semibold" : ""}`}
                 >
                   Formas de pago
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/test-velocidad"
+                  className={`hover:font-semibold ${isActive("/test-velocidad") ? "font-semibold" : ""}`}
+                >
+                  Test Velocidad
                 </Link>
               </li>
             </ul>
@@ -437,6 +446,11 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                   className={isActive("/formas-de-pago") ? "font-semibold" : ""}
                 >
                   Formas de pago
+                </Link>
+              </li>
+              <li>
+                <Link href="/test-velocidad" className={isActive("/test-velocidad") ? "font-semibold" : ""}>
+                  Test Velocidad
                 </Link>
               </li>
             </ul>

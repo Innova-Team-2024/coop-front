@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import required Swiper styles and modules
 import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
@@ -11,27 +9,24 @@ import NoticeCard from "../Cards/NoticeCard";
 const notices = [
   {
     id: "01",
-    title: "Internet",
+    title: "Instalación de Fibra Óptica",
     description:
-      "Servicio de telefonía fija para socios y abonadosdwadawdawdawd.dwadwadawdadServicio de telefonía fija para socios y abonadosdwadawdawdawd.dwadwadawdad",
+      "A pesar de los límites económicos que ha generado la pandemia, la Cooperativa Telefónica de Grand Bourg y Pablo Nogués continúa con el desarrollo de infraestructura, expandiendo el cableado de Fibra Óptica para un mejor servicio a todos los socios.",
+    image: "/FibraÓptica.jpg",
   },
   {
     id: "02",
-    title: "Instalación de Fibra Óptica",
+    title: "Remodelaciones Complejo Oasis",
     description:
-      "Continuamos con el desarrollo de infraestructura, expandiendo el cableado de fibra óptica para brindar un mejor servicio a todos los socios y abonados.",
+      "Aprovechando el párate de actividades físicas debido a la pandemia, se han ejecutado distintas remodelaciones en el complejo Oasis. Se han mejorado duchas y construido nuevas instalaciones para la comodidad del socio, siguiendo nuestro lema “Defendamos lo nuestro”.",
+    image: "/Remodelaciones.jpg",
   },
   {
     id: "03",
     title: "Renovación de la flota",
     description:
-      "Buscamos perfeccionar y ofrecer el mejor servicio posible, en este caso renovando y expandiendo nuestra flota de vehículos para estar al servicio de nuestros socios.",
-  },
-  {
-    id: "04",
-    title: "Internet",
-    description:
-      "Servicio de telefonía fija para socios y abonadosdwadawdawdawd.dwadwadawdadServicio de telefonía fija para socios y abonadosdwadawdawdawd.dwadwadawdad",
+      "Creemos que el progreso y crecimiento es el pilar fundamental de la Cooperativa Telefónica de Grand Bourg y Pablo Nogués, por eso buscamos perfeccionar y ofrecer el mejor servicio posible, en este caso renovando y expandiendo nuestra flota de vehículos, para estar al servicio de nuestros socios.",
+    image: "/Renovación.jpg",
   },
 ];
 
@@ -41,35 +36,20 @@ const NoticeSlide = () => {
       <Swiper
         slidesPerView="auto"
         spaceBetween={16}
-        freeMode={true}
+        freeMode
         modules={[FreeMode]}
         className="w-full"
         breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 8,
-          },
-          390: {
-            slidesPerView: 1.1,
-            spaceBetween: 4,
-          },
-          640: {
-            slidesPerView: 2.1,
-            spaceBetween: 6,
-          },
-          1024: {
-            slidesPerView: 2.1,
-            spaceBetween: 80,
-          },
-          1280: {
-            slidesPerView: 2.4,
-            spaceBetween: 16,
-          },
+          320: { slidesPerView: 1, spaceBetween: 8 },
+          390: { slidesPerView: 1.1, spaceBetween: 4 },
+          640: { slidesPerView: 2.1, spaceBetween: 6 },
+          1024: { slidesPerView: 2.1, spaceBetween: 80 },
+          1280: { slidesPerView: 2.4, spaceBetween: 16 },
         }}
       >
-        {notices.map((notice) => (
-          <SwiperSlide key={notice.id} className="h-auto">
-            <NoticeCard title={notice.title} description={notice.description} />
+        {notices.map((n) => (
+          <SwiperSlide key={n.id} className="h-auto">
+            <NoticeCard title={n.title} description={n.description} imageSrc={n.image} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -78,3 +58,5 @@ const NoticeSlide = () => {
 };
 
 export default NoticeSlide;
+
+

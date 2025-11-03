@@ -104,3 +104,6 @@ export { default as FaqsSoporteSection } from "./SoporteSection/FaqsSoporteSecti
 
 //Nuestra Historia
 export { default as NuestraHistoria } from "./NuestraHistoria/NuestraHistoria";
+
+//Nperfembed test velocidad
+export { default as Nperfembed } from "./NperfEmbed/NperfEmbed";
