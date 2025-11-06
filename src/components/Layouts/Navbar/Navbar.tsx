@@ -19,8 +19,12 @@ const NORMAL_MARGIN_CLASS = "mt-0";
 export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [openSubDropdowns, setOpenSubDropdowns] = useState<{ [key: string]: boolean }>({});
-  const [openMobileSubmenus, setOpenMobileSubmenus] = useState<{ [key: string]: boolean }>({});
+  const [openSubDropdowns, setOpenSubDropdowns] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const [openMobileSubmenus, setOpenMobileSubmenus] = useState<{
+    [key: string]: boolean;
+  }>({});
   const [isClient, setIsClient] = useState(false);
 
   const marginClass = hasAdminBanner ? ADMIN_MARGIN_CLASS : NORMAL_MARGIN_CLASS;
@@ -92,8 +96,8 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
       Obras: "#", // deshabilitado
 
       // Socios (páginas propias)
-      "Memoria y balance": "/nosotros/memoria&balance",
-      "Reuniones sociales": "/nosotros/reuniones-sociales",
+      "Memoria y balance": "/nosotros/socios/memoria-y-balance",
+      "Reuniones sociales": "/nosotros/socios/reuniones-sociales",
     };
     return map[label] || "#";
   };
@@ -122,15 +126,30 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <nav className={`w-full bg-white/80 backdrop-blur-[12px] shadow-none transition-all duration-300 ${marginClass}`}>
+      <nav
+        className={`w-full bg-white/80 backdrop-blur-[12px] shadow-none transition-all duration-300 ${marginClass}`}
+      >
         <div className="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16 xl:px-[120px] py-[24px] h-[72px] md:h-[103px]">
           <div className="flex items-center gap-4 md:gap-0 md:flex-none">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="block md:hidden">
-              {menuOpen ? <HiX className="text-3xl text-black" /> : <HiMenu className="text-3xl text-black" />}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="block md:hidden"
+            >
+              {menuOpen ? (
+                <HiX className="text-3xl text-black" />
+              ) : (
+                <HiMenu className="text-3xl text-black" />
+              )}
             </button>
             <div className="absolute md:static left-1/2 transform -translate-x-1/2 md:translate-x-0">
               <Link href="/">
-                <Image src={Logo} alt="Logo" width={50} height={50} className="mx-auto" />
+                <Image
+                  src={Logo}
+                  alt="Logo"
+                  width={50}
+                  height={50}
+                  className="mx-auto"
+                />
               </Link>
             </div>
           </div>
@@ -144,12 +163,16 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                     <li key={key} className="relative flex items-center gap-1">
                       <Link
                         href={getHref(label)}
-                        className={`hover:font-semibold ${isActive(getHref(label)) ? "font-semibold" : ""}`}
+                        className={`hover:font-semibold ${
+                          isActive(getHref(label)) ? "font-semibold" : ""
+                        }`}
                       >
                         {label}
                       </Link>
                       <button
-                        onClick={() => setOpenMenu(openMenu === key ? null : key)}
+                        onClick={() =>
+                          setOpenMenu(openMenu === key ? null : key)
+                        }
                         aria-expanded={openMenu === key}
                         aria-controls={`submenu-${key}`}
                         className="flex items-center"
@@ -165,7 +188,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                   ) : (
                     <li key={key} className="relative">
                       <button
-                        onClick={() => setOpenMenu(openMenu === key ? null : key)}
+                        onClick={() =>
+                          setOpenMenu(openMenu === key ? null : key)
+                        }
                         className={`flex items-center gap-1 transition-colors duration-300 ${
                           openMenu === key ? "text-black font-semibold" : ""
                         }`}
@@ -184,7 +209,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                   <li key={key}>
                     <Link
                       href={getHref(label)}
-                      className={`hover:font-semibold ${isActive(getHref(label)) ? "font-semibold" : ""}`}
+                      className={`hover:font-semibold ${
+                        isActive(getHref(label)) ? "font-semibold" : ""
+                      }`}
                     >
                       {label}
                     </Link>
@@ -194,7 +221,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
               <li>
                 <Link
                   href="/formas-de-pago"
-                  className={`hover:font-semibold ${isActive("/formas-de-pago") ? "font-semibold" : ""}`}
+                  className={`hover:font-semibold ${
+                    isActive("/formas-de-pago") ? "font-semibold" : ""
+                  }`}
                 >
                   Formas de pago
                 </Link>
@@ -234,16 +263,25 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                     <li key={child}>
                       <Link
                         href={getHref(child)}
-                        className={`hover:no-underline ${isActive(getHref(child)) ? "font-semibold" : ""}`}
+                        className={`hover:no-underline ${
+                          isActive(getHref(child)) ? "font-semibold" : ""
+                        }`}
                       >
                         {child}
                       </Link>
                     </li>
                   ) : (
                     <li key={child.key} className="min-w-[150px]">
-                      <div className="flex items-center gap-1 cursor-pointer" onClick={() => toggleSubDropdown(child.key)}>
+                      <div
+                        className="flex items-center gap-1 cursor-pointer"
+                        onClick={() => toggleSubDropdown(child.key)}
+                      >
                         <span
-                          className={openSubDropdowns[child.key] ? "font-semibold text-black" : ""}
+                          className={
+                            openSubDropdowns[child.key]
+                              ? "font-semibold text-black"
+                              : ""
+                          }
                         >
                           {child.label}
                         </span>
@@ -260,7 +298,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                             <li key={sub}>
                               <Link
                                 href={getHref(sub)}
-                                className={`hover:no-underline ${isActive(getHref(sub)) ? "font-semibold" : ""}`}
+                                className={`hover:no-underline ${
+                                  isActive(getHref(sub)) ? "font-semibold" : ""
+                                }`}
                               >
                                 {sub}
                               </Link>
@@ -287,7 +327,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                         <div className="flex items-center gap-2">
                           <Link
                             href={getHref(label)}
-                            className={isActive(getHref(label)) ? "font-semibold" : ""}
+                            className={
+                              isActive(getHref(label)) ? "font-semibold" : ""
+                            }
                           >
                             {label}
                           </Link>
@@ -305,13 +347,20 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                           </button>
                         </div>
                         {openMobileSubmenus[key] && (
-                          <ul id={`m-submenu-${key}`} className="ml-4 mt-2 space-y-2">
+                          <ul
+                            id={`m-submenu-${key}`}
+                            className="ml-4 mt-2 space-y-2"
+                          >
                             {children.map((child) =>
                               typeof child === "string" ? (
                                 <li key={child}>
                                   <Link
                                     href={getHref(child)}
-                                    className={isActive(getHref(child)) ? "font-semibold" : ""}
+                                    className={
+                                      isActive(getHref(child))
+                                        ? "font-semibold"
+                                        : ""
+                                    }
                                   >
                                     {child}
                                   </Link>
@@ -319,7 +368,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                               ) : (
                                 <li key={child.key}>
                                   <div
-                                    onClick={() => toggleMobileSubmenu(child.key)}
+                                    onClick={() =>
+                                      toggleMobileSubmenu(child.key)
+                                    }
                                     className="flex items-center gap-1 cursor-pointer"
                                   >
                                     <span
@@ -333,7 +384,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                                     </span>
                                     <HiChevronDown
                                       className={`transition-transform duration-300 ${
-                                        openMobileSubmenus[child.key] ? "rotate-180" : ""
+                                        openMobileSubmenus[child.key]
+                                          ? "rotate-180"
+                                          : ""
                                       }`}
                                     />
                                   </div>
@@ -343,7 +396,11 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                                         <li key={sub}>
                                           <Link
                                             href={getHref(sub)}
-                                            className={isActive(getHref(sub)) ? "font-semibold" : ""}
+                                            className={
+                                              isActive(getHref(sub))
+                                                ? "font-semibold"
+                                                : ""
+                                            }
                                           >
                                             {sub}
                                           </Link>
@@ -365,7 +422,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                         >
                           <span
                             className={
-                              openMobileSubmenus[key] ? "font-semibold text-black" : ""
+                              openMobileSubmenus[key]
+                                ? "font-semibold text-black"
+                                : ""
                             }
                           >
                             {label}
@@ -383,7 +442,11 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                                 <li key={child}>
                                   <Link
                                     href={getHref(child)}
-                                    className={isActive(getHref(child)) ? "font-semibold" : ""}
+                                    className={
+                                      isActive(getHref(child))
+                                        ? "font-semibold"
+                                        : ""
+                                    }
                                   >
                                     {child}
                                   </Link>
@@ -391,7 +454,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                               ) : (
                                 <li key={child.key}>
                                   <div
-                                    onClick={() => toggleMobileSubmenu(child.key)}
+                                    onClick={() =>
+                                      toggleMobileSubmenu(child.key)
+                                    }
                                     className="flex items-center gap-1 cursor-pointer"
                                   >
                                     <span
@@ -405,7 +470,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                                     </span>
                                     <HiChevronDown
                                       className={`transition-transform duration-300 ${
-                                        openMobileSubmenus[child.key] ? "rotate-180" : ""
+                                        openMobileSubmenus[child.key]
+                                          ? "rotate-180"
+                                          : ""
                                       }`}
                                     />
                                   </div>
@@ -415,7 +482,11 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                                         <li key={sub}>
                                           <Link
                                             href={getHref(sub)}
-                                            className={isActive(getHref(sub)) ? "font-semibold" : ""}
+                                            className={
+                                              isActive(getHref(sub))
+                                                ? "font-semibold"
+                                                : ""
+                                            }
                                           >
                                             {sub}
                                           </Link>
@@ -433,7 +504,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                   ) : (
                     <Link
                       href={getHref(label)}
-                      className={isActive(getHref(label)) ? "font-semibold" : ""}
+                      className={
+                        isActive(getHref(label)) ? "font-semibold" : ""
+                      }
                     >
                       {label}
                     </Link>
@@ -470,3 +543,4 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
     </header>
   );
 }
+

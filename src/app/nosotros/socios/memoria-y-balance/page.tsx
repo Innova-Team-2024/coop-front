@@ -1,16 +1,18 @@
 import { Breadcrumb, GreenButton } from "@/components";
 
 export const metadata = {
-  title: "Memoria & Balance | Cooperativa Telefónica de Grand Bourg y Pablo Nogués",
+  title:
+    "Memoria y Balance | Gestión y resultados anuales — Cooperativa Telefónica de Grand Bourg y Pablo Nogués",
   description:
-    "Consultá y descargá los informes anuales de Memoria y Balance de la Cooperativa Telefónica de Grand Bourg y Pablo Nogués.",
+    "Accedé a los informes económicos y sociales de cada año. Transparencia y responsabilidad en la administración cooperativa. Consultá y descargá los informes anuales de Memoria y Balance.",
 };
 
 export default function Page() {
   const pathItems = [
     { label: "Home", href: "/" },
     { label: "Nosotros", href: "/nosotros" },
-    { label: "Memoria & Balance", href: "" },
+    { label: "Socios", href: "/nosotros/socios/memoria-y-balance" },
+    { label: "Memoria y Balance", href: "" },
   ];
 
   return (
@@ -35,7 +37,7 @@ export default function Page() {
       <article className="text-center mx-auto lg:w-full lg:max-w-3xl space-y-8">
         <div className="py-6 space-y-4 lg:space-y-0 lg:flex lg:flex-row lg:w-full lg:justify-between lg:items-start">
           <h5 className="text-xl lg:text-3xl font-bold text-center lg:mt-2.5">
-            Memoria & Balance 2025
+            Memoria y Balance 2025
           </h5>
           <GreenButton size="default" rounded="full" disabled>
             Descargar PDF
@@ -48,7 +50,7 @@ export default function Page() {
 
         <div className="py-6 space-y-4 lg:space-y-0 lg:py-10 lg:flex lg:w-full lg:justify-between lg:items-center">
           <h5 className="text-xl lg:text-3xl font-bold text-center">
-            Memoria & Balance 2024
+            Memoria y Balance 2024
           </h5>
           <GreenButton size="default" rounded="full">
             Descargar PDF

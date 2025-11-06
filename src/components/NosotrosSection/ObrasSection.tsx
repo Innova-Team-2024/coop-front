@@ -1,8 +1,11 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import NoticeSlide from "./NoticeSlide";
+import notices from "@/data/listNotice.json";
+import NoticeCard from "../Cards/NoticeCard";
+import { NoticesSlide } from "../Notices/NoticesSlide";
+import slugify from "slugify";
 
-function Notice() {
+function ObrasSection() {
   return (
     <div className="container mx-auto px-4 py-8 lg:py-16">
       <article className="text-center mb-3">
@@ -12,7 +15,21 @@ function Notice() {
         </h2>
       </article>
 
-      <NoticeSlide />
+      <NoticesSlide pagination={true} spaceBetween={24}>
+        {notices.map((notice) => (
+          <NoticeCard
+            key={notice.id}
+            title={notice.title}
+            description={notice.description}
+            image={notice.image}
+            cardClasses="my-6 lg:p-6 w-[312px] lg:w-[492px]"
+            href={`/nosotros/socios/reuniones-sociales/${slugify(notice.title, {
+              lower: true,
+              strict: true,
+            })}-${notice.id}`}
+          />
+        ))}
+      </NoticesSlide>
 
       <article className="md:hidden">
         <button className="px-6 py-2 bg-transparent font-semibold text-lg text-center mx-auto text-[#0071D2] hover:text-[#0071D2]/50 transition-colors text-nowrap flex items-center gap-2">
@@ -23,4 +40,4 @@ function Notice() {
   );
 }
 
-export default Notice;
+export default ObrasSection;
