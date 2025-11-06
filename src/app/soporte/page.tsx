@@ -1,6 +1,3 @@
-
-"use client";
-
 import Image from "next/image";
 import {
   Breadcrumb,
@@ -13,6 +10,13 @@ import {
   ContactForm,
 } from "@/components";
 import { BannerSoporte } from "../../../public";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Soporte | Cooperativa Telefónica de Grand Bourg y Pablo Nogués",
+  description:
+    "Encontrá toda la información de soporte técnico, administración y ventas. Contactate con nuestros profesionales para resolver tus dudas o problemas de servicio.",
+};
 
 type Item = {
   titulo: string;
@@ -23,33 +27,17 @@ type Item = {
 const items: Item[] = [
   {
     titulo: "Administración",
-    descripcion: (
-      <>
-        Para realizar trámites, consultas y reclamos podés contactarte con
-        nosotros vía mail y responderemos a la brevedad.
-      </>
-    ),
+    descripcion: <>Para realizar trámites, consultas y reclamos podés contactarte con nosotros vía mail y responderemos a la brevedad.</>,
     email: "ventas@interbourg.com.ar",
   },
   {
     titulo: "Ventas",
-    descripcion: (
-      <>
-        Estamos atendiendo en la sucursal de Grand Bourg y Pablo Nogués.
-        <br />
-        8:30 – 16:00 de Lunes a Viernes.
-      </>
-    ),
+    descripcion: <>Estamos atendiendo en la sucursal de Grand Bourg y Pablo Nogués.<br />8:30 – 16:00 de Lunes a Viernes.</>,
     email: "notificaciones@cooperativagb.com.ar",
   },
   {
     titulo: "Servicio técnico",
-    descripcion: (
-      <>
-        Si necesitás soporte técnico de telefonía o internet podés contactarte
-        con nuestros profesionales.
-      </>
-    ),
+    descripcion: <>Si necesitás soporte técnico de telefonía o internet podés contactarte con nuestros profesionales.</>,
     email: "soporte@interbourg.com.ar",
   },
 ];
@@ -63,12 +51,8 @@ function SupportCard({ item }: { item: Item }) {
         </CardTitle>
       </CardHeader>
       <CardContent className="text-sm sm:text-base">
-        <p className="text-gray-700 mb-3 sm:mb-4 text-center">
-          {item.descripcion}
-        </p>
-        <p className="text-green-700 text-center font-semibold break-words">
-          {item.email}
-        </p>
+        <p className="text-gray-700 mb-3 sm:mb-4 text-center">{item.descripcion}</p>
+        <p className="text-green-700 text-center font-semibold break-words">{item.email}</p>
       </CardContent>
     </Card>
   );
@@ -76,7 +60,6 @@ function SupportCard({ item }: { item: Item }) {
 
 export default function SoportePage() {
   return (
-    // Evita cualquier desplazamiento lateral en móviles muy chicos
     <div className="overflow-x-hidden">
       {/* BANNER */}
       <section className="relative w-full h-[320px] sm:h-[420px] md:h-[640px] overflow-hidden">
@@ -91,7 +74,7 @@ export default function SoportePage() {
 
         {/* Contenido del banner */}
         <div className="relative z-20 flex flex-col items-center h-full px-4">
-          <div className="w-full max-w-6xl mt-6 mb-3 sm:mb-4 px-2 sm:px-4 self-start">
+          <div className="w/full max-w-6xl mt-6 mb-3 sm:mb-4 px-2 sm:px-4 self-start">
             <Breadcrumb
               className="text-white [&_a]:text-white [&_a:hover]:text-gray-300 [&_span]:text-white [&_svg]:text-white [&_svg:hover]:text-gray-300"
               items={[
@@ -105,7 +88,7 @@ export default function SoportePage() {
             Estamos para ayudarte
           </h1>
 
-          {/* GRID DE CARDS DENTRO DEL BANNER (solo desktop/tablet) */}
+          {/* GRID DESKTOP/TABLET */}
           <div className="hidden md:block w-full">
             <div className="mx-auto w-full max-w-6xl mt-10">
               <div className="grid grid-cols-3 gap-6">
@@ -120,9 +103,8 @@ export default function SoportePage() {
         </div>
       </section>
 
-      {/* CARDS APILADAS PARA MOBILE (debajo del banner) */}
+      {/* CARDS MOBILE */}
       <section className="md:hidden bg-[#F7F8F9] pt-8 pb-10 sm:pb-14 px-4">
-        {/* Limitamos el ancho y centramos para que no “bailen” en dispositivos 360–390px */}
         <div className="w-full max-w-[28rem] mx-auto grid grid-cols-1 gap-6">
           {items.map((it, i) => (
             <SupportCard key={i} item={it} />
