@@ -1,4 +1,3 @@
-// src/app/nosotros/page.tsx
 import {
   BoardAccordion,
   Breadcrumb,
@@ -8,7 +7,7 @@ import {
   ImageGridGallery,
   ImageSlideGallery,
   Molecules,
-  Notice,
+  ObrasSection,
 } from "@/components";
 
 import {
@@ -19,6 +18,12 @@ import {
   AboutUsPage5,
   AboutUsPage6,
 } from "../../../public";
+
+export const metadata = {
+  title: "Nosotros | Cooperativa Telefónica de Grand Bourg y Pablo Nogués",
+  description:
+    "Conocé la historia, los valores y el equipo de la Cooperativa Telefónica de Grand Bourg y Pablo Nogués. Más de 60 años brindando servicios y compromiso con la comunidad.",
+};
 
 export default function Nosotros() {
   const pathItems = [
@@ -39,7 +44,7 @@ export default function Nosotros() {
     <main className="pb-8 mb-6 max-w-[1440px] mx-auto">
       <Breadcrumb className="lg:px-32" items={pathItems} />
 
-      {/* SECCIÓN ENCABEZADO + CONSEJO (ancla) */}
+      {/* SECCIÓN ENCABEZADO + CONSEJO */}
       <section
         id="consejo"
         className="px-6 py-10 md:px-24 lg:px-32 lg:py-16 space-y-8 lg:space-y-20 scroll-mt-[120px]"
@@ -72,14 +77,14 @@ export default function Nosotros() {
         </article>
       </section>
 
-      {/* NUESTRA HISTORIA (ancla) */}
+      {/* NUESTRA HISTORIA */}
       <section id="historia" className="scroll-mt-[120px]">
         <NuestraHistoria />
       </section>
 
       {/* AVISO */}
-      <section className="py-10">
-        <Notice />
+      <section id="obras" className="py-10 scroll-mt-[120px]">
+        <ObrasSection />
       </section>
 
       {/* FAQS + MOLÉCULAS */}

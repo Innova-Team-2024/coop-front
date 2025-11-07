@@ -47,7 +47,7 @@ export { default as AboutUs } from "./AboutUs/AboutUs";
 export { default as ContactForm } from "./Form/ContactForm";
 
 //AboutPage
-export { default as Notice } from "./Notices/Notice";
+export { default as ObrasSection } from "./NosotrosSection/ObrasSection";
 export { default as BoardAccordion } from "./BoardAccordion/BoardAccordion";
 export { default as ImageGridGallery } from "./ImageGrid/ImageGridGallery";
 export { default as ImageSlideGallery } from "./ImageGrid/ImageSlideGallery";
@@ -80,6 +80,7 @@ export { Button } from "./ui/button";
 export { default as GreenButton } from "./Buttons/GreenButton";
 export { default as PrimaryButton } from "./Buttons/PrimaryButton";
 export { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+export { default as TabItem } from "./ui/tabItem";
 export {
   Card,
   CardContent,
@@ -103,3 +104,4 @@ export { default as FaqsSoporteSection } from "./SoporteSection/FaqsSoporteSecti
 
 //Nuestra Historia
 export { default as NuestraHistoria } from "./NuestraHistoria/NuestraHistoria";
+

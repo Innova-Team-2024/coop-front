@@ -3,8 +3,9 @@ import { Breadcrumb, SocialMeetingIntro } from "@/components";
 
 import Image from "next/image";
 import notices from "@/data/listNotice.json";
-import Link from "next/link.js";
+
 import slugify from "slugify";
+import NoticeCard from "@/components/Cards/NoticeCard";
 
 export const metadata = {
   title: "Reuniones Sociales | Comunidad y encuentro",
@@ -117,7 +118,7 @@ function Page() {
           </div> */}
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {notices.map((notice) => (
+              {/* {notices.map((notice) => (
                 <div key={notice.id}>
                   <Link
                     href={`/nosotros/socios/reuniones-sociales/${slugify(
@@ -145,6 +146,24 @@ function Page() {
                       </div>
                     </div>
                   </Link>
+                </div>
+              ))} */}
+              {notices.map((notice) => (
+                <div key={notice.id}>
+                  <NoticeCard
+                    key={notice.id}
+                    title={notice.title}
+                    description={notice.description}
+                    image={notice.image}
+                    cardClasses="w-full"
+                    href={`/nosotros/socios/reuniones-sociales/${slugify(
+                      notice.title,
+                      {
+                        lower: true,
+                        strict: true,
+                      }
+                    )}-${notice.id}`}
+                  />
                 </div>
               ))}
             </div>
