@@ -93,7 +93,7 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
       // Nosotros → scroll interno
       "Consejo directivo": "/nosotros#consejo",
       Historia: "/nosotros#historia",
-      Obras: "#", // deshabilitado
+      Obras: "/nosotros#obras", // deshabilitado
 
       // Socios (páginas propias)
       "Memoria y balance": "/nosotros/socios/memoria-y-balance",

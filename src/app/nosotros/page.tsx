@@ -83,7 +83,7 @@ export default function Nosotros() {
       </section>
 
       {/* AVISO */}
-      <section className="py-10">
+      <section id="obras" className="py-10 scroll-mt-[120px]">
         <ObrasSection />
       </section>
 
