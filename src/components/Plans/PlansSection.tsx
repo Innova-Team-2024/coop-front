@@ -1,44 +1,44 @@
-'use client'
+"use client";
 
-import { FaWifi, FaPhoneAlt, FaTv } from 'react-icons/fa';
-import { DesktopPlans, MobilePlans, ScrollInfoButton } from '@/components';
-import type { Plan } from '@/types/plan';
+import { FaWifi, FaPhoneAlt, FaTv } from "react-icons/fa";
+import { DesktopPlans, MobilePlans, ScrollInfoButton } from "@/components";
+import type { Plan } from "@/types/plan";
 
 const plans: Plan[] = [
   {
-    title: '300 MB + TV',
+    title: "300 MB + TV",
     features: [
-      { icon: <FaWifi />, text: 'FIBRA 300 MB' },
-      { icon: <FaPhoneAlt />, text: 'LÍNEA FIJA' },
-      { icon: <FaTv />, text: 'TELEVISIÓN + 300 CANALES' },
+      { icon: <FaWifi />, text: "FIBRA 300 MB" },
+      { icon: <FaPhoneAlt />, text: "LÍNEA FIJA" },
+      { icon: <FaTv />, text: "TELEVISIÓN + 300 CANALES" },
     ],
-    price: '$ 43.854',
-    note: '$ 6.000 x instalación',
-    memberPrice: 'SOCIOS $ 39.586',
+    price: "$ 43.854",
+    note: "$ 6.000 x instalación",
+    memberPrice: "SOCIOS $ 39.586",
     recommended: false,
   },
   {
-    title: '300 MB + TV',
+    title: "300 MB + TV",
     features: [
-      { icon: <FaWifi />, text: 'FIBRA 300 MB' },
-      { icon: <FaPhoneAlt />, text: 'LÍNEA FIJA' },
-      { icon: <FaTv />, text: 'TELEVISIÓN + 300 CANALES' },
+      { icon: <FaWifi />, text: "FIBRA 300 MB" },
+      { icon: <FaPhoneAlt />, text: "LÍNEA FIJA" },
+      { icon: <FaTv />, text: "TELEVISIÓN + 300 CANALES" },
     ],
-    price: '$ 43.854',
-    note: '$ 6.000 x instalación',
-    memberPrice: 'SOCIOS $ 39.586',
+    price: "$ 43.854",
+    note: "$ 6.000 x instalación",
+    memberPrice: "SOCIOS $ 39.586",
     recommended: true,
   },
   {
-    title: '300 MB + TV',
+    title: "300 MB + TV",
     features: [
-      { icon: <FaWifi />, text: 'FIBRA 300 MB' },
-      { icon: <FaPhoneAlt />, text: 'LÍNEA FIJA' },
-      { icon: <FaTv />, text: 'TELEVISIÓN + 300 CANALES' },
+      { icon: <FaWifi />, text: "FIBRA 300 MB" },
+      { icon: <FaPhoneAlt />, text: "LÍNEA FIJA" },
+      { icon: <FaTv />, text: "TELEVISIÓN + 300 CANALES" },
     ],
-    price: '$ 43.854',
-    note: '$ 6.000 x instalación',
-    memberPrice: 'SOCIOS $ 39.586',
+    price: "$ 43.854",
+    note: "$ 6.000 x instalación",
+    memberPrice: "SOCIOS $ 39.586",
     recommended: false,
   },
 ];
@@ -62,3 +62,4 @@ export default function InternetPlans() {
     </section>
   );
 }
+
