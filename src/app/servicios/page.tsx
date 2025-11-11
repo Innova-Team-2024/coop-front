@@ -1,13 +1,15 @@
-import {
-  Breadcrumb,
-  ListPlansPage,
-  PartnerCarousel,
-  PlanCard,
-} from "@/components";
-
+import { Breadcrumb, PartnerCarousel, PlanCard } from "@/components";
 import { FaWifi, FaPhoneAlt, FaTv } from "react-icons/fa";
 import { ScrollInfoButton } from "@/components";
 import type { Plan } from "@/types/plan";
+import ListPlansPage from "@/components/Service/ListPlansPage";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Servicios | Cooperativa Telefónica de Grand Bourg y Pablo Nogués",
+  description:
+    "Conocé nuestros planes de Internet, telefonía y televisión. Elegí la conexión ideal con los beneficios exclusivos para socios de la Cooperativa Telefónica de Grand Bourg y Pablo Nogués.",
+};
 
 export default function Servicios() {
   const pathItems = [
@@ -57,14 +59,15 @@ export default function Servicios() {
   return (
     <main>
       <Breadcrumb className="lg:px-32" items={pathItems} />
-      <section className="py-10 px-4">
+
+      <section className="py-10 lg:px-4">
         <div className="max-w-[1200px] mx-auto text-center">
           <p className="text-sm font-semibold">Promociones 2025</p>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-14">
-            Elige tu <span>conexión ideal</span>
+            Elegí tu <span>conexión ideal</span>
           </h2>
 
-          {/* Section Promotions cards */}
+          {/* CARDS DE PLANES */}
           <article>
             <div className="md:grid grid-cols-1 lg:flex gap-6 justify-center items-end">
               {plans.map((plan, idx) => (
@@ -84,8 +87,11 @@ export default function Servicios() {
               <ScrollInfoButton />
             </div>
           </article>
+
+          {/* PARTNERS */}
           <PartnerCarousel />
-          {/* Section Services cards */}
+
+          {/* LISTA DE PLANES */}
           <article>
             <ListPlansPage />
           </article>
@@ -94,4 +100,3 @@ export default function Servicios() {
     </main>
   );
 }
-
