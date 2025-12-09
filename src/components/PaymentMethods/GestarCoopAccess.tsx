@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import GreenButton from "../Buttons/GreenButton";
 import { ArrowUpRight } from "lucide-react";
@@ -5,6 +7,10 @@ import GestarCoopFaq from "./GestarCoopFaq";
 import { ChevronsDown } from "lucide-react";
 
 function GestarCoopAccess() {
+  const handleRedirect = () => {
+    window.open("https://migestarcoop.com.ar/grandbourg/login", "_blank");
+  };
+
   return (
     <section className="pt-16 pb-8 px-6 md:px-24 mt-4 lg:mt-0 lg:px-32 space-y-12">
       <article className="space-y-8">
@@ -19,7 +25,7 @@ function GestarCoopAccess() {
           </p>
         </div>
         <div className="mx-auto text-center">
-          <GreenButton size="default" rounded="full">
+          <GreenButton size="default" rounded="full" onClick={handleRedirect}>
             Ingresar
             <ArrowUpRight />
           </GreenButton>
@@ -27,7 +33,9 @@ function GestarCoopAccess() {
       </article>
       <article className="space-y-12">
         <GestarCoopFaq />
-        <button className="px-6 py-2 gap-2 bg-transparent font-semibold text-[#0071D2] hover:text-[#0071D2]/50 transition-colors flex justify-center mx-auto">
+        <button
+        onClick={() => window.open("https://coop-front.vercel.app/soporte", "_blank")}
+        className="px-6 py-2 gap-2 bg-transparent font-semibold text-[#0071D2] hover:text-[#0071D2]/50 transition-colors flex justify-center mx-auto">
           Consultar más información
           <ChevronsDown />
         </button>

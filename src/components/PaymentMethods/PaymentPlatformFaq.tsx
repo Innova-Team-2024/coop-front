@@ -20,29 +20,63 @@ const PaymentPlatformFaq = () => {
       id: "01",
       question: "Débito Automático",
       answer:
-        "Para contratar el servicio, comunícate con nuestro equipo de ventas.",
+        'Adherí tu factura al Débito Automático y ¡olvidate del vencimiento! Para solicitar débito automático del Banco Provincia comunicate con nosotros al Tel: <b>(02320) 483000</b> o completá el <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKZo3a2TKeCZnT-Kyrewu9Ouli8cKpUglGOBAfYzQvnKrO_Q/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">formulario</a>.',
       color: "text-acordion-1",
     },
     {
       id: "02",
       question: "Pago Fácil",
-      answer:
-        "El tiempo de instalación es de aproximadamente 3 a 5 días hábiles.",
-      color: "text-acordion-2",
+      answer: `
+    Ahora podés abonar tu factura actual a través de 
+    <a href="https://pagosenlinea.pagofacil.com.ar/?source=COOPGRANDBURG" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="text-blue-600 underline">
+       Pago Fácil
+    </a>
+    <br/><br/>
+    1) Al ingresar al sitio de pagos debe ingresar todos los números que figuran debajo del código de barras de su factura actual.
+    <br/><br/>
+    2) Verificar que coincida el importe de su factura y continuar.
+    <br/><br/>
+    ¡Atención! A partir del siguiente paso PAGAR CON DEBITO tendrás 3 minutos para completar el pago. Te recomendamos tener a mano tu tarjeta de débito.
+  `,
+  color: "text-acordion-2",
     },
     {
       id: "03",
-      question: "¿Qué es Gestarcoop?",
-      answer:
-        "Para cambiar la clave del Wi-Fi, accede a la configuración del modem en 192.168.1.1.",
-      color: "text-acordion-3",
+      question: "Mercado Pago",
+      answer: `
+    Ahora podés abonar tu factura con la aplicación de Mercado Pago. ¿Cómo pagar?
+    <br /><br />
+    1) Abrí la app de Mercado Pago y seleccioná <strong>Pagar servicios</strong>.<br />
+    2) Escaneá el código de barras de tu factura.<br />
+    3) Pagá con dinero en cuenta, tarjeta de crédito o débito. ¡Y listo!
+  `,
+  color: "text-acordion-3",
     },
     {
       id: "04",
-      question: "¿Cómo puedo abonar?",
-      answer:
-        "Para cambiar la clave del Wi-Fi, accede a la configuración del modem en 192.168.1.1.",
-      color: "text-acordion-4",
+      question: "Cuentas Bancarias",
+      answer:`
+<b>Banco Provincia</b><br/>
+Sucursal 544 – Grand Bourg<br/>
+CBU 0140162801514405003711<br/>
+CTA. CTE. ($) 5144-50037/1<br/><br/>
+
+<b>Banco Credicoop</b><br/>
+Sucursal 227 – Altos del Talar<br/>
+CBU 1910227455022700470332<br/>
+CTA. CTE. ($) 191-227-004703/3<br/><br/>
+
+<b>Banco Santander</b><br/>
+Sucursal 486 – Grand Bourg<br/>
+CBU 0720486320000000001472<br/>
+CTA. CTE. ($) 486-000014/7<br/><br/>
+
+<b>C.U.I.T. COOPERATIVA:</b> 30-56110656-4
+`,
+  color: "text-acordion-4",
     },
   ];
 
@@ -81,7 +115,7 @@ const PaymentPlatformFaq = () => {
         </div>
       </AccordionTrigger>
       <AccordionContent className="p-4 text-gray-600 ml-8">
-        {faq.answer}
+        <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
       </AccordionContent>
     </AccordionItem>
   );
