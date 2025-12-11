@@ -158,7 +158,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://coop-front.vercel.app/nosotros"
+                    href="https://coop-front.vercel.app/nosotros/socios/memoria-y-balance"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
@@ -168,17 +168,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://coop-front.vercel.app/nosotros"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    Asamblea
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://coop-front.vercel.app/nosotros"
+                    href="https://coop-front.vercel.app/nosotros/socios/reuniones-sociales"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
