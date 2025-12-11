@@ -61,7 +61,7 @@ export default function JardinPage() {
         title="Jardín “Niños Creciendo”"
         description={`Estamos en Soler 1570, Grand Bourg - Salas de 3, 4 y 5 años.\n¡Envíanos tu consulta!`}
         buttonText="Solicita información"
-        buttonHref="/contacto"
+        buttonHref="#contacto-jardin"
         image={ImagenJardin}
         imageAlt="Cartel del Jardín Niños Creciendo"
       />

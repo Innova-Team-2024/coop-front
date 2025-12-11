@@ -62,7 +62,7 @@ export default function Primaria() {
         description={`Soldado Baigorria 1071, Grand Bourg - Nivel primario
 Envianos tu consulta!`}
         buttonText="Solicita información"
-        buttonHref="/contacto"
+        buttonHref="#contacto-primaria"
         image={ImagenJardin}
         imageAlt="Cartel de el Instituto Dr. René Favaloro"
       />
