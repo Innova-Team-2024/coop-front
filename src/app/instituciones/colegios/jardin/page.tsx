@@ -98,6 +98,7 @@ export default function JardinPage() {
           titulo="¿Consulta o inscripción?"
           descripcion="Completá el formulario y contanos en qué podemos ayudarte. Ya sea para solicitar información, iniciar la inscripción o comunicarte con nosotros, tu mensaje es importante para seguir creciendo juntos."
           telefono="02320 - 411000"
+          whatsapp="11 3824-3388"
           email="creciendo@cooperativagb.com.ar"
           horario="Respondemos de lunes a viernes, entre las 8:30 a las 12 h. ¡Te vamos a estar leyendo!"
           mostrarLogo={false}
@@ -112,8 +113,7 @@ export default function JardinPage() {
           tituloPrincipal2="aula"
           descripcion="Mirá cómo aprenden, juegan y comparten nuestros chicos todos los días. Las seños te lo muestran todo en nuestras redes."
           botones={[
-            { label: "Instagram", href: "https://instagram.com/tuPerfil" },
-            { label: "YouTube", href: "https://youtube.com/tuCanal" },
+            { label: "YouTube", href: "https://www.youtube.com/@favaloroncreciendoinstituc989" },
           ]}
           imagen={jardinImagen1}
           imagenAlt="Docente y niños realizando una actividad artística"

@@ -48,32 +48,134 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-4">Servicios</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
-                <li>Internet</li>
-                <li>Televisión</li>
-                <li>Telefonía</li>
+                <li>
+                  <a href="https://coop-front.vercel.app/servicios"
+                  target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    >
+                  Internet
+                  </a>
+                </li>
+                <li>
+                  <a href="https://coop-front.vercel.app/servicios"
+                  target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    >
+                  Televisión
+                  </a>
+                </li>
+                <li>
+                  <a href="https://coop-front.vercel.app/servicios"
+                  target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    >
+                  Telefonía
+                  </a>
+                </li>
               </ul>
             </div>
             {/* ... Columna de Instituciones ... */}
             <div>
               <h4 className="font-semibold mb-4">Instituciones</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
-                <li>Jardín</li>
-                <li>Primaria</li>
-                <li>Biblioteca</li>
-                <li>Eventos</li>
-                <li>Sepelios</li>
+                <li>
+                  <a href="https://coop-front.vercel.app/instituciones/colegios/jardin"
+                  target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    >
+                  Jardín
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/instituciones/colegios/primaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Primaria
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/instituciones/biblioteca"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Biblioteca
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/instituciones/sepelios"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Sepelios
+                  </a>
+                </li>
               </ul>
             </div>
             {/* ... Columna de Nosotros ... */}
             <div>
               <h4 className="font-semibold mb-4">Nosotros</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
-                <li>Consejo directivo</li>
-                <li>Historia</li>
-                <li>Obras</li>
-                <li>Memoria y balance</li>
-                <li>Asamblea</li>
-                <li>Reuniones sociales</li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/nosotros"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Consejo directivo
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/nosotros"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Historia
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/nosotros"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Obras
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/nosotros/socios/memoria-y-balance"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Memoria y balance
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://coop-front.vercel.app/nosotros/socios/reuniones-sociales"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Reuniones sociales
+                  </a>
+                </li>
               </ul>
             </div>
             {/* ... Columna de Soporte ... */}
@@ -149,7 +251,7 @@ export default function Footer() {
               <FaInstagram className="hover:text-gray-300" />
             </a>
             <a
-              href="https://www.youtube.com"
+              href="https://www.youtube.com/@cooptgbourg"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"

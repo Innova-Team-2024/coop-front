@@ -115,8 +115,7 @@ Envianos tu consulta!`}
           tituloPrincipal2="aula"
           descripcion="Mirá cómo aprenden, juegan y comparten nuestros chicos todos los días. Las seños te lo muestran todo en nuestras redes."
           botones={[
-            { label: "Instagram", href: "https://instagram.com/tuPerfil" },
-            { label: "YouTube", href: "https://youtube.com/tuCanal" },
+            { label: "YouTube", href: "https://www.youtube.com/@favaloroncreciendoinstituc989" },
           ]}
           imagen={jardinImagen1}
           imagenAlt="Docente y niños realizando una actividad artística"
