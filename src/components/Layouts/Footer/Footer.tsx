@@ -189,7 +189,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Soporte (ya estaba bien con sus enlaces externos) */}
             <div>
               <h4 className="font-semibold mb-4">Soporte</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
