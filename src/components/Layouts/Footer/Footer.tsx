@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from 'react';
 import {
@@ -34,6 +35,33 @@ export default function Footer() {
     };
   }, []);
 
+  // 🔗 Mapeo de labels del footer a rutas (coherente con el Navbar)
+  const getHrefFooter = (label: string) => {
+    const map: Record<string, string> = {
+      // Servicios → por ahora llevan todos a /servicios
+      Internet: "/servicios",
+      Televisión: "/servicios",
+      Telefonía: "/servicios",
+
+      // Instituciones
+      Jardín: "/instituciones/colegios/jardin",
+      Primaria: "/instituciones/colegios/primaria",
+      Biblioteca: "/instituciones/biblioteca",
+      Eventos: "#", // equivalente a "Salón de eventos" que en el navbar hoy apunta a "#"
+      Sepelios: "/instituciones/sepelios",
+
+      // Nosotros (misma lógica que el Navbar)
+      "Consejo directivo": "/nosotros#consejo",
+      Historia: "/nosotros#historia",
+      Obras: "/nosotros#obras",
+      "Memoria y balance": "/nosotros/socios/memoria-y-balance",
+      Asamblea: "/nosotros#asamblea",
+      "Reuniones sociales": "/nosotros/socios/reuniones-sociales",
+    };
+
+    return map[label] || "#";
+  };
+
   return (
     <footer className="w-full bg-[#17253D] text-white py-[80px] px-6">
       <div className="max-w-[1200px] mx-auto flex flex-col gap-[80px]">
@@ -44,141 +72,124 @@ export default function Footer() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[60px] gap-y-[40px] text-sm text-left w-full justify-between">
-            {/* ... Columna de Servicios ... */}
+            {/* Servicios */}
             <div>
               <h4 className="font-semibold mb-4">Servicios</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
                 <li>
-                  <a href="https://coop-front.vercel.app/servicios"
-                  target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Internet")}
                     className="hover:underline"
-                    >
-                  Internet
-                  </a>
+                  >
+                    Internet
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://coop-front.vercel.app/servicios"
-                  target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Televisión")}
                     className="hover:underline"
-                    >
-                  Televisión
-                  </a>
+                  >
+                    Televisión
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://coop-front.vercel.app/servicios"
-                  target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Telefonía")}
                     className="hover:underline"
-                    >
-                  Telefonía
-                  </a>
+                  >
+                    Telefonía
+                  </Link>
                 </li>
               </ul>
             </div>
-            {/* ... Columna de Instituciones ... */}
+
+            {/* Instituciones */}
             <div>
               <h4 className="font-semibold mb-4">Instituciones</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
                 <li>
-                  <a href="https://coop-front.vercel.app/instituciones/colegios/jardin"
-                  target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Jardín")}
                     className="hover:underline"
-                    >
-                  Jardín
-                  </a>
+                  >
+                    Jardín
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/instituciones/colegios/primaria"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Primaria")}
                     className="hover:underline"
                   >
                     Primaria
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/instituciones/biblioteca"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Biblioteca")}
                     className="hover:underline"
                   >
                     Biblioteca
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/instituciones/sepelios"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Sepelios")}
                     className="hover:underline"
                   >
                     Sepelios
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
-            {/* ... Columna de Nosotros ... */}
+
+            {/* Nosotros */}
             <div>
               <h4 className="font-semibold mb-4">Nosotros</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/nosotros"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Consejo directivo")}
                     className="hover:underline"
                   >
                     Consejo directivo
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/nosotros"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Historia")}
                     className="hover:underline"
                   >
                     Historia
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/nosotros"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Obras")}
                     className="hover:underline"
                   >
                     Obras
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/nosotros/socios/memoria-y-balance"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Memoria y balance")}
                     className="hover:underline"
                   >
                     Memoria y balance
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://coop-front.vercel.app/nosotros/socios/reuniones-sociales"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={getHrefFooter("Reuniones sociales")}
                     className="hover:underline"
                   >
                     Reuniones sociales
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
-            {/* ... Columna de Soporte ... */}
+
+            {/* Soporte (ya estaba bien con sus enlaces externos) */}
             <div>
               <h4 className="font-semibold mb-4">Soporte</h4>
               <ul className="space-y-2 text-gray-300 font-normal">
@@ -226,11 +237,14 @@ export default function Footer() {
             </a>
             
             {isClient && showAdminButton && (
-              <button className="hover:underline text-gray-300" type='button' onClick={() => router.push('/login')}>
+              <button
+                className="hover:underline text-gray-300"
+                type='button'
+                onClick={() => router.push('/login')}
+              >
                 Acceso admin
               </button>
             )}
-            
           </div>
 
           <div className="flex gap-4 text-white text-lg mt-2 md:mt-0">
@@ -251,7 +265,7 @@ export default function Footer() {
               <FaInstagram className="hover:text-gray-300" />
             </a>
             <a
-              href="https://www.youtube.com/@cooptgbourg"
+              href="https://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
