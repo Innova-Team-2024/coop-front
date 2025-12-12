@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -53,7 +54,6 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
           children: ["Jardín", "Primaria"],
         },
         "Biblioteca",
-        "Salón de eventos",
         "Sepelios",
       ],
     },
@@ -74,28 +74,23 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
     { label: "Soporte", key: "soporte" },
   ];
 
-  // ✅ ÚNICO cambio: rutas de "Memoria y balance" y "Reuniones sociales"
   const getHref = (label: string) => {
     const map: { [key: string]: string } = {
       Servicios: "/servicios",
       Nosotros: "/nosotros",
       Soporte: "/soporte",
       "Formas de pago": "/formas-de-pago",
-      "Test Velocidad": "/test-velocidad", //nuevo 
+      "Test Velocidad": "/test-velocidad",
 
-      // Instituciones
       Biblioteca: "/instituciones/biblioteca",
-      "Salón de eventos": "#",
       Sepelios: "/instituciones/sepelios",
       Jardín: "/instituciones/colegios/jardin",
       Primaria: "/instituciones/colegios/primaria",
 
-      // Nosotros → scroll interno
       "Consejo directivo": "/nosotros#consejo",
       Historia: "/nosotros#historia",
-      Obras: "/nosotros#obras", // deshabilitado
+      Obras: "/nosotros#obras",
 
-      // Socios (páginas propias)
       "Memoria y balance": "/nosotros/socios/memoria-y-balance",
       "Reuniones sociales": "/nosotros/socios/reuniones-sociales",
     };
@@ -123,6 +118,14 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
   };
 
   const isActive = (href: string) => pathname === href;
+
+  // ✅ CAMBIO (PRO): offset distinto según el menú abierto (Instituciones más, Nosotros menos)
+  const submenuShift =
+    openMenu === "instituciones"
+      ? "-translate-x-36"
+      : openMenu === "nosotros"
+      ? "-translate-x-12"
+      : "";
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
@@ -231,7 +234,9 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
               <li>
                 <Link
                   href="/test-velocidad"
-                  className={`hover:font-semibold ${isActive("/test-velocidad") ? "font-semibold" : ""}`}
+                  className={`hover:font-semibold ${
+                    isActive("/test-velocidad") ? "font-semibold" : ""
+                  }`}
                 >
                   Test Velocidad
                 </Link>
@@ -251,10 +256,12 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
 
         {/* SUBMENÚ ESCRITORIO */}
         {openMenu && ["instituciones", "nosotros"].includes(openMenu) && (
+          // ✅ CAMBIO: mantenemos centrado el contenedor del submenú (no se ancla a ningún borde)
           <div className="hidden md:flex w-full justify-center bg-transparent transition-all duration-300 pb-6">
             <ul
               id={`submenu-${openMenu}`}
-              className="text-[18px] leading-[24px] font-normal text-gray-700 flex flex-wrap gap-x-10 gap-y-2 max-w-5xl"
+              // ✅ CAMBIO (PRO): movemos un poquito a la izquierda según el menú abierto (instituciones / nosotros)
+              className={`text-[18px] leading-[24px] font-normal text-gray-700 flex flex-wrap gap-x-10 gap-y-2 max-w-5xl transition-transform ${submenuShift}`}
             >
               {navItems
                 .find((item) => item.key === openMenu)
@@ -504,9 +511,7 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                   ) : (
                     <Link
                       href={getHref(label)}
-                      className={
-                        isActive(getHref(label)) ? "font-semibold" : ""
-                      }
+                      className={isActive(getHref(label)) ? "font-semibold" : ""}
                     >
                       {label}
                     </Link>
@@ -522,7 +527,10 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/test-velocidad" className={isActive("/test-velocidad") ? "font-semibold" : ""}>
+                <Link
+                  href="/test-velocidad"
+                  className={isActive("/test-velocidad") ? "font-semibold" : ""}
+                >
                   Test Velocidad
                 </Link>
               </li>
@@ -543,4 +551,3 @@ export default function Navbar({ hasAdminBanner = false }: NavbarProps) {
     </header>
   );
 }
-
