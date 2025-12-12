@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { ChevronsDown } from "lucide-react";
 import PaymentPlatformFaq from "./PaymentPlatformFaq";
@@ -18,7 +20,9 @@ function PaymentPlatform() {
       </article>
       <article className="space-y-12">
         <PaymentPlatformFaq />
-        <button className="px-6 gap-2 bg-transparent font-semibold text-[#0071D2] hover:text-[#0071D2]/50 transition-colors flex justify-center mx-auto">
+        <button 
+        onClick={() => window.open("https://coop-front.vercel.app/soporte", "_blank")}
+        className="px-6 gap-2 bg-transparent font-semibold text-[#0071D2] hover:text-[#0071D2]/50 transition-colors flex justify-center mx-auto">
           Consultar más información
           <ChevronsDown />
         </button>
