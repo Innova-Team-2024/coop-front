@@ -12,29 +12,54 @@ const GestarCoopFaq = () => {
     {
       id: "01",
       question: "¿Qué es Gestarcoop?",
-      answer:
-        "Para contratar el servicio, comunícate con nuestro equipo de ventas.",
+      answer:(
+        <>
+        <a href="https://migestarcoop.com.ar/grandbourg/login"
+            target="_blank"
+            className="text-[#0071D2] underline font-semibold">
+          GestarCoop 
+        </a>
+        {" "}es una plataforma en línea que permite a los usuarios gestionar sus servicios y realizar pagos de manera segura y conveniente.
+        </>
+      ),
+        
       color: "text-acordion-1",
     },
     {
       id: "02",
       question: "¿Cómo puedo abonar?",
       answer:
-        "El tiempo de instalación es de aproximadamente 3 a 5 días hábiles.",
+        "Puedes abonar tus servicios a través de diversos métodos de pago, incluyendo tarjetas de crédito, débito y transferencias bancarias. Recuerde que al abonar por medios de pagos electrónicos, habrá un 5% de recargo en la siguiente factura.",
       color: "text-acordion-2",
     },
     {
       id: "03",
-      question: "Formas de pago",
-      answer:
-        "Para cambiar la clave del Wi-Fi, accede a la configuración del modem en 192.168.1.1.",
+      question: "¿Cuanto tarda en acreditarse mi pago?",
+      answer:(
+      <>
+        Los pagos realizados desde la plataforma de {" "}<a href="https://migestarcoop.com.ar/grandbourg/login"
+            target="_blank"
+            className="text-[#0071D2] underline font-semibold">
+          GestarCoop 
+        </a>{" "} se acreditan en las próximas 24 horas después de haberse confirmado la transacción. En caso tener el servicio suspendido se va a habilitar en el transcurso del dia.
+      </>
+      ),
       color: "text-acordion-3",
     },
     {
       id: "04",
-      question: "Formas de pago",
-      answer:
-        "Para cambiar la clave del Wi-Fi, accede a la configuración del modem en 192.168.1.1.",
+      question: "¿Qué pasa si cuento con facturas vencidas?",
+      answer:(
+        <>
+        Previamente comuníquese con nuestras oficinas para conocer el importe exacto a depositar con los intereses correspondientes a la fecha. Envíos de comprobantes de pago a{" "}
+        <a
+            href="mailto:transferencias@cooperativagb.com.ar"
+            className="text-[#0071D2] underline font-semibold"
+          >
+            transferencias@cooperativagb.com.ar
+          </a>{" "}(Aclare su código de Suministro – ver en factura)
+        </>
+        ),
       color: "text-acordion-3",
     },
   ];
