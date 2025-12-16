@@ -53,8 +53,8 @@ export default function SecondaryButton({
     size === "sm"
       ? "px-3 py-2 text-sm"
       : size === "lg"
-      ? "px-6 py-3 text-lg"
-      : "px-5 py-3 text-base";
+        ? "px-6 py-3 text-lg"
+        : "px-5 py-3 text-base";
 
   // Configuración del nivel de redondeo
   // Usando valores explícitos para garantizar compatibilidad con el pseudo-elemento
@@ -84,19 +84,41 @@ export default function SecondaryButton({
 
   return (
     <div
-      className={`inline-block ${roundedStyles} p-[2px] relative before:absolute before:-inset-[0.5px] ${roundedBefore} before:bg-gradient-to-r before:from-[#FF6600]/60 before:via-[#FF4CFF]/60 before:to-[#00AAFF]/60 before:opacity-0 hover:before:opacity-80 before:transition-opacity before:duration-300 before:ease-in-out before:blur-[1.5px] ${className}`}
+      className={`
+    inline-block relative p-[2px] ${roundedStyles}
+    before:absolute before:-inset-[1px] ${roundedBefore}
+    before:bg-gradient-to-r
+    before:from-[#FF6600]/60
+    before:via-[#FF4CFF]/60
+    before:to-[#00AAFF]/60
+    before:opacity-0
+    before:blur-[2px]
+    before:scale-95
+    before:transition-all
+    before:duration-500
+    before:ease-out
+    hover:before:opacity-80
+    hover:before:scale-100
+    hover:before:blur-[3.5px]
+    ${className}
+  `}
     >
       <button
         type={type}
         {...props}
         className={`
-          relative z-10 w-full ${roundedStyles} bg-white
-          border border-[#E4E4E4] shadow-cta-shadow 
-          text-[#1C1F23] transition-all font-medium leading-6
-          duration-200 
-          flex items-center justify-center gap-2
-          ${sizeStyles}
-        `}
+    relative z-10 w-full ${roundedStyles} bg-white
+    border border-[#E4E4E4]
+    text-[#1C1F23] font-medium leading-6
+    flex items-center justify-center gap-2
+    transition-[box-shadow,border-color]
+    duration-300
+    ease-out
+    hover:border-[#D1D1D1]
+    hover:shadow-[0_8px_20px_rgba(0,0,0,0.12)]
+    active:shadow-[0_4px_10px_rgba(0,0,0,0.14)]
+    ${sizeStyles}
+  `}
       >
         {children}
         {icon}

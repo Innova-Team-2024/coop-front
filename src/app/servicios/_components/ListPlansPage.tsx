@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { PlanCard, ScrollInfoButton, TabItem } from "@/components";
+import { ScrollInfoButton, TabItem } from "@/components";
 
 import { ListaPreciosWifi } from "@/data/listaPrecioWifi";
 import { ListaPreciosTV } from "@/data/listaPrecioTv";
 import { ListaPreciosTel } from "@/data/listaPrecioTel";
+import PricesCard from "@/components/Cards/PricesCard";
 
 export default function ListPlansPage() {
   const [activeTab, setActiveTab] = useState("wifi");
@@ -43,7 +44,7 @@ export default function ListPlansPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center items-end">
               {ListaPreciosWifi.map((plan, idx) => (
                 <div key={idx} className="w-full flex justify-center">
-                  <PlanCard plan={plan} variant="desktop" />
+                  <PricesCard plan={plan} />
                 </div>
               ))}
             </div>
@@ -52,7 +53,7 @@ export default function ListPlansPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center items-end">
               {ListaPreciosTV.map((plan, idx) => (
                 <div key={idx} className="w-full flex justify-center">
-                  <PlanCard plan={plan} variant="desktop" />
+                  <PricesCard plan={plan} />
                 </div>
               ))}
             </div>
@@ -61,7 +62,7 @@ export default function ListPlansPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center items-end">
               {ListaPreciosTel.map((plan, idx) => (
                 <div key={idx} className="w-full flex justify-center">
-                  <PlanCard plan={plan} variant="desktop" />
+                  <PricesCard plan={plan} />
                 </div>
               ))}
             </div>

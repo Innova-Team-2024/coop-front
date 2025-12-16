@@ -1,12 +1,10 @@
-/* export interface PlanCardProps {
-  id: string;
-  title?: string;
-  price: number;
-  speed: string;
-  members: number;
-  subscribers: number;
-  installation: number;
+import { Feature } from './plan';
+
+export interface PlanCardProps {
+  title: string;
+  features: Feature[];
+  price: string;
+  note: string;
+  memberPrice: string;
   recommended: boolean;
-  note?: string;
 }
- */
