@@ -17,9 +17,10 @@ const MobileSlider = dynamic(() => import('./MobileSlider'), {
 
 interface ResponsivePlansCarouselProps {
   plans: Plan[];
+  link?: string;
 }
 
-export default function RecomendedPlans({ plans }: ResponsivePlansCarouselProps) {
+export default function RecomendedPlans({ plans, link }: ResponsivePlansCarouselProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -37,7 +38,7 @@ export default function RecomendedPlans({ plans }: ResponsivePlansCarouselProps)
       <div className="hidden lg:flex gap-6 justify-center items-end">
         {plans.map((plan, idx) => (
           <div key={idx} className="w-full flex justify-center lg:mt-0">
-            <PricesCard plan={plan} />
+            <PricesCard plan={plan} link={link} />
           </div>
         ))}
       </div>

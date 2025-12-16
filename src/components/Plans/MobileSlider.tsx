@@ -9,9 +9,10 @@ import { PlanCardProps } from '@/types/priceCards';
 
 interface MobileSliderProps {
   plans: PlanCardProps[];
+  link?: string;
 }
 
-export default function MobileSlider({ plans }: MobileSliderProps) {
+export default function MobileSlider({ plans, link }: MobileSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Ordenar planes (destacado primero)
@@ -36,7 +37,7 @@ export default function MobileSlider({ plans }: MobileSliderProps) {
       <div ref={sliderRef} className="keen-slider">
         {sortedPlans.map((plan, idx) => (
           <div key={idx} className="keen-slider__slide">
-            <PricesCard plan={plan} />
+            <PricesCard plan={plan} link={link} />
           </div>
         ))}
       </div>

@@ -3,10 +3,8 @@ import {
   Breadcrumb,
   ContactForm,
   NuestraHistoria,
-  Faqs,
   ImageGridGallery,
   ImageSlideGallery,
-  Molecules,
   ObrasSection,
 } from "@/components";
 
@@ -18,6 +16,7 @@ import {
   AboutUsPage5,
   AboutUsPage6,
 } from "../../../public";
+import FaqSection from "@/components/Faqs/FaqsSection";
 
 export const metadata = {
   title: "Nosotros | Cooperativa Telefónica de Grand Bourg y Pablo Nogués",
@@ -89,15 +88,7 @@ export default function Nosotros() {
 
       {/* FAQS + MOLÉCULAS */}
       <section className="relative -mt-20 lg:-mt-56 lg:-mb-40">
-        <div className="absolute top-96 left-28 -z-20 hidden lg:block">
-          <Molecules />
-        </div>
-        <div>
-          <Faqs />
-        </div>
-        <div className="absolute top-36 right-28 -z-20 hidden lg:block">
-          <Molecules />
-        </div>
+        <FaqSection />
       </section>
 
       {/* CONTACTO */}

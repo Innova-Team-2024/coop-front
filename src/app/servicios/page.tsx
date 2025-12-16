@@ -31,7 +31,7 @@ export default function Servicios() {
 
           {/* CARDS DE PLANES */}
           <article>
-            <RecomendedPlans plans={recomendedPlans} />
+            <RecomendedPlans plans={recomendedPlans} link="/soporte" />
 
             <div className="mt-10 flex justify-center">
               <ScrollInfoButton />
@@ -43,7 +43,6 @@ export default function Servicios() {
 
           {/* LISTA DE PLANES */}
           <article>
-            {/* <ListPlansPage /> */}
             <OptimizedListPlans />
           </article>
         </div>
@@ -51,3 +50,4 @@ export default function Servicios() {
     </main>
   );
 }
+

@@ -14,13 +14,6 @@ const TabItem = React.forwardRef<HTMLButtonElement, TabItemProps>(
       <ToggleGroup.Item
         ref={ref}
         value={value}
-        /* className="relative flex-1 outline-none max-w-48 z-10" 
-        `w-full h-full rounded-full flex items-center justify-center bg-white px-4 py-2 transition-colors ${
-            isActive
-              ? "text-black font-medium"
-              : "text-gray-500 hover:text-gray-700"
-          }`
-        */
         className={clsx(
           "relative flex-1 outline-none max-w-48 z-10 rounded-full",
           "transition-colors duration-150 ease-out",
@@ -31,7 +24,7 @@ const TabItem = React.forwardRef<HTMLButtonElement, TabItemProps>(
             "w-full h-full rounded-full flex items-center justify-center bg-white px-4 py-2 transition-colors duration-150 ease-out",
             isActive
               ? "text-black/80 font-medium"
-              : "text-gray-500 hover:text-gray-700 hover:transform hover:scale-105",
+              : "text-gray-500 hover:text-gray-700 hover:transform hover:scale-105 hover:bg-transparent",
           )}
         >
           <span className="text-xs sm:text-sm">{label}</span>

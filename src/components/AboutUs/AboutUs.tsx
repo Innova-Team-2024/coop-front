@@ -2,9 +2,16 @@ import Link from "next/link.js";
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 
-import { AboutUs1, AboutUs2, AboutUs3, AboutUs4, AboutUs5 } from "../../../public";
+import {
+  AboutUs1,
+  AboutUs2,
+  AboutUs3,
+  AboutUs4,
+  AboutUs5,
+} from "../../../public";
 import CarouselCol from "./CarouselCol";
 import CarouselRow from "./CarouselRow";
+import PrimaryButton from "../Buttons/PrimaryButton";
 
 function AboutUs() {
   const images = [AboutUs1, AboutUs2, AboutUs3, AboutUs4, AboutUs5];
@@ -31,11 +38,15 @@ function AboutUs() {
             porque construir juntos es nuestra mayor satisfacción.
           </p>
 
-          <Link href={"/#"} className="lg:self-start">
-            <button className="bg-[#1C1F23] text-lg text-white w-full m-1 px-6 py-3 rounded-2xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors font-medium">
+          <Link href={"/nosotros#historia"} className="lg:self-start">
+            <PrimaryButton
+            type="submit" 
+            size="lg" 
+            rounded="2xl" 
+            >
               Quiero saber más
               <IoIosArrowForward className="h-4 w-4" />
-            </button>
+            </PrimaryButton>
           </Link>
         </div>
       </div>

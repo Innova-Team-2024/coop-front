@@ -27,13 +27,13 @@ export default function OptimizedListPlans() {
       { id: "iptv", label: "Televisión", plans: ListaPreciosTV },
       { id: "voip", label: "Telefonía", plans: ListaPreciosTel },
     ],
-    []
+    [],
   );
 
   // Planes activos
   const activePlans = useMemo(
     () => tabs.find((tab) => tab.id === activeTab)?.plans || [],
-    [activeTab, tabs]
+    [activeTab, tabs],
   );
 
   return (
@@ -48,14 +48,33 @@ export default function OptimizedListPlans() {
         />
 
         {/* Plans Grid */}
-        <div className="md:px-20 mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center items-end">
+        <div className="md:px-20 mb-8 flex justify-center">
+          <div
+            className={`grid gap-6 items-end w-full ${
+              activePlans.length === 1
+                ? "grid-cols-1 max-w-sm"
+                : activePlans.length === 2
+                  ? "grid-cols-1 sm:grid-cols-2 max-w-2xl"
+                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl"
+            }`}
+          >
             {activePlans.map((plan, idx) => (
               <div
                 key={`${activeTab}-${idx}`}
-                className="w-full flex justify-center"
+                className={`flex justify-center ${
+                  activePlans.length > 2 &&
+                  activePlans.length % 3 === 1 &&
+                  idx === activePlans.length - 1
+                    ? "sm:col-start-2 lg:col-start-2"
+                    : ""
+                }`}
               >
-                <PricesCard plan={plan} />
+                <PricesCard
+                  plan={plan}
+                  showPromoNote={false}
+                  variant="compact"
+                  link={"/soporte"}
+                />
               </div>
             ))}
           </div>

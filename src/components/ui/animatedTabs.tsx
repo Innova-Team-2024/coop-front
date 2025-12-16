@@ -29,7 +29,9 @@ export default function AnimatedTabs<T extends string>({
   onChange,
   className = "",
 }: AnimatedTabsProps<T>) {
-  const tabRefs = useRef<Record<T, HTMLButtonElement | null>>({} as Record<T, HTMLButtonElement | null>);
+  const tabRefs = useRef<Record<T, HTMLButtonElement | null>>(
+    {} as Record<T, HTMLButtonElement | null>,
+  );
   const [indicator, setIndicator] = useState({
     width: 0,
     x: 0,
@@ -59,14 +61,11 @@ export default function AnimatedTabs<T extends string>({
     >
       {/* Indicador animado */}
       <motion.div
-        className="absolute top-1 left-0 h-[calc(100%-8px)] rounded-full z-0"
+        className="absolute inset-0 rounded-full z-0 pointer-events-none"
         animate={{
           width: indicator.width,
           x: indicator.x,
-          filter: [
-            "blur(6px)",
-            "blur(4px)",
-          ],
+          filter: ["blur(6px)", "blur(4px)"],
         }}
         transition={{
           x: { type: "spring", stiffness: 320, damping: 30 },
@@ -75,7 +74,7 @@ export default function AnimatedTabs<T extends string>({
         }}
         style={{
           background:
-            "linear-gradient(270deg, rgba(0,170,255,0.64) 0.67%, rgba(85,64,167,0.44) 21.34%, rgba(255,76,255,0.44) 41.96%, rgba(255,63,99,0.44) 62.45%, rgba(255,102,0,0.44) 99.33%)",
+            "linear-gradient(270deg, rgba(0,170,255,0.64) 0.67%, rgba(85,64,167,0.44) 21.34%, rgba(255,76,255,0.44) 41.96%, rgba(255,63,99,0.44) 62.45%, rgba(255,102,0,0.44) 99%)",
           opacity: 0.85,
         }}
       />
@@ -83,7 +82,9 @@ export default function AnimatedTabs<T extends string>({
       {tabs.map((tab) => (
         <TabItem
           key={tab.id}
-          ref={(el) => { tabRefs.current[tab.id] = el; }}
+          ref={(el) => {
+            tabRefs.current[tab.id] = el;
+          }}
           value={tab.id}
           label={tab.label}
           isActive={value === tab.id}
