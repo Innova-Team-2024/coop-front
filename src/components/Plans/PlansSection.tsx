@@ -78,7 +78,7 @@ export default function InternetPlans() {
         </div>
 
         <div className="mt-4 flex justify-center">
-          <ScrollInfoButton />
+          <ScrollInfoButton link="/servicios" />
         </div>
       </div>
     </section>

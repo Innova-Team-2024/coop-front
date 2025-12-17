@@ -3,7 +3,6 @@ export { default as Footer } from "./Layouts/Footer/Footer";
 
 //Plans
 export { default as PlansSection } from "./Plans/PlansSection";
-export { default as DesktopPlans } from "./Plans/DesktopPlans";
 export { default as PlanCard } from "./Plans/PlanCard";
 export { default as ListPlansPage } from "./Plans/ListPlansPage";
 
@@ -18,6 +17,7 @@ export { default as MobilePlans } from "./Carousel/MobilePlans";
 
 //Faqs
 export { default as Faqs } from "./Faqs/Faqs";
+export { default as FaqsSection } from "./Faqs/FaqsSection";
 
 //Banner
 export { default as Banner } from "./Banner/Banner";

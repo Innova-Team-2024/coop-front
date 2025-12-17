@@ -29,18 +29,21 @@ const tecnologiesServices: ServiceItem[] = [
     icon: Globo,
     title: "Internet",
     desc: "Fibra óptica para una conexión más rápida, estable y segura.",
+    link: "/servicios",
   },
   {
     id: "television",
     icon: Television,
     title: "Televisión",
     desc: "La mejor programación con calidad y entretenimiento para disfrutar en casa.",
+    link: "/servicios",
   },
   {
     id: "telefonia",
     icon: Telefono,
     title: "Telefonía",
     desc: "Servicio de línea fija con comunicación clara, confiable y sin interrupciones.",
+    link: "/servicios",
   },
 ];
 
@@ -50,12 +53,14 @@ const educationServices: ServiceItem[] = [
     icon: Niño,
     title: "Jardín «Niños creciendo»",
     desc: "Jardín de infantes, educación inicial con juego y aprendizaje.",
+    link: "/instituciones/colegios/jardin",
   },
   {
     id: "instituto",
     icon: Sombrero,
     title: "Instituto «Dr. René Favaloro»",
     desc: "Instituto educativo primario, con compromiso y valores.",
+    link: "/instituciones/colegios/primaria",
   },
 ];
 
@@ -65,18 +70,21 @@ const socialServices: ServiceItem[] = [
     icon: Libro,
     title: "Biblioteca «Segundo Severino Lago»",
     desc: "Biblioteca comunitaria, un espacio de lectura y conocimiento.",
+    link: "/instituciones/biblioteca",
   },
   {
     id: "salon-eventos",
     icon: Calendario,
     title: "Salón de eventos «El Italiano»",
     desc: "Salón de eventos sociales y empresariales.",
+    link: "/nosotros/socios/reuniones-sociales",
   },
   {
     id: "sepelios",
     icon: Flor,
     title: "Sepelios «Casa Oviedo»",
     desc: "Servicio de sepelios con atención personalizada y contención.",
+    link: "/instituciones/sepelios",
   },
 ];
 
@@ -156,7 +164,7 @@ export default function Service() {
       </div>
 
       <div className="flex justify-center">
-        <ScrollInfoButton />
+        <ScrollInfoButton link="#faqs" />
       </div>
     </section>
   );

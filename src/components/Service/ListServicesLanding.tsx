@@ -69,6 +69,7 @@ export function KeenServicesCarousel({ items }: ServicesCardsProps) {
                   icon={service.icon}
                   title={service.title}
                   desc={service.desc}
+                  link={service.link}
                 />
               </div>
             </div>
@@ -105,6 +106,7 @@ export function KeenServicesCarousel({ items }: ServicesCardsProps) {
             icon={service.icon}
             title={service.title}
             desc={service.desc}
+            link={service.link}
           />
         ))}
 

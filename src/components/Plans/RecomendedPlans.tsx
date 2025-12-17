@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import PricesCard from '../Cards/PricesCard';
-import type { Plan } from '@/types/plan';
+import type { PlanCardProps } from '@/types/priceCards';
 
 // Lazy load del slider mobile - solo se descarga en mobile
 const MobileSlider = dynamic(() => import('./MobileSlider'), {
@@ -15,26 +15,34 @@ const MobileSlider = dynamic(() => import('./MobileSlider'), {
   ),
 });
 
-interface ResponsivePlansCarouselProps {
-  plans: Plan[];
+interface RecomendedPlansProps {
+  plans: PlanCardProps[];
   link?: string;
 }
 
-export default function RecomendedPlans({ plans, link }: ResponsivePlansCarouselProps) {
-  const [isMobile, setIsMobile] = useState(false);
+export default function RecomendedPlans({ plans, link = "#" }: RecomendedPlansProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const checkMobile = () => setIsMobile(window.innerWidth < 769);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // SSR fallback: mostrar desktop grid
+  if (!mounted) {
+    return (
+      <div className="flex gap-6 justify-center items-end flex-wrap">
+        {plans.map((plan, idx) => (
+          <div key={idx} className="w-full flex justify-center lg:mt-0">
+            <PricesCard plan={plan} link={link} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <>
-      {/* Desktop: Grid estático sin JS */}
+      {/* Desktop: Grid estático (>= 1024px) */}
       <div className="hidden lg:flex gap-6 justify-center items-end">
         {plans.map((plan, idx) => (
           <div key={idx} className="w-full flex justify-center lg:mt-0">
@@ -43,12 +51,10 @@ export default function RecomendedPlans({ plans, link }: ResponsivePlansCarousel
         ))}
       </div>
 
-      {/* Mobile: Lazy loaded slider */}
-      {mounted && isMobile && (
-        <div className="lg:hidden">
-          <MobileSlider plans={plans} />
-        </div>
-      )}
+      {/* Mobile/Tablet: Slider (< 1024px) */}
+      <div className="block lg:hidden">
+        <MobileSlider plans={plans} link={link} />
+      </div>
     </>
   );
 }

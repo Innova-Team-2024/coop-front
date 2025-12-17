@@ -3,13 +3,13 @@
 import {
   Banner,
   PlansSection,
-  Faqs,
   Service,
   ContactForm,
   PartnerCarousel,
   AboutUs,
   Sucursal,
-  ButtonUploadBanner
+  ButtonUploadBanner,
+  FaqsSection
 } from "@/components";
 import { SucursalImage } from "../../public";
 
@@ -22,7 +22,7 @@ export default function Home() {
       <PartnerCarousel />
       <Service />
       <AboutUs />
-      <Faqs />
+      <FaqsSection />
       <ContactForm
         titulo="¿Tenés alguna duda?"
         descripcion="Completá el formulario y contanos en qué podemos ayudarte. Ya sea una consulta, una sugerencia o un reclamo, tu mensaje es importante para nosotros."

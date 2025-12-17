@@ -31,7 +31,7 @@ const PricesCard = ({
         // Base styles
         "relative mx-2 lg:mx-0 bg-white rounded-2xl",
         // Width variants
-        isCompact ? "w-[240px] md:w-80" : "w-[260px] md:w-96",
+        isCompact ? "w-[240px] lg:w-80" : "w-[260px] lg:w-96",
         // Hover animation - scale + translate
         "transform-gpu transition-all duration-300 ease-out",
         "lg:hover:scale-105",

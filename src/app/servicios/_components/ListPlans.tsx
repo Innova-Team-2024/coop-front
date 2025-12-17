@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ScrollInfoButton } from "@/components";
 import AnimatedTabs from "@/components/ui/animatedTabs";
 import PricesCard from "@/components/Cards/PricesCard";
 import { ListaPreciosWifi } from "@/data/listaPrecioWifi";
@@ -88,10 +87,6 @@ export default function OptimizedListPlans() {
             </div>
           )}
         </div>
-      </div>
-
-      <div className="flex justify-center">
-        <ScrollInfoButton />
       </div>
     </section>
   );

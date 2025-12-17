@@ -1,15 +1,11 @@
 import React from "react";
 //import { Card } from "@/components";
-import Image, { StaticImageData } from "next/image.js";
+import Image from "next/image.js";
 import SecondaryButton from "../Buttons/SecondaryButton";
+import Link from "next/link";
+import { ServiceItem } from "@/types/services";
 
-type Props = {
-  icon: StaticImageData;
-  title: string;
-  desc: string;
-};
-
-const ServicesCard = (props: Props) => {
+const ServicesCard = (props: ServiceItem) => {
   return (
     <div className="flex flex-col justify-between text-left rounded-[16px] border border-[#E3F0E8] bg-white shadow-lg lg:hover:scale-105 lg:hover:shadow-xl transition-all p-6 w-52 md:w-auto max-w-[388px] h-full">
       <div className="space-y-6 flex flex-col h-full">
@@ -30,9 +26,11 @@ const ServicesCard = (props: Props) => {
         </div>
 
         <div className="mt-auto pt-4">
-          <SecondaryButton rounded="full" size="sm" className="w-full">
-            Me interesa
-          </SecondaryButton>
+          <Link href={props.link}>
+            <SecondaryButton rounded="full" size="sm" className="w-full">
+              Me interesa
+            </SecondaryButton>
+          </Link>
         </div>
       </div>
     </div>

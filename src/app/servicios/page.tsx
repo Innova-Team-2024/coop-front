@@ -1,6 +1,4 @@
 import { Breadcrumb, PartnerCarousel } from "@/components";
-import { ScrollInfoButton } from "@/components";
-/* import ListPlansPage from "@/app/servicios/_components/ListPlansPage"; */
 import type { Metadata } from "next";
 import RecomendedPlans from "@/components/Plans/RecomendedPlans";
 import { recomendedPlans } from "@/data/listaRecomendados";
@@ -32,10 +30,6 @@ export default function Servicios() {
           {/* CARDS DE PLANES */}
           <article>
             <RecomendedPlans plans={recomendedPlans} link="/soporte" />
-
-            <div className="mt-10 flex justify-center">
-              <ScrollInfoButton />
-            </div>
           </article>
 
           {/* PARTNERS */}
