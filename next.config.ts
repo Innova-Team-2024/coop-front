@@ -25,10 +25,11 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self';",
-              "img-src 'self' data: https://res.cloudinary.com;",
+              "img-src 'self' data: https://res.cloudinary.com http://localhost:4000;",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.openspeedtest.com https://*.nperf.com;",
               "style-src 'self' 'unsafe-inline';",
-              "connect-src 'self' https://*.openspeedtest.com https://*.nperf.com;",
+              "font-src 'self' data:;", 
+              "connect-src 'self' https://*.openspeedtest.com https://*.nperf.com https://coop-back-k25p.onrender.com;",
               "frame-src 'self' https://*.openspeedtest.com https://*.nperf.com;",
               "child-src 'self' https://*.openspeedtest.com https://*.nperf.com;",
               "frame-ancestors 'self';",
