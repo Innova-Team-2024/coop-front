@@ -3,8 +3,8 @@ export { default as Footer } from "./Layouts/Footer/Footer";
 
 //Plans
 export { default as PlansSection } from "./Plans/PlansSection";
-export { default as DesktopPlans } from "./Plans/DesktopPlans";
 export { default as PlanCard } from "./Plans/PlanCard";
+export { default as ListPlansPage } from "./Plans/ListPlansPage";
 
 //Buttons
 export { default as ButtonAccount } from "./Buttons/ButtonAccount";
@@ -17,6 +17,7 @@ export { default as MobilePlans } from "./Carousel/MobilePlans";
 
 //Faqs
 export { default as Faqs } from "./Faqs/Faqs";
+export { default as FaqsSection } from "./Faqs/FaqsSection";
 
 //Banner
 export { default as Banner } from "./Banner/Banner";
@@ -30,6 +31,7 @@ export { default as Sucursal } from "./Sucursal/Sucursal";
 //Cards
 export { default as InfoCard } from "./Cards/InfoCard";
 export { default as InfoCardSection } from "./Cards/InfoCardSection";
+export { default as ServicesCard } from "./Cards/ServicesCard";
 
 //NosotrosSection
 export { default as NosotrosSection } from "./NosotrosSection/NosotrosSection";

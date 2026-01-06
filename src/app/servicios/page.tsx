@@ -1,9 +1,8 @@
-import { Breadcrumb, PartnerCarousel, PlanCard } from "@/components";
-import { FaWifi, FaPhoneAlt, FaTv } from "react-icons/fa";
-import { ScrollInfoButton } from "@/components";
-import type { Plan } from "@/types/plan";
-import ListPlansPage from "@/components/Service/ListPlansPage";
+import { Breadcrumb, PartnerCarousel } from "@/components";
 import type { Metadata } from "next";
+import RecomendedPlans from "@/components/Plans/RecomendedPlans";
+import { recomendedPlans } from "@/data/listaRecomendados";
+import OptimizedListPlans from "./_components/ListPlans";
 
 export const metadata: Metadata = {
   title: "Servicios | Cooperativa Telefónica de Grand Bourg y Pablo Nogués",
@@ -15,45 +14,6 @@ export default function Servicios() {
   const pathItems = [
     { label: "Home", href: "/" },
     { label: "Servicios", href: "" },
-  ];
-
-  const plans: Plan[] = [
-    {
-      title: "300 MB + TV",
-      features: [
-        { icon: <FaWifi />, text: "FIBRA 300 MB" },
-        { icon: <FaPhoneAlt />, text: "LÍNEA FIJA" },
-        { icon: <FaTv />, text: "TELEVISIÓN + 300 CANALES" },
-      ],
-      price: "$ 43.854",
-      note: "$ 6.000 x instalación",
-      memberPrice: "SOCIOS $ 39.586",
-      recommended: false,
-    },
-    {
-      title: "300 MB + TV",
-      features: [
-        { icon: <FaWifi />, text: "FIBRA 300 MB" },
-        { icon: <FaPhoneAlt />, text: "LÍNEA FIJA" },
-        { icon: <FaTv />, text: "TELEVISIÓN + 300 CANALES" },
-      ],
-      price: "$ 43.854",
-      note: "$ 6.000 x instalación",
-      memberPrice: "SOCIOS $ 39.586",
-      recommended: true,
-    },
-    {
-      title: "300 MB + TV",
-      features: [
-        { icon: <FaWifi />, text: "FIBRA 300 MB" },
-        { icon: <FaPhoneAlt />, text: "LÍNEA FIJA" },
-        { icon: <FaTv />, text: "TELEVISIÓN + 300 CANALES" },
-      ],
-      price: "$ 43.854",
-      note: "$ 6.000 x instalación",
-      memberPrice: "SOCIOS $ 39.586",
-      recommended: false,
-    },
   ];
 
   return (
@@ -69,23 +29,7 @@ export default function Servicios() {
 
           {/* CARDS DE PLANES */}
           <article>
-            <div className="md:grid grid-cols-1 lg:flex gap-6 justify-center items-end">
-              {plans.map((plan, idx) => (
-                <div
-                  key={idx}
-                  className="w-full flex justify-center
-                      [&:nth-child(n+2)]:mt-10
-                      md:[&:nth-child(n+2)]:mt-15
-                      lg:mt-0"
-                >
-                  <PlanCard plan={plan} variant="desktop" />
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-10 flex justify-center">
-              <ScrollInfoButton />
-            </div>
+            <RecomendedPlans plans={recomendedPlans} link="/soporte" />
           </article>
 
           {/* PARTNERS */}
@@ -93,10 +37,11 @@ export default function Servicios() {
 
           {/* LISTA DE PLANES */}
           <article>
-            <ListPlansPage />
+            <OptimizedListPlans />
           </article>
         </div>
       </section>
     </main>
   );
 }
+

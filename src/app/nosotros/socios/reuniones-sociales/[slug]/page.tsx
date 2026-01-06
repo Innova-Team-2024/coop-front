@@ -92,7 +92,7 @@ export default async function page({
               <div className="w-28 h-14 rounded-lg flex items-center justify-center relative">
                 <div className="w-full h-full absolute">
                   <Image
-                    src="/logo2.png"
+                    src="/Logo2.png"
                     alt={"Logo empresa"}
                     fill
                     priority

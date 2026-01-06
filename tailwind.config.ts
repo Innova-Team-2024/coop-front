@@ -13,6 +13,11 @@ export default {
       backgroundImage: {
         "btn-gradient":
           "linear-gradient(270deg, rgba(0,170,255,0.44) 0.67%, rgba(85,64,167,0.44) 21.34%, rgba(255,76,255,0.44) 41.96%, rgba(255,63,99,0.44) 62.45%, rgba(255,102,0,0.44) 99.33%)",
+        //orange
+        "custom-gradient":
+          "linear-gradient(270deg, #FF3F63 0.44%, #F60 99.59%)",
+        "separator-gradient":
+          "linear-gradient(270deg, #0AF 0.41%, #5540A7 0.42%, #FF4CFF 0.43%, #FF3F63 0.44%, #F60 99.59%)",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -75,6 +80,15 @@ export default {
       boxShadow: {
         contact:
           "0 8px 8px -4px rgba(0, 0, 0, 0.03), 0 20px 24px -4px rgba(0, 0, 0, 0.08)",
+        "card-shadow":
+          "0px 10px 15px 0px rgba(0, 0, 0, 0.10), 0px 4px 6px 0px rgba(0, 0, 0, 0.05)",
+        "button-shadow":
+          "0px 2px 4px 0px rgba(0, 0, 0, 0.06), 0px 4px 6px 0px rgba(0, 0, 0, 0.10)",
+        "cta-shadow":
+          "0px 4px 6px -1px rgba(0, 0, 0, 0.10), 0px 2px 4px -2px rgba(0, 0, 0, 0.10)",
+        "recommended-card-shadow":
+          "0px 10px 15px 0px rgba(0, 0, 0, 0.10), 0px 4px 6px 0px rgba(0, 0, 0, 0.05)",
+        "recommended-top-shadow": "0px 4px 4px 0px rgba(255, 102, 0, 0.20)",
       },
 
       borderRadius: {
@@ -128,3 +142,4 @@ export default {
   },
   plugins: [tailwindcssAnimate],
 } satisfies Config;
+

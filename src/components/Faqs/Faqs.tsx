@@ -75,7 +75,14 @@ const faqs = [
 
 export default function Faqs() {
   return (
-    <div className="flex flex-col items-center justify-center p-6 outline-none mt-20 mb-0 sm:mt-52 sm:mb-20 md:mt-20 lg:mt-52">
+    <div
+      id={"faqs"}
+      className="
+    flex flex-col items-center justify-center p-6 outline-none
+    scroll-mt-[80px] sm:scroll-mt-[120px]
+    mt-20 mb-0 sm:mt-52 sm:mb-20 md:mt-20 lg:mt-52
+  "
+    >
       <h2 className="text-[32px] sm:text-[64px] leading-[56px] font-medium text-center tracking-[-2.56px]">
         Preguntas <span className="text-titleFaqs">frecuentes</span>
       </h2>
